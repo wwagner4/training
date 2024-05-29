@@ -1,0 +1,32 @@
+doctus
+    remove package.scala
+    remove split into trait and impl. e.g. DoctusSwing and DoctusSwingImpl
+    combine DoctusSwingUtil and DoctusSchedulerJvm in DoctusJvmUtil. Beware DoctusJvmUtil in sumosim
+
+sumosim
+    calculate reward from recorded game infos for a robot. with testcases
+    send history of sensors or remember sensors in the controller
+    send collision info for advanced reward function
+    start gui if db not up and running
+
+
+calculate reward from recorded game infos for a robot. with testcases
+    for winning n = 1
+        by doing nothing. the opponent walked out +5
+        by pushing the opponent out +20
+    for loosing n = 1
+        by unforced walking out of the field -20
+        by being pushed out by the opponent -10
+    for pushing the opponent n >= 0
+        while seeing it +10
+        while not seeing it 0
+    for being pushed n >= 0
+        while seeing the opponent -10
+        while not seeing the opponent 0
+
+    reward is always >= 0
+
+    helper functions:
+    canSeeTheOpponent(myStatus, opponentStatus): Option[distance]
+    findColissions(): List[(myStatus, opponetStaus)]
+    findEnd(): (myStatus, opponetStaus) <- One of them should be out (the looser)

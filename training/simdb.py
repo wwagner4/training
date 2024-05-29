@@ -1,4 +1,5 @@
 import datetime as dt
+import pprint
 from abc import ABC
 from dataclasses import dataclass
 
@@ -13,8 +14,18 @@ SIM_STATUS_ERROR = "error"
 
 @dataclass_json
 @dataclass
+class SimulationRobot:
+    name: str
+    description: dict
+
+
+@dataclass_json
+@dataclass
 class Simulation:
     port: int
+    name: str
+    robot1: SimulationRobot
+    robot2: SimulationRobot
     started_at: dt.datetime = dt.datetime.now()
     status: str = SIM_STATUS_RUNNING
     message: str = ""
@@ -41,7 +52,7 @@ def find(client: pymongo.MongoClient, id: str) -> dict:
     raise NotImplementedError()
 
 
-def find_all(client: pymongo.MongoClient) -> dict:
+def find_all(client: pymongo.MongoClient) -> list:
     sims = _sim_collection(client)
     return list(sims.find())
 
@@ -53,9 +64,13 @@ def update_status_error(client: pymongo.MongoClient, doc_id: str, message: str):
     sims.update_one({"_id": obj_id}, update_document)
 
 
-def update_status_finished(client: pymongo.MongoClient, doc_id: str, events: dict):
+def update_status_finished(
+    client: pymongo.MongoClient, doc_id: str, events: dict, states: list
+):
     sims = _sim_collection(client)
-    update_document = {"$set": {"status": SIM_STATUS_FINISHED, "events": events}}
+    update_document = {
+        "$set": {"status": SIM_STATUS_FINISHED, "events": events, "states": states}
+    }
     obj_id = ObjectId(doc_id)
     sims.update_one({"_id": obj_id}, update_document)
 
@@ -94,11 +109,35 @@ def list_running():
             print(f"{i} {r}")
 
 
-def list_latest():
+def list_latest_full():
     with create_client() as client:
         sims = _sim_collection(client)
         for i, r in enumerate(sims.find().sort({"started_at": -1}).limit(10)):
             print(f"{i} {r}")
+
+
+def list_all():
+    with create_client() as client:
+        sims = _sim_collection(client)
+        for i, r in enumerate(sims.find().sort({"started_at": -1}).limit(10)):
+            print(f"--- {i} ---------------------------------")
+            pprint.pprint(r)
+
+
+def list_latest():
+    with create_client() as client:
+        sims = _sim_collection(client)
+        for i, r in enumerate(
+            sims.find({}, {"started_at": 1, "status": 1, "name": 1, "description": 1})
+            .sort(
+                {
+                    "started_at": -1,
+                }
+            )
+            .limit(10)
+        ):
+            print(f"--- {i} ---------------------------------")
+            pprint.pprint(r)
 
 
 def delete_old_running():
@@ -113,3 +152,18 @@ def delete_old_running():
         if not answer.acknowledged:
             raise RuntimeError(f"Could not delete from mongo db {query}")
         print(f"deleted {answer.deleted_count} using {query}")
+
+
+def delete_old():
+    with create_client() as client:
+        sims = _sim_collection(client)
+        now = dt.datetime.now()
+        diff = dt.timedelta(hours=24)
+        minus = now - diff
+
+        query = {"started_at": {"$lt": minus}}
+        answer = sims.delete_many(query)
+        if not answer.acknowledged:
+            raise RuntimeError(f"Could not delete from mongo db {query}")
+        qstr = pprint.pformat(query)
+        print(f"deleted {answer.deleted_count} using {qstr}")

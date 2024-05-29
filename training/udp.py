@@ -8,7 +8,7 @@ host = "0.0.0.0"
 def send_and_wait(data: str, port: int, timeout_sec: int) -> str:
     server_address_port = (host, port)
     buffer_size = 1024
-    print(f"---> {port} Sendig: {data}")
+    # print(f"---> {port} Sendig: {data}")
     my_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
     my_socket.settimeout(timeout_sec)
     bytes_to_send = str.encode(data)
@@ -28,9 +28,9 @@ def open_socket(port: int, timeout_sec: int, handler: Callable[[str], str]) -> s
             if readable:
                 data, address = sock.recvfrom(1024)
                 msg = data.decode("utf-8")
-                print(f"---- Server {port} Received data: {msg} from {address}")
+                # print(f"---- Server {port} Received data: {msg} from {address}")
                 resp = handler(msg)
-                print(f"---- Server {port} Sending data: {resp} to {address}")
+                # print(f"---- Server {port} Sending data: {resp} to {address}")
                 bytes_to_send = str.encode(resp)
                 sock.sendto(bytes_to_send, address)
             else:

@@ -1,16 +1,12 @@
+import importlib
 from dataclasses import dataclass
 from enum import Enum
+
+from dataclasses_json import dataclass_json
 
 import training.simdb as db
 import training.udp as udp
 import training.util as util
-
-
-class SectorName(Enum):
-    UNDEF = "undef"
-    LEFT = "left"
-    CENTER = "center"
-    RIGHT = "right"
 
 
 class SendCommand:
@@ -21,11 +17,11 @@ class ReceiveCommand:
     pass
 
 
-@dataclass
-class PosDir:
-    xpos: float
-    ypos: float
-    direction: float
+class SectorName(Enum):
+    UNDEF = "undef"
+    LEFT = "left"
+    CENTER = "center"
+    RIGHT = "right"
 
 
 @dataclass
@@ -37,15 +33,23 @@ class CombiSensor:
 
 
 @dataclass
-class SensorDto:
-    pos_dir: PosDir
-    combi_sensor: CombiSensor
-
-
-@dataclass
 class DiffDriveValues:
     right_velo: float
     left_velo: float
+
+
+@dataclass_json
+@dataclass
+class PosDir:
+    xpos: float
+    ypos: float
+    direction: float
+
+
+@dataclass
+class SensorDto:
+    pos_dir: PosDir
+    combi_sensor: CombiSensor
 
 
 @dataclass
@@ -63,6 +67,7 @@ class SensorCommand(ReceiveCommand):
 class DiffDriveCommand(SendCommand):
     robot1_diff_drive_values: DiffDriveValues
     robot2_diff_drive_values: DiffDriveValues
+    stepsCount: int
 
 
 @dataclass
@@ -71,12 +76,25 @@ class FinishedOkCommand(ReceiveCommand):
     robot2_rewards: list[(str, str)]
 
 
+@dataclass_json
+@dataclass
+class SimulationState:
+    robot1: PosDir
+    robot2: PosDir
+
+
 @dataclass
 class FinishedErrorCommand(ReceiveCommand):
     message: str
 
 
-def start(port: int):
+# noinspection PyUnresolvedReferences
+def start(port: int, sim_name: str = "TEST05"):
+    controller1 = ControllerProvider.get("test-turn")
+    controller2 = ControllerProvider.get("stay-in-field")
+
+    simulation_states = []
+
     with db.create_client() as client:
 
         def check_running():
@@ -86,19 +104,30 @@ def start(port: int):
                 raise RuntimeError(f"Baseport {port} is currently running")
 
         def insert_new_sim() -> str:
+            sim_robot1 = db.SimulationRobot(
+                name=controller1.name(),
+                description=controller1.description(),
+            )
+            sim_robot2 = db.SimulationRobot(
+                name=controller2.name(),
+                description=controller2.description(),
+            )
             sim = db.Simulation(
                 port=port,
+                name=sim_name,
+                robot1=sim_robot1,
+                robot2=sim_robot2,
             )
             _obj_id = db.insert(client, sim.to_dict())
             print(f"--- Wrote to database id:{_obj_id} sim:{sim}")
             return _obj_id
 
-        def send_command_and_wait(command: SendCommand) -> ReceiveCommand:
-            send_str = format_command(command)
-            print(f"---> Sending {command} - {send_str}")
+        def send_command_and_wait(cmd: SendCommand) -> ReceiveCommand:
+            send_str = format_command(cmd)
+            # print(f"---> Sending {cmd} - {send_str}")
             resp_str = udp.send_and_wait(send_str, port, 10)
             resp = parse_command(resp_str)
-            print(f"<--- Result {resp} {resp_str}")
+            # print(f"<--- Result {resp} {resp_str}")
             return resp
 
         check_running()
@@ -111,15 +140,27 @@ def start(port: int):
                 print("")
                 response: ReceiveCommand = send_command_and_wait(command)
                 match response:
-                    case SensorCommand(r1, r2):
-                        print("sensors", r1, r2)
-                        r1 = DiffDriveValues(0.5, 0.4)
-                        r2 = DiffDriveValues(0.3, 0.4)
-                        command = DiffDriveCommand(r1, r2)
+                    case SensorCommand(s1, s2):
+                        # print("sensors", s1, s2)
+                        state = SimulationState(s1.pos_dir, s2.pos_dir)
+                        simulation_states.append(state)
+
+                        r1 = controller1.take_step(s1.combi_sensor)
+                        r2 = controller2.take_step(s2.combi_sensor)
+                        # print(
+                        #   "## sensor",
+                        #   s1.combi_sensor.front_distance,
+                        #   s2.combi_sensor.front_distance)
+
+                        command = DiffDriveCommand(r1, r2, cnt)
                     case FinishedOkCommand(r1, r2):
                         events_dict = {"r1": r1, "r2": r2}
-                        db.update_status_finished(client, obj_id, events_dict)
-                        print(f"Finished with OK: {obj_id} {events_dict}")
+                        dicts = [s.to_dict() for s in simulation_states]
+                        db.update_status_finished(client, obj_id, events_dict, dicts)
+                        print(
+                            f"Finished with OK: {obj_id} {events_dict}"
+                            f"{simulation_states[:5]}..."
+                        )
                         break
                     case FinishedErrorCommand(msg):
                         db.update_status_error(client, obj_id, msg)
@@ -142,8 +183,10 @@ def format_command(cmd: SendCommand) -> str:
     match cmd:
         case StartCommand():
             return "A|"
-        case DiffDriveCommand(r1, r2):
-            return f"C|{format_diff_drive_values(r1)}#{format_diff_drive_values(r2)}"
+        case DiffDriveCommand(r1, r2, cnt):
+            return (
+                f"C|{format_diff_drive_values(r1)}#{format_diff_drive_values(r2)}#{cnt}"
+            )
         case _:
             raise NotImplementedError(f"format_command {cmd}")
 
@@ -161,23 +204,72 @@ def parse_command(data: str) -> ReceiveCommand:
             ),
         )
 
-    def parse_finished(data: str) -> SensorDto:
-        print(f"--- data '{data}'")
-        if data:
-            ds = data.split(";")
+    def parse_finished(finished_data: str) -> list:
+        print(f"--- data '{finished_data}'")
+        if finished_data:
+            ds = finished_data.split(";")
             return [(d.split("!")[0], d.split("!")[1]) for d in ds]
         else:
             return []
 
-    (h, d) = data.split("|")
-    match h:
+    (head, body) = data.split("|")
+    match head:
         case "E":
-            return FinishedErrorCommand(d)
+            return FinishedErrorCommand(body)
         case "B":
-            (r1, r2) = d.split("#")
+            (r1, r2) = body.split("#")
             return SensorCommand(parse_sensor_dto(r1), parse_sensor_dto(r2))
         case "D":
-            (r1, r2) = d.split("#")
+            (r1, r2) = body.split("#")
             return FinishedOkCommand(parse_finished(r1), parse_finished(r2))
         case _:
             raise NotImplementedError(f"parse_command {data}")
+
+
+class Controller:
+    def take_step(self, sensor: CombiSensor) -> DiffDriveValues:
+        pass
+
+    def name(self) -> str:
+        pass
+
+    def description(self) -> dict:
+        pass
+
+
+class ControllerProvider:
+    @staticmethod
+    def get(name: str) -> Controller:
+        match name:
+            case "fast-circle":
+                module = importlib.import_module(
+                    "training.controller.circle_controller"
+                )
+                class_ = module.FastCircleController
+                return class_()
+            case "slow-circle":
+                module = importlib.import_module(
+                    "training.controller.circle_controller"
+                )
+                class_ = module.SlowCircleController
+                return class_()
+            case "stay-in-field":
+                module = importlib.import_module(
+                    "training.controller.stay_in_field_controller"
+                )
+                class_ = module.StayInFieldController
+                return class_()
+            case "stay-in-field":
+                module = importlib.import_module(
+                    "training.controller.stay_in_field_controller"
+                )
+                class_ = module.StayInFieldController
+                return class_()
+            case "test-turn":
+                module = importlib.import_module(
+                    "training.controller.test_turn_controller"
+                )
+                class_ = module.TestTurnController
+                return class_()
+            case _:
+                raise RuntimeError(f"Unknown controller {name}")
