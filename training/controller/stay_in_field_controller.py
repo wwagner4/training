@@ -37,7 +37,7 @@ class StayInFieldController(sr.Controller):
             self.max_turn_count = random.randint(70, 90)
             self.state = State.TURN
 
-        print("## STAY IN FIELD", self.state, sensor.front_distance, self.turn_count)
+        # print("## STAY IN FIELD", self.state, sensor.front_distance, self.turn_count)
         match self.state:
             case State.FORWARD:
                 return sr.DiffDriveValues(5, 5)

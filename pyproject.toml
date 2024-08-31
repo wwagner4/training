@@ -9,9 +9,11 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 dataclasses-json = "*"
+numpy = "*"
 typer = "*"
 ruff = "*"
 pymongo = "*"
+matplotlib = "^3.9.2"
 
 
 [tool.poetry.group.dev.dependencies]

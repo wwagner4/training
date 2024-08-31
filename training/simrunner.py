@@ -1,4 +1,5 @@
 import importlib
+import traceback
 from dataclasses import dataclass
 from enum import Enum
 
@@ -15,6 +16,15 @@ class SendCommand:
 
 class ReceiveCommand:
     pass
+
+
+class ControllerName(str, Enum):
+    FAST_CIRCLE = ("fast-circle",)
+    SLOW_CIRCLE = ("slow-circle",)
+    STAY_IN_FIELD = ("stay-in-field",)
+    TUMBLR = ("tumblr",)
+    BLIND_TUMBLR = ("blind-tumblr",)
+    TEST_TURN = ("test-turn",)
 
 
 class SectorName(Enum):
@@ -89,9 +99,14 @@ class FinishedErrorCommand(ReceiveCommand):
 
 
 # noinspection PyUnresolvedReferences
-def start(port: int, sim_name: str = "TEST05"):
-    controller1 = ControllerProvider.get("test-turn")
-    controller2 = ControllerProvider.get("stay-in-field")
+def start(
+    port: int,
+    sim_name: str,
+    controller_name1: ControllerName,
+    controller_name2: ControllerName,
+):
+    controller1 = ControllerProvider.get(controller_name1)
+    controller2 = ControllerProvider.get(controller_name2)
 
     simulation_states = []
 
@@ -169,6 +184,7 @@ def start(port: int, sim_name: str = "TEST05"):
 
         except BaseException as ex:
             msg = util.message(ex)
+            print(traceback.format_exc())
             print(f"ERROR: {msg}")
             db.update_status_error(client, obj_id, msg)
 
@@ -205,7 +221,6 @@ def parse_command(data: str) -> ReceiveCommand:
         )
 
     def parse_finished(finished_data: str) -> list:
-        print(f"--- data '{finished_data}'")
         if finished_data:
             ds = finished_data.split(";")
             return [(d.split("!")[0], d.split("!")[1]) for d in ds]
@@ -239,33 +254,39 @@ class Controller:
 
 class ControllerProvider:
     @staticmethod
-    def get(name: str) -> Controller:
+    def get(name: ControllerName) -> Controller:
         match name:
-            case "fast-circle":
+            case ControllerName.FAST_CIRCLE:
                 module = importlib.import_module(
                     "training.controller.circle_controller"
                 )
                 class_ = module.FastCircleController
                 return class_()
-            case "slow-circle":
+            case ControllerName.SLOW_CIRCLE:
                 module = importlib.import_module(
                     "training.controller.circle_controller"
                 )
                 class_ = module.SlowCircleController
                 return class_()
-            case "stay-in-field":
+            case ControllerName.TUMBLR:
+                module = importlib.import_module(
+                    "training.controller.tumblr_controller"
+                )
+                class_ = module.TumblrController
+                return class_()
+            case ControllerName.BLIND_TUMBLR:
+                module = importlib.import_module(
+                    "training.controller.blind_tumblr_controller"
+                )
+                class_ = module.BlindTumblrController
+                return class_()
+            case ControllerName.STAY_IN_FIELD:
                 module = importlib.import_module(
                     "training.controller.stay_in_field_controller"
                 )
                 class_ = module.StayInFieldController
                 return class_()
-            case "stay-in-field":
-                module = importlib.import_module(
-                    "training.controller.stay_in_field_controller"
-                )
-                class_ = module.StayInFieldController
-                return class_()
-            case "test-turn":
+            case ControllerName.TEST_TURN:
                 module = importlib.import_module(
                     "training.controller.test_turn_controller"
                 )

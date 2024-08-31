@@ -1,0 +1,7202 @@
+{
+  "name": "wall-rw-6b1d59-17_tumblr_stay-in-field",
+  "winner": {
+    "r1": [
+      [
+        "winner",
+        "true"
+      ]
+    ],
+    "r2": []
+  },
+  "states": [
+    {
+      "robot1": {
+        "xpos": -80.0,
+        "ypos": 0.0,
+        "direction": 2.3562
+      },
+      "robot2": {
+        "xpos": 80.0,
+        "ypos": 0.0,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -82.5476,
+        "ypos": 2.3992,
+        "direction": 2.2962
+      },
+      "robot2": {
+        "xpos": 83.5355,
+        "ypos": -3.5355,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -84.9468,
+        "ypos": 4.9468,
+        "direction": 2.2362
+      },
+      "robot2": {
+        "xpos": 87.0711,
+        "ypos": -7.0711,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -87.1889,
+        "ypos": 7.6337,
+        "direction": 2.1762
+      },
+      "robot2": {
+        "xpos": 90.6066,
+        "ypos": -10.6066,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -89.2658,
+        "ypos": 10.4502,
+        "direction": 2.1162
+      },
+      "robot2": {
+        "xpos": 94.1421,
+        "ypos": -14.1421,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -91.1701,
+        "ypos": 13.3861,
+        "direction": 2.0562
+      },
+      "robot2": {
+        "xpos": 97.6777,
+        "ypos": -17.6777,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -92.8949,
+        "ypos": 16.431,
+        "direction": 1.9962
+      },
+      "robot2": {
+        "xpos": 101.2132,
+        "ypos": -21.2132,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -94.4341,
+        "ypos": 19.5739,
+        "direction": 1.9362
+      },
+      "robot2": {
+        "xpos": 104.7487,
+        "ypos": -24.7487,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -95.782,
+        "ypos": 22.8033,
+        "direction": 1.8762
+      },
+      "robot2": {
+        "xpos": 108.2843,
+        "ypos": -28.2843,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -96.9338,
+        "ypos": 26.1078,
+        "direction": 1.8162
+      },
+      "robot2": {
+        "xpos": 111.8198,
+        "ypos": -31.8198,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -97.8854,
+        "ypos": 29.4754,
+        "direction": 1.7562
+      },
+      "robot2": {
+        "xpos": 115.3553,
+        "ypos": -35.3553,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -98.6334,
+        "ypos": 32.894,
+        "direction": 1.6962
+      },
+      "robot2": {
+        "xpos": 118.8909,
+        "ypos": -38.8909,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -99.175,
+        "ypos": 36.3513,
+        "direction": 1.6362
+      },
+      "robot2": {
+        "xpos": 122.4264,
+        "ypos": -42.4264,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -99.5084,
+        "ypos": 39.8349,
+        "direction": 1.5762
+      },
+      "robot2": {
+        "xpos": 125.9619,
+        "ypos": -45.9619,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -99.6322,
+        "ypos": 43.3322,
+        "direction": 1.5162
+      },
+      "robot2": {
+        "xpos": 129.4975,
+        "ypos": -49.4975,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -99.5461,
+        "ypos": 46.8306,
+        "direction": 1.4562
+      },
+      "robot2": {
+        "xpos": 133.033,
+        "ypos": -53.033,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -99.2504,
+        "ypos": 50.3175,
+        "direction": 1.3962
+      },
+      "robot2": {
+        "xpos": 136.5685,
+        "ypos": -56.5685,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -98.7461,
+        "ypos": 53.7805,
+        "direction": 1.3362
+      },
+      "robot2": {
+        "xpos": 140.1041,
+        "ypos": -60.1041,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -98.0351,
+        "ypos": 57.207,
+        "direction": 1.2762
+      },
+      "robot2": {
+        "xpos": 143.6396,
+        "ypos": -63.6396,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -97.1199,
+        "ypos": 60.5847,
+        "direction": 1.2162
+      },
+      "robot2": {
+        "xpos": 147.1751,
+        "ypos": -67.1751,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -96.0038,
+        "ypos": 63.9014,
+        "direction": 1.1562
+      },
+      "robot2": {
+        "xpos": 150.7107,
+        "ypos": -70.7107,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -94.6909,
+        "ypos": 67.1452,
+        "direction": 1.0962
+      },
+      "robot2": {
+        "xpos": 154.2462,
+        "ypos": -74.2462,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -93.1857,
+        "ypos": 70.3045,
+        "direction": 1.0362
+      },
+      "robot2": {
+        "xpos": 157.7817,
+        "ypos": -77.7817,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -91.4939,
+        "ypos": 73.3678,
+        "direction": 0.9762
+      },
+      "robot2": {
+        "xpos": 161.3173,
+        "ypos": -81.3173,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -89.6214,
+        "ypos": 76.3242,
+        "direction": 0.9162
+      },
+      "robot2": {
+        "xpos": 164.8528,
+        "ypos": -84.8528,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -87.575,
+        "ypos": 79.1629,
+        "direction": 0.8562
+      },
+      "robot2": {
+        "xpos": 168.3883,
+        "ypos": -88.3883,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -85.362,
+        "ypos": 81.8739,
+        "direction": 0.7962
+      },
+      "robot2": {
+        "xpos": 171.9239,
+        "ypos": -91.9239,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -82.9905,
+        "ypos": 84.4472,
+        "direction": 0.7362
+      },
+      "robot2": {
+        "xpos": 175.4594,
+        "ypos": -95.4594,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -80.469,
+        "ypos": 86.8738,
+        "direction": 0.6762
+      },
+      "robot2": {
+        "xpos": 178.9949,
+        "ypos": -98.9949,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -77.8064,
+        "ypos": 89.1447,
+        "direction": 0.6162
+      },
+      "robot2": {
+        "xpos": 182.5305,
+        "ypos": -102.5305,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -75.0125,
+        "ypos": 91.2519,
+        "direction": 0.5562
+      },
+      "robot2": {
+        "xpos": 186.066,
+        "ypos": -106.066,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -72.0973,
+        "ypos": 93.1878,
+        "direction": 0.4962
+      },
+      "robot2": {
+        "xpos": 189.6016,
+        "ypos": -109.6016,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -69.0712,
+        "ypos": 94.9454,
+        "direction": 0.4362
+      },
+      "robot2": {
+        "xpos": 193.1371,
+        "ypos": -113.1371,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -65.9452,
+        "ypos": 96.5184,
+        "direction": 0.3762
+      },
+      "robot2": {
+        "xpos": 196.6726,
+        "ypos": -116.6726,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -62.7304,
+        "ypos": 97.9011,
+        "direction": 0.3162
+      },
+      "robot2": {
+        "xpos": 200.2082,
+        "ypos": -120.2082,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -59.4386,
+        "ypos": 99.0886,
+        "direction": 0.2562
+      },
+      "robot2": {
+        "xpos": 203.7437,
+        "ypos": -123.7437,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -56.0814,
+        "ypos": 100.0765,
+        "direction": 0.1962
+      },
+      "robot2": {
+        "xpos": 207.2792,
+        "ypos": -127.2792,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -52.6711,
+        "ypos": 100.8613,
+        "direction": 0.1362
+      },
+      "robot2": {
+        "xpos": 210.8148,
+        "ypos": -130.8148,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -49.2199,
+        "ypos": 101.4402,
+        "direction": 0.0762
+      },
+      "robot2": {
+        "xpos": 214.3503,
+        "ypos": -134.3503,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -45.7401,
+        "ypos": 101.8111,
+        "direction": 0.0162
+      },
+      "robot2": {
+        "xpos": 217.8858,
+        "ypos": -137.8858,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -42.2444,
+        "ypos": 101.9727,
+        "direction": -0.0438
+      },
+      "robot2": {
+        "xpos": 221.4214,
+        "ypos": -141.4214,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -38.7452,
+        "ypos": 101.9244,
+        "direction": -0.1038
+      },
+      "robot2": {
+        "xpos": 224.9569,
+        "ypos": -144.9569,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -35.2553,
+        "ypos": 101.6664,
+        "direction": -0.1638
+      },
+      "robot2": {
+        "xpos": 228.4924,
+        "ypos": -148.4924,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -31.7871,
+        "ypos": 101.1995,
+        "direction": -0.2238
+      },
+      "robot2": {
+        "xpos": 232.028,
+        "ypos": -152.028,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -28.3531,
+        "ypos": 100.5256,
+        "direction": -0.2838
+      },
+      "robot2": {
+        "xpos": 235.5635,
+        "ypos": -155.5635,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -25.0245,
+        "ypos": 99.4453,
+        "direction": -0.2238
+      },
+      "robot2": {
+        "xpos": 239.099,
+        "ypos": -159.099,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -21.6372,
+        "ypos": 98.5667,
+        "direction": -0.1638
+      },
+      "robot2": {
+        "xpos": 242.6346,
+        "ypos": -162.6346,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -18.2032,
+        "ypos": 97.8927,
+        "direction": -0.1038
+      },
+      "robot2": {
+        "xpos": 246.1701,
+        "ypos": -166.1701,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -14.735,
+        "ypos": 97.4258,
+        "direction": -0.0438
+      },
+      "robot2": {
+        "xpos": 249.7056,
+        "ypos": -169.7056,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -11.2451,
+        "ypos": 97.1678,
+        "direction": 0.0162
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.7854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -7.7459,
+        "ypos": 97.1195,
+        "direction": 0.0762
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.7454
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -4.2502,
+        "ypos": 97.2811,
+        "direction": 0.1362
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.7054
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -0.7704,
+        "ypos": 97.652,
+        "direction": 0.1962
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.6654
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 2.6808,
+        "ypos": 98.2309,
+        "direction": 0.2562
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.6254
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 6.0912,
+        "ypos": 99.0157,
+        "direction": 0.3162
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.5854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 9.4483,
+        "ypos": 100.0037,
+        "direction": 0.3762
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.5454
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 12.7402,
+        "ypos": 101.1911,
+        "direction": 0.4362
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.5054
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 15.9549,
+        "ypos": 102.5738,
+        "direction": 0.4962
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.4654
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 19.0809,
+        "ypos": 104.1468,
+        "direction": 0.5562
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.4254
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 22.107,
+        "ypos": 105.9044,
+        "direction": 0.6162
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.3854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 25.0222,
+        "ypos": 107.8403,
+        "direction": 0.6762
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.3454
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 27.8162,
+        "ypos": 109.9475,
+        "direction": 0.7362
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.3054
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 30.4787,
+        "ypos": 112.2184,
+        "direction": 0.7962
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.2654
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 33.0003,
+        "ypos": 114.645,
+        "direction": 0.8562
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.2254
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 35.3718,
+        "ypos": 117.2183,
+        "direction": 0.9162
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.1854
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 37.5847,
+        "ypos": 119.9293,
+        "direction": 0.9762
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.1454
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 39.6311,
+        "ypos": 122.768,
+        "direction": 1.0362
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.1054
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 41.5036,
+        "ypos": 125.7244,
+        "direction": 1.0962
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.0654
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 43.1955,
+        "ypos": 128.7877,
+        "direction": 1.1562
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": -0.0254
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 44.7006,
+        "ypos": 131.947,
+        "direction": 1.2162
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 46.0136,
+        "ypos": 135.1908,
+        "direction": 1.2762
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.0546
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 47.1296,
+        "ypos": 138.5075,
+        "direction": 1.3362
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.0946
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 48.0448,
+        "ypos": 141.8852,
+        "direction": 1.3962
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.1346
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 48.7559,
+        "ypos": 145.3117,
+        "direction": 1.4562
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.1746
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 49.2601,
+        "ypos": 148.7747,
+        "direction": 1.5162
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.2146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 49.5558,
+        "ypos": 152.2616,
+        "direction": 1.5762
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.2546
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 49.6419,
+        "ypos": 155.76,
+        "direction": 1.6362
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.2946
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 49.5181,
+        "ypos": 159.2573,
+        "direction": 1.6962
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.3346
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 49.1847,
+        "ypos": 162.7409,
+        "direction": 1.7562
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.3746
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 48.6431,
+        "ypos": 166.1982,
+        "direction": 1.8162
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.4146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 47.8951,
+        "ypos": 169.6168,
+        "direction": 1.8762
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.4546
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 46.9435,
+        "ypos": 172.9844,
+        "direction": 1.9362
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.4946
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 45.7917,
+        "ypos": 176.2889,
+        "direction": 1.9962
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.5346
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 44.4438,
+        "ypos": 179.5184,
+        "direction": 2.0562
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.5746
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 42.9046,
+        "ypos": 182.6612,
+        "direction": 2.1162
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.6146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 41.1798,
+        "ypos": 185.7061,
+        "direction": 2.1762
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.6546
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 39.2755,
+        "ypos": 188.642,
+        "direction": 2.2362
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.6946
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 37.1986,
+        "ypos": 191.4585,
+        "direction": 2.2962
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.7346
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 34.9565,
+        "ypos": 194.1454,
+        "direction": 2.3562
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.7746
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 32.5573,
+        "ypos": 196.693,
+        "direction": 2.4162
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.8146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 30.0097,
+        "ypos": 199.0922,
+        "direction": 2.4762
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.8546
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 27.3228,
+        "ypos": 201.3343,
+        "direction": 2.5362
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.8946
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 24.5063,
+        "ypos": 203.4112,
+        "direction": 2.5962
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.9346
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 21.5704,
+        "ypos": 205.3155,
+        "direction": 2.6562
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 0.9746
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 18.5255,
+        "ypos": 207.0404,
+        "direction": 2.7162
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 15.3826,
+        "ypos": 208.5795,
+        "direction": 2.7762
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.0546
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 12.1532,
+        "ypos": 209.9274,
+        "direction": 2.8362
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.0946
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 8.8487,
+        "ypos": 211.0792,
+        "direction": 2.8962
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.1346
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 5.4811,
+        "ypos": 212.0309,
+        "direction": 2.9562
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.1746
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 2.0625,
+        "ypos": 212.7788,
+        "direction": 3.0162
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.2146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -1.3948,
+        "ypos": 213.3204,
+        "direction": 3.0762
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.2546
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -4.8784,
+        "ypos": 213.6538,
+        "direction": 3.1362
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.2946
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.3757,
+        "ypos": 213.7776,
+        "direction": -3.087
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.3346
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -11.8741,
+        "ypos": 213.6915,
+        "direction": -3.027
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.3746
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -15.361,
+        "ypos": 213.3958,
+        "direction": -2.967
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.4146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -18.824,
+        "ypos": 212.8916,
+        "direction": -2.907
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.4546
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -22.2505,
+        "ypos": 212.1806,
+        "direction": -2.847
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.4946
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -25.6282,
+        "ypos": 211.2654,
+        "direction": -2.787
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.5346
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -28.9449,
+        "ypos": 210.1493,
+        "direction": -2.727
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.5746
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -32.1887,
+        "ypos": 208.8363,
+        "direction": -2.667
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.6146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -35.348,
+        "ypos": 207.3312,
+        "direction": -2.607
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.6546
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -38.4113,
+        "ypos": 205.6393,
+        "direction": -2.547
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.6946
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -41.3677,
+        "ypos": 203.7668,
+        "direction": -2.487
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.7346
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -44.2064,
+        "ypos": 201.7204,
+        "direction": -2.427
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.7746
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -46.9174,
+        "ypos": 199.5075,
+        "direction": -2.367
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.8146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -49.4907,
+        "ypos": 197.136,
+        "direction": -2.307
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.8546
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -51.7617,
+        "ypos": 194.4734,
+        "direction": -2.367
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.8946
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -54.1882,
+        "ypos": 191.9519,
+        "direction": -2.427
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.9346
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -56.7616,
+        "ypos": 189.5803,
+        "direction": -2.487
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 1.9746
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -59.4725,
+        "ypos": 187.3674,
+        "direction": -2.547
+      },
+      "robot2": {
+        "xpos": 253.2412,
+        "ypos": -173.2412,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -62.3113,
+        "ypos": 185.321,
+        "direction": -2.607
+      },
+      "robot2": {
+        "xpos": 251.0943,
+        "ypos": -168.7255,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -65.2677,
+        "ypos": 183.4485,
+        "direction": -2.667
+      },
+      "robot2": {
+        "xpos": 248.9474,
+        "ypos": -164.2099,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -68.331,
+        "ypos": 181.7566,
+        "direction": -2.727
+      },
+      "robot2": {
+        "xpos": 246.8005,
+        "ypos": -159.6943,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -71.4902,
+        "ypos": 180.2515,
+        "direction": -2.787
+      },
+      "robot2": {
+        "xpos": 244.6536,
+        "ypos": -155.1787,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -74.7341,
+        "ypos": 178.9386,
+        "direction": -2.847
+      },
+      "robot2": {
+        "xpos": 242.5067,
+        "ypos": -150.6631,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -78.0508,
+        "ypos": 177.8225,
+        "direction": -2.907
+      },
+      "robot2": {
+        "xpos": 240.3598,
+        "ypos": -146.1474,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -81.4285,
+        "ypos": 176.9073,
+        "direction": -2.967
+      },
+      "robot2": {
+        "xpos": 238.2129,
+        "ypos": -141.6318,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -84.855,
+        "ypos": 176.1963,
+        "direction": -3.027
+      },
+      "robot2": {
+        "xpos": 236.066,
+        "ypos": -137.1162,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -88.3179,
+        "ypos": 175.692,
+        "direction": -3.087
+      },
+      "robot2": {
+        "xpos": 233.9191,
+        "ypos": -132.6006,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -91.8049,
+        "ypos": 175.3963,
+        "direction": 3.1362
+      },
+      "robot2": {
+        "xpos": 231.7722,
+        "ypos": -128.085,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -95.3033,
+        "ypos": 175.3102,
+        "direction": 3.0762
+      },
+      "robot2": {
+        "xpos": 229.6253,
+        "ypos": -123.5693,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -98.8006,
+        "ypos": 175.434,
+        "direction": 3.0162
+      },
+      "robot2": {
+        "xpos": 227.4784,
+        "ypos": -119.0537,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -102.2841,
+        "ypos": 175.7674,
+        "direction": 2.9562
+      },
+      "robot2": {
+        "xpos": 225.3315,
+        "ypos": -114.5381,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -105.7414,
+        "ypos": 176.309,
+        "direction": 2.8962
+      },
+      "robot2": {
+        "xpos": 223.1846,
+        "ypos": -110.0225,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -109.16,
+        "ypos": 177.057,
+        "direction": 2.8362
+      },
+      "robot2": {
+        "xpos": 221.0377,
+        "ypos": -105.5068,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -112.5277,
+        "ypos": 178.0086,
+        "direction": 2.7762
+      },
+      "robot2": {
+        "xpos": 218.8908,
+        "ypos": -100.9912,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -115.8321,
+        "ypos": 179.1604,
+        "direction": 2.7162
+      },
+      "robot2": {
+        "xpos": 216.7439,
+        "ypos": -96.4756,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -119.0616,
+        "ypos": 180.5083,
+        "direction": 2.6562
+      },
+      "robot2": {
+        "xpos": 214.597,
+        "ypos": -91.96,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -122.2044,
+        "ypos": 182.0475,
+        "direction": 2.5962
+      },
+      "robot2": {
+        "xpos": 212.4501,
+        "ypos": -87.4444,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -125.2493,
+        "ypos": 183.7723,
+        "direction": 2.5362
+      },
+      "robot2": {
+        "xpos": 210.3032,
+        "ypos": -82.9287,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -128.1853,
+        "ypos": 185.6766,
+        "direction": 2.4762
+      },
+      "robot2": {
+        "xpos": 208.1563,
+        "ypos": -78.4131,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -131.0018,
+        "ypos": 187.7535,
+        "direction": 2.4162
+      },
+      "robot2": {
+        "xpos": 206.0094,
+        "ypos": -73.8975,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -133.6887,
+        "ypos": 189.9956,
+        "direction": 2.3562
+      },
+      "robot2": {
+        "xpos": 203.8625,
+        "ypos": -69.3819,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -136.2363,
+        "ypos": 192.3948,
+        "direction": 2.2962
+      },
+      "robot2": {
+        "xpos": 201.7156,
+        "ypos": -64.8663,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -138.6355,
+        "ypos": 194.9424,
+        "direction": 2.2362
+      },
+      "robot2": {
+        "xpos": 199.5687,
+        "ypos": -60.3506,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -140.8775,
+        "ypos": 197.6293,
+        "direction": 2.1762
+      },
+      "robot2": {
+        "xpos": 197.4218,
+        "ypos": -55.835,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -142.9545,
+        "ypos": 200.4458,
+        "direction": 2.1162
+      },
+      "robot2": {
+        "xpos": 195.2749,
+        "ypos": -51.3194,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -144.8588,
+        "ypos": 203.3818,
+        "direction": 2.0562
+      },
+      "robot2": {
+        "xpos": 193.128,
+        "ypos": -46.8038,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -146.5836,
+        "ypos": 206.4266,
+        "direction": 1.9962
+      },
+      "robot2": {
+        "xpos": 190.9811,
+        "ypos": -42.2882,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -148.1227,
+        "ypos": 209.5695,
+        "direction": 1.9362
+      },
+      "robot2": {
+        "xpos": 188.8342,
+        "ypos": -37.7725,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -149.4707,
+        "ypos": 212.7989,
+        "direction": 1.8762
+      },
+      "robot2": {
+        "xpos": 186.6874,
+        "ypos": -33.2569,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -150.6225,
+        "ypos": 216.1034,
+        "direction": 1.8162
+      },
+      "robot2": {
+        "xpos": 184.5405,
+        "ypos": -28.7413,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -151.5741,
+        "ypos": 219.471,
+        "direction": 1.7562
+      },
+      "robot2": {
+        "xpos": 182.3936,
+        "ypos": -24.2257,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -152.3221,
+        "ypos": 222.8896,
+        "direction": 1.6962
+      },
+      "robot2": {
+        "xpos": 180.2467,
+        "ypos": -19.71,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -152.8637,
+        "ypos": 226.3469,
+        "direction": 1.6362
+      },
+      "robot2": {
+        "xpos": 178.0998,
+        "ypos": -15.1944,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -153.197,
+        "ypos": 229.8305,
+        "direction": 1.5762
+      },
+      "robot2": {
+        "xpos": 175.9529,
+        "ypos": -10.6788,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -153.3209,
+        "ypos": 233.3278,
+        "direction": 1.5162
+      },
+      "robot2": {
+        "xpos": 173.806,
+        "ypos": -6.1632,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -153.2348,
+        "ypos": 236.8262,
+        "direction": 1.4562
+      },
+      "robot2": {
+        "xpos": 171.6591,
+        "ypos": -1.6476,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -152.9391,
+        "ypos": 240.3132,
+        "direction": 1.3962
+      },
+      "robot2": {
+        "xpos": 169.5122,
+        "ypos": 2.8681,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -152.4348,
+        "ypos": 243.7761,
+        "direction": 1.3362
+      },
+      "robot2": {
+        "xpos": 167.3653,
+        "ypos": 7.3837,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -151.7238,
+        "ypos": 247.2026,
+        "direction": 1.2762
+      },
+      "robot2": {
+        "xpos": 165.2184,
+        "ypos": 11.8993,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -150.8086,
+        "ypos": 250.5803,
+        "direction": 1.2162
+      },
+      "robot2": {
+        "xpos": 163.0715,
+        "ypos": 16.4149,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -149.6925,
+        "ypos": 253.897,
+        "direction": 1.1562
+      },
+      "robot2": {
+        "xpos": 160.9246,
+        "ypos": 20.9305,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -148.3795,
+        "ypos": 257.1408,
+        "direction": 1.0962
+      },
+      "robot2": {
+        "xpos": 158.7777,
+        "ypos": 25.4462,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -146.8744,
+        "ypos": 260.3001,
+        "direction": 1.0362
+      },
+      "robot2": {
+        "xpos": 156.6308,
+        "ypos": 29.9618,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -145.1826,
+        "ypos": 263.3634,
+        "direction": 0.9762
+      },
+      "robot2": {
+        "xpos": 154.4839,
+        "ypos": 34.4774,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -143.3101,
+        "ypos": 266.3198,
+        "direction": 0.9162
+      },
+      "robot2": {
+        "xpos": 152.337,
+        "ypos": 38.993,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -141.0971,
+        "ypos": 269.0307,
+        "direction": 0.9762
+      },
+      "robot2": {
+        "xpos": 150.1901,
+        "ypos": 43.5086,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -139.0507,
+        "ypos": 271.8695,
+        "direction": 1.0362
+      },
+      "robot2": {
+        "xpos": 148.0432,
+        "ypos": 48.0243,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -137.1782,
+        "ypos": 274.8258,
+        "direction": 1.0962
+      },
+      "robot2": {
+        "xpos": 145.8963,
+        "ypos": 52.5399,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -135.4864,
+        "ypos": 277.8892,
+        "direction": 1.1562
+      },
+      "robot2": {
+        "xpos": 143.7494,
+        "ypos": 57.0555,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -133.9813,
+        "ypos": 281.0484,
+        "direction": 1.2162
+      },
+      "robot2": {
+        "xpos": 141.6025,
+        "ypos": 61.5711,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -132.6683,
+        "ypos": 284.2923,
+        "direction": 1.2762
+      },
+      "robot2": {
+        "xpos": 139.4556,
+        "ypos": 66.0868,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -131.5522,
+        "ypos": 287.609,
+        "direction": 1.3362
+      },
+      "robot2": {
+        "xpos": 137.3087,
+        "ypos": 70.6024,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 1.3962
+      },
+      "robot2": {
+        "xpos": 135.1618,
+        "ypos": 75.118,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 1.3562
+      },
+      "robot2": {
+        "xpos": 133.0149,
+        "ypos": 79.6336,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 1.3162
+      },
+      "robot2": {
+        "xpos": 130.868,
+        "ypos": 84.1492,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 1.2762
+      },
+      "robot2": {
+        "xpos": 128.7211,
+        "ypos": 88.6649,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 1.2362
+      },
+      "robot2": {
+        "xpos": 126.5742,
+        "ypos": 93.1805,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 1.1962
+      },
+      "robot2": {
+        "xpos": 124.4273,
+        "ypos": 97.6961,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 1.1562
+      },
+      "robot2": {
+        "xpos": 122.2804,
+        "ypos": 102.2117,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 1.1162
+      },
+      "robot2": {
+        "xpos": 120.1335,
+        "ypos": 106.7273,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 1.0762
+      },
+      "robot2": {
+        "xpos": 117.9866,
+        "ypos": 111.243,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 1.0362
+      },
+      "robot2": {
+        "xpos": 115.8397,
+        "ypos": 115.7586,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.9962
+      },
+      "robot2": {
+        "xpos": 113.6929,
+        "ypos": 120.2742,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.9562
+      },
+      "robot2": {
+        "xpos": 111.546,
+        "ypos": 124.7898,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.9162
+      },
+      "robot2": {
+        "xpos": 109.3991,
+        "ypos": 129.3054,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.8762
+      },
+      "robot2": {
+        "xpos": 107.2522,
+        "ypos": 133.8211,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.8362
+      },
+      "robot2": {
+        "xpos": 105.1053,
+        "ypos": 138.3367,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.7962
+      },
+      "robot2": {
+        "xpos": 102.9584,
+        "ypos": 142.8523,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.7562
+      },
+      "robot2": {
+        "xpos": 100.8115,
+        "ypos": 147.3679,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.7162
+      },
+      "robot2": {
+        "xpos": 98.6646,
+        "ypos": 151.8836,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.6762
+      },
+      "robot2": {
+        "xpos": 96.5177,
+        "ypos": 156.3992,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.6362
+      },
+      "robot2": {
+        "xpos": 94.3708,
+        "ypos": 160.9148,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.5962
+      },
+      "robot2": {
+        "xpos": 92.2239,
+        "ypos": 165.4304,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.5562
+      },
+      "robot2": {
+        "xpos": 90.077,
+        "ypos": 169.946,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.5162
+      },
+      "robot2": {
+        "xpos": 87.9301,
+        "ypos": 174.4617,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.4762
+      },
+      "robot2": {
+        "xpos": 85.7832,
+        "ypos": 178.9773,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.4362
+      },
+      "robot2": {
+        "xpos": 83.6363,
+        "ypos": 183.4929,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.3962
+      },
+      "robot2": {
+        "xpos": 81.4894,
+        "ypos": 188.0085,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.3562
+      },
+      "robot2": {
+        "xpos": 79.3425,
+        "ypos": 192.5241,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.3162
+      },
+      "robot2": {
+        "xpos": 77.1956,
+        "ypos": 197.0398,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.2762
+      },
+      "robot2": {
+        "xpos": 75.0487,
+        "ypos": 201.5554,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.2362
+      },
+      "robot2": {
+        "xpos": 72.9018,
+        "ypos": 206.071,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.1962
+      },
+      "robot2": {
+        "xpos": 70.7549,
+        "ypos": 210.5866,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.1562
+      },
+      "robot2": {
+        "xpos": 68.608,
+        "ypos": 215.1022,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.1162
+      },
+      "robot2": {
+        "xpos": 66.4611,
+        "ypos": 219.6179,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.0762
+      },
+      "robot2": {
+        "xpos": 64.3142,
+        "ypos": 224.1335,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": 0.0362
+      },
+      "robot2": {
+        "xpos": 62.1673,
+        "ypos": 228.6491,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": -0.0038
+      },
+      "robot2": {
+        "xpos": 60.0204,
+        "ypos": 233.1647,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -130.637,
+        "ypos": 290.9867,
+        "direction": -0.0438
+      },
+      "robot2": {
+        "xpos": 57.8735,
+        "ypos": 237.6803,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -125.8906,
+        "ypos": 290.8024,
+        "direction": -0.0538
+      },
+      "robot2": {
+        "xpos": 55.7266,
+        "ypos": 242.196,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -121.1463,
+        "ypos": 290.5707,
+        "direction": -0.0638
+      },
+      "robot2": {
+        "xpos": 53.5797,
+        "ypos": 246.7116,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -116.4045,
+        "ypos": 290.2915,
+        "direction": -0.0738
+      },
+      "robot2": {
+        "xpos": 51.4328,
+        "ypos": 251.2272,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -111.6658,
+        "ypos": 289.9649,
+        "direction": -0.0838
+      },
+      "robot2": {
+        "xpos": 49.2859,
+        "ypos": 255.7428,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -106.9305,
+        "ypos": 289.591,
+        "direction": -0.0938
+      },
+      "robot2": {
+        "xpos": 47.139,
+        "ypos": 260.2585,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -102.1993,
+        "ypos": 289.1697,
+        "direction": -0.1038
+      },
+      "robot2": {
+        "xpos": 44.9921,
+        "ypos": 264.7741,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -96.2316,
+        "ypos": 288.548,
+        "direction": -0.1038
+      },
+      "robot2": {
+        "xpos": 42.8452,
+        "ypos": 269.2897,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -90.2639,
+        "ypos": 287.9263,
+        "direction": -0.1038
+      },
+      "robot2": {
+        "xpos": 40.6984,
+        "ypos": 273.8053,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -84.2962,
+        "ypos": 287.3046,
+        "direction": -0.1038
+      },
+      "robot2": {
+        "xpos": 38.5515,
+        "ypos": 278.3209,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -78.3284,
+        "ypos": 286.6829,
+        "direction": -0.1038
+      },
+      "robot2": {
+        "xpos": 36.4046,
+        "ypos": 282.8366,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -72.3607,
+        "ypos": 286.0611,
+        "direction": -0.1038
+      },
+      "robot2": {
+        "xpos": 34.2577,
+        "ypos": 287.3522,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -67.6639,
+        "ypos": 285.5438,
+        "direction": -0.0938
+      },
+      "robot2": {
+        "xpos": 32.1358,
+        "ypos": 291.8694,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -66.1078,
+        "ypos": 284.6893,
+        "direction": -0.0838
+      },
+      "robot2": {
+        "xpos": 33.1597,
+        "ypos": 296.7709,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -64.3546,
+        "ypos": 283.7194,
+        "direction": -0.0738
+      },
+      "robot2": {
+        "xpos": 33.9908,
+        "ypos": 301.8351,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -62.3774,
+        "ypos": 282.6518,
+        "direction": -0.0638
+      },
+      "robot2": {
+        "xpos": 34.602,
+        "ypos": 307.0444,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -60.1506,
+        "ypos": 281.5101,
+        "direction": -0.0538
+      },
+      "robot2": {
+        "xpos": 34.967,
+        "ypos": 312.3752,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -57.6512,
+        "ypos": 280.3247,
+        "direction": -0.0438
+      },
+      "robot2": {
+        "xpos": 35.0624,
+        "ypos": 317.7971,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -54.8607,
+        "ypos": 279.1318,
+        "direction": -0.0338
+      },
+      "robot2": {
+        "xpos": 34.8693,
+        "ypos": 323.2739,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -51.7666,
+        "ypos": 277.9733,
+        "direction": -0.0238
+      },
+      "robot2": {
+        "xpos": 34.3748,
+        "ypos": 328.7637,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -48.3641,
+        "ypos": 276.8951,
+        "direction": -0.0138
+      },
+      "robot2": {
+        "xpos": 33.5734,
+        "ypos": 334.2207,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -44.6575,
+        "ypos": 275.9454,
+        "direction": -0.0038
+      },
+      "robot2": {
+        "xpos": 32.469,
+        "ypos": 339.5967,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -40.6604,
+        "ypos": 275.1725,
+        "direction": 0.0062
+      },
+      "robot2": {
+        "xpos": 31.0749,
+        "ypos": 344.8434,
+        "direction": 2.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -37.0731,
+        "ypos": 273.969,
+        "direction": 0.0162
+      },
+      "robot2": {
+        "xpos": 32.2375,
+        "ypos": 346.0526,
+        "direction": 2.0546
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -33.415,
+        "ypos": 272.8043,
+        "direction": 0.0262
+      },
+      "robot2": {
+        "xpos": 33.3291,
+        "ypos": 347.2705,
+        "direction": 2.0946
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -29.685,
+        "ypos": 271.6827,
+        "direction": 0.0362
+      },
+      "robot2": {
+        "xpos": 34.348,
+        "ypos": 348.4927,
+        "direction": 2.1346
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -25.8821,
+        "ypos": 270.6092,
+        "direction": 0.0462
+      },
+      "robot2": {
+        "xpos": 35.2928,
+        "ypos": 349.7144,
+        "direction": 2.1746
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -22.0058,
+        "ypos": 269.5888,
+        "direction": 0.0562
+      },
+      "robot2": {
+        "xpos": 36.1624,
+        "ypos": 350.9304,
+        "direction": 2.2146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -18.0558,
+        "ypos": 268.6268,
+        "direction": 0.0662
+      },
+      "robot2": {
+        "xpos": 36.9562,
+        "ypos": 352.1354,
+        "direction": 2.2546
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -14.0325,
+        "ypos": 267.7291,
+        "direction": 0.0762
+      },
+      "robot2": {
+        "xpos": 37.674,
+        "ypos": 353.3237,
+        "direction": 2.2946
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -9.9367,
+        "ypos": 266.9013,
+        "direction": 0.0862
+      },
+      "robot2": {
+        "xpos": 38.3162,
+        "ypos": 354.4893,
+        "direction": 2.3346
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -5.7698,
+        "ypos": 266.1496,
+        "direction": 0.0962
+      },
+      "robot2": {
+        "xpos": 38.8836,
+        "ypos": 355.6263,
+        "direction": 2.3746
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -1.5337,
+        "ypos": 265.4801,
+        "direction": 0.1062
+      },
+      "robot2": {
+        "xpos": 39.3777,
+        "ypos": 356.7284,
+        "direction": 2.4146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 2.769,
+        "ypos": 264.8989,
+        "direction": 0.1162
+      },
+      "robot2": {
+        "xpos": 39.8007,
+        "ypos": 357.7894,
+        "direction": 2.4546
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 7.135,
+        "ypos": 264.4122,
+        "direction": 0.1262
+      },
+      "robot2": {
+        "xpos": 40.1553,
+        "ypos": 358.8032,
+        "direction": 2.4946
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 11.5604,
+        "ypos": 264.0261,
+        "direction": 0.1362
+      },
+      "robot2": {
+        "xpos": 40.4451,
+        "ypos": 359.7636,
+        "direction": 2.5346
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 16.0405,
+        "ypos": 263.7463,
+        "direction": 0.1462
+      },
+      "robot2": {
+        "xpos": 40.6741,
+        "ypos": 360.6647,
+        "direction": 2.5746
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 20.57,
+        "ypos": 263.5784,
+        "direction": 0.1562
+      },
+      "robot2": {
+        "xpos": 40.8473,
+        "ypos": 361.501,
+        "direction": 2.6146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 25.143,
+        "ypos": 263.5277,
+        "direction": 0.1662
+      },
+      "robot2": {
+        "xpos": 40.9701,
+        "ypos": 362.2672,
+        "direction": 2.6546
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 29.7528,
+        "ypos": 263.5986,
+        "direction": 0.1762
+      },
+      "robot2": {
+        "xpos": 41.0487,
+        "ypos": 362.9586,
+        "direction": 2.6946
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 34.3922,
+        "ypos": 263.7955,
+        "direction": 0.1862
+      },
+      "robot2": {
+        "xpos": 41.0898,
+        "ypos": 363.571,
+        "direction": 2.7346
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 39.0536,
+        "ypos": 264.1217,
+        "direction": 0.1962
+      },
+      "robot2": {
+        "xpos": 41.1007,
+        "ypos": 364.1007,
+        "direction": 2.7746
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 43.7288,
+        "ypos": 264.58,
+        "direction": 0.2062
+      },
+      "robot2": {
+        "xpos": 41.089,
+        "ypos": 364.5451,
+        "direction": 2.8146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 48.4092,
+        "ypos": 265.1723,
+        "direction": 0.2162
+      },
+      "robot2": {
+        "xpos": 41.0627,
+        "ypos": 364.902,
+        "direction": 2.8546
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 53.0862,
+        "ypos": 265.8997,
+        "direction": 0.2262
+      },
+      "robot2": {
+        "xpos": 41.0301,
+        "ypos": 365.1703,
+        "direction": 2.8946
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 57.751,
+        "ypos": 266.7626,
+        "direction": 0.2362
+      },
+      "robot2": {
+        "xpos": 40.9996,
+        "ypos": 365.3496,
+        "direction": 2.9346
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 62.3945,
+        "ypos": 267.7602,
+        "direction": 0.2462
+      },
+      "robot2": {
+        "xpos": 40.9797,
+        "ypos": 365.4404,
+        "direction": 2.9746
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 67.0079,
+        "ypos": 268.8911,
+        "direction": 0.2562
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": 3.0146
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 71.6089,
+        "ypos": 270.0718,
+        "direction": 0.2662
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": 3.0546
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 76.1977,
+        "ypos": 271.2984,
+        "direction": 0.2762
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": 3.0946
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 80.7741,
+        "ypos": 272.5708,
+        "direction": 0.2862
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": 3.1346
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 85.3375,
+        "ypos": 273.8889,
+        "direction": 0.2962
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -3.1086
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 89.8875,
+        "ypos": 275.2526,
+        "direction": 0.3062
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -3.0686
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 94.4237,
+        "ypos": 276.6618,
+        "direction": 0.3162
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -3.0286
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 98.9455,
+        "ypos": 278.1162,
+        "direction": 0.3262
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 103.4526,
+        "ypos": 279.6158,
+        "direction": 0.3362
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.9486
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 107.9444,
+        "ypos": 281.1603,
+        "direction": 0.3462
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.9086
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 112.4206,
+        "ypos": 282.7497,
+        "direction": 0.3562
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.8686
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 116.8806,
+        "ypos": 284.3838,
+        "direction": 0.3662
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.8286
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 121.3241,
+        "ypos": 286.0624,
+        "direction": 0.3762
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.7886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 125.7506,
+        "ypos": 287.7854,
+        "direction": 0.3862
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.7486
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 130.1596,
+        "ypos": 289.5525,
+        "direction": 0.3962
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.7086
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 134.5508,
+        "ypos": 291.3636,
+        "direction": 0.4062
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.6686
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 138.9236,
+        "ypos": 293.2186,
+        "direction": 0.4162
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.6286
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 143.2776,
+        "ypos": 295.1172,
+        "direction": 0.4262
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.5886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 147.6125,
+        "ypos": 297.0592,
+        "direction": 0.4362
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.5486
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 0.4462
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.5086
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 0.4862
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.4686
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 0.5262
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.4286
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 0.5662
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.3886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 0.6062
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.3486
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 0.6462
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.3086
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 0.6862
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.2686
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 0.7262
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.2286
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 0.7662
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.1886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 0.8062
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.1486
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 0.8462
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.1086
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 0.8862
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.0686
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 0.9262
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -2.0286
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 0.9662
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.0062
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.9486
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.0462
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.9086
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.0862
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.8686
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.1262
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.8286
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.1662
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.7886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.2062
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.7486
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.2462
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.7086
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.2862
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.6686
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.3262
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.6286
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.3662
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.5886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.4062
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.5486
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.4462
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.5086
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.4862
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.4686
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.5262
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.4286
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.5662
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.3886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.6062
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.3486
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.6462
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.3086
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.6862
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.2686
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.7262
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.2286
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.7662
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.1886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.8062
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.1486
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.8462
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.1086
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.8862
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.0686
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.9262
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -1.0286
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 1.9662
+      },
+      "robot2": {
+        "xpos": 40.9787,
+        "ypos": 365.4441,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 2.0062
+      },
+      "robot2": {
+        "xpos": 43.7281,
+        "ypos": 361.2678,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 2.0462
+      },
+      "robot2": {
+        "xpos": 46.4775,
+        "ypos": 357.0916,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 2.0862
+      },
+      "robot2": {
+        "xpos": 49.2268,
+        "ypos": 352.9154,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 2.1262
+      },
+      "robot2": {
+        "xpos": 51.9762,
+        "ypos": 348.7391,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 2.1662
+      },
+      "robot2": {
+        "xpos": 54.7256,
+        "ypos": 344.5629,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 151.9277,
+        "ypos": 299.0445,
+        "direction": 2.2062
+      },
+      "robot2": {
+        "xpos": 57.4749,
+        "ypos": 340.3866,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 152.4149,
+        "ypos": 298.847,
+        "direction": 2.2462
+      },
+      "robot2": {
+        "xpos": 59.7371,
+        "ypos": 336.4079,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 154.3249,
+        "ypos": 298.138,
+        "direction": 2.2862
+      },
+      "robot2": {
+        "xpos": 60.5764,
+        "ypos": 332.9407,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 156.2135,
+        "ypos": 297.5024,
+        "direction": 2.3262
+      },
+      "robot2": {
+        "xpos": 61.4372,
+        "ypos": 329.4001,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 158.0751,
+        "ypos": 296.9416,
+        "direction": 2.3662
+      },
+      "robot2": {
+        "xpos": 62.325,
+        "ypos": 325.7846,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 159.9037,
+        "ypos": 296.4566,
+        "direction": 2.4062
+      },
+      "robot2": {
+        "xpos": 63.2458,
+        "ypos": 322.0934,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 161.6928,
+        "ypos": 296.0477,
+        "direction": 2.4462
+      },
+      "robot2": {
+        "xpos": 64.206,
+        "ypos": 318.326,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 163.4356,
+        "ypos": 295.7147,
+        "direction": 2.4862
+      },
+      "robot2": {
+        "xpos": 65.2126,
+        "ypos": 314.4827,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 165.1248,
+        "ypos": 295.4565,
+        "direction": 2.5262
+      },
+      "robot2": {
+        "xpos": 66.2727,
+        "ypos": 310.5647,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 166.7531,
+        "ypos": 295.2713,
+        "direction": 2.5662
+      },
+      "robot2": {
+        "xpos": 67.3938,
+        "ypos": 306.5737,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 168.3127,
+        "ypos": 295.1563,
+        "direction": 2.6062
+      },
+      "robot2": {
+        "xpos": 68.5836,
+        "ypos": 302.5125,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 169.796,
+        "ypos": 295.1077,
+        "direction": 2.6462
+      },
+      "robot2": {
+        "xpos": 69.8497,
+        "ypos": 298.3849,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 171.1954,
+        "ypos": 295.1206,
+        "direction": 2.6862
+      },
+      "robot2": {
+        "xpos": 71.1996,
+        "ypos": 294.1957,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 172.5035,
+        "ypos": 295.1892,
+        "direction": 2.7262
+      },
+      "robot2": {
+        "xpos": 72.6408,
+        "ypos": 289.9508,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 173.7136,
+        "ypos": 295.3065,
+        "direction": 2.7662
+      },
+      "robot2": {
+        "xpos": 74.1802,
+        "ypos": 285.6573,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 174.8191,
+        "ypos": 295.4645,
+        "direction": 2.8062
+      },
+      "robot2": {
+        "xpos": 75.824,
+        "ypos": 281.3231,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 175.8146,
+        "ypos": 295.6539,
+        "direction": 2.8462
+      },
+      "robot2": {
+        "xpos": 77.5779,
+        "ypos": 276.9574,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 176.6954,
+        "ypos": 295.8649,
+        "direction": 2.8862
+      },
+      "robot2": {
+        "xpos": 79.4465,
+        "ypos": 272.5702,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 177.4581,
+        "ypos": 296.0866,
+        "direction": 2.9262
+      },
+      "robot2": {
+        "xpos": 81.4331,
+        "ypos": 268.1722,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 178.1004,
+        "ypos": 296.3076,
+        "direction": 2.9662
+      },
+      "robot2": {
+        "xpos": 83.5402,
+        "ypos": 263.775,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 178.6215,
+        "ypos": 296.516,
+        "direction": 3.0062
+      },
+      "robot2": {
+        "xpos": 85.7684,
+        "ypos": 259.3904,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 179.0221,
+        "ypos": 296.6996,
+        "direction": 3.0462
+      },
+      "robot2": {
+        "xpos": 88.1172,
+        "ypos": 255.0305,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 179.3043,
+        "ypos": 296.8463,
+        "direction": 3.0862
+      },
+      "robot2": {
+        "xpos": 90.5844,
+        "ypos": 250.7076,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 179.4718,
+        "ypos": 296.9443,
+        "direction": 3.1262
+      },
+      "robot2": {
+        "xpos": 93.1663,
+        "ypos": 246.4333,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 179.5297,
+        "ypos": 296.9823,
+        "direction": -3.117
+      },
+      "robot2": {
+        "xpos": 95.8577,
+        "ypos": 242.2191,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 179.5297,
+        "ypos": 296.9823,
+        "direction": -3.077
+      },
+      "robot2": {
+        "xpos": 98.6071,
+        "ypos": 238.0429,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 179.5297,
+        "ypos": 296.9823,
+        "direction": -3.037
+      },
+      "robot2": {
+        "xpos": 101.3565,
+        "ypos": 233.8667,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 179.5297,
+        "ypos": 296.9823,
+        "direction": -2.997
+      },
+      "robot2": {
+        "xpos": 104.1058,
+        "ypos": 229.6904,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 179.5297,
+        "ypos": 296.9823,
+        "direction": -2.957
+      },
+      "robot2": {
+        "xpos": 106.8552,
+        "ypos": 225.5142,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 179.5297,
+        "ypos": 296.9823,
+        "direction": -2.917
+      },
+      "robot2": {
+        "xpos": 109.6046,
+        "ypos": 221.3379,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 179.5297,
+        "ypos": 296.9823,
+        "direction": -2.877
+      },
+      "robot2": {
+        "xpos": 112.3539,
+        "ypos": 217.1617,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 179.5297,
+        "ypos": 296.9823,
+        "direction": -2.837
+      },
+      "robot2": {
+        "xpos": 115.1033,
+        "ypos": 212.9855,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 179.5297,
+        "ypos": 296.9823,
+        "direction": -2.797
+      },
+      "robot2": {
+        "xpos": 117.8527,
+        "ypos": 208.8092,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 176.2729,
+        "ypos": 295.7018,
+        "direction": -2.857
+      },
+      "robot2": {
+        "xpos": 120.602,
+        "ypos": 204.633,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 172.9452,
+        "ypos": 294.6189,
+        "direction": -2.917
+      },
+      "robot2": {
+        "xpos": 123.3514,
+        "ypos": 200.4567,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 169.5585,
+        "ypos": 293.7376,
+        "direction": -2.977
+      },
+      "robot2": {
+        "xpos": 126.1008,
+        "ypos": 196.2805,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 166.1251,
+        "ypos": 293.0608,
+        "direction": -3.037
+      },
+      "robot2": {
+        "xpos": 128.8501,
+        "ypos": 192.1043,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 162.6573,
+        "ypos": 292.5912,
+        "direction": -3.097
+      },
+      "robot2": {
+        "xpos": 131.5995,
+        "ypos": 187.928,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 159.1675,
+        "ypos": 292.3304,
+        "direction": 3.1262
+      },
+      "robot2": {
+        "xpos": 134.3489,
+        "ypos": 183.7518,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 155.6684,
+        "ypos": 292.2793,
+        "direction": 3.0662
+      },
+      "robot2": {
+        "xpos": 137.0982,
+        "ypos": 179.5755,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 152.1726,
+        "ypos": 292.4381,
+        "direction": 3.0062
+      },
+      "robot2": {
+        "xpos": 139.8476,
+        "ypos": 175.3993,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 148.6925,
+        "ypos": 292.8063,
+        "direction": 2.9462
+      },
+      "robot2": {
+        "xpos": 142.597,
+        "ypos": 171.2231,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 145.2408,
+        "ypos": 293.3824,
+        "direction": 2.8862
+      },
+      "robot2": {
+        "xpos": 145.3463,
+        "ypos": 167.0468,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 141.8298,
+        "ypos": 294.1646,
+        "direction": 2.8262
+      },
+      "robot2": {
+        "xpos": 148.0957,
+        "ypos": 162.8706,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 138.4719,
+        "ypos": 295.1498,
+        "direction": 2.7662
+      },
+      "robot2": {
+        "xpos": 150.8451,
+        "ypos": 158.6943,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 135.1791,
+        "ypos": 296.3346,
+        "direction": 2.7062
+      },
+      "robot2": {
+        "xpos": 153.5945,
+        "ypos": 154.5181,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 131.9633,
+        "ypos": 297.7148,
+        "direction": 2.6462
+      },
+      "robot2": {
+        "xpos": 156.3438,
+        "ypos": 150.3419,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 128.836,
+        "ypos": 299.2853,
+        "direction": 2.5862
+      },
+      "robot2": {
+        "xpos": 159.0932,
+        "ypos": 146.1656,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 125.8085,
+        "ypos": 301.0404,
+        "direction": 2.5262
+      },
+      "robot2": {
+        "xpos": 161.8426,
+        "ypos": 141.9894,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 122.8917,
+        "ypos": 302.974,
+        "direction": 2.4662
+      },
+      "robot2": {
+        "xpos": 164.5919,
+        "ypos": 137.8131,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 120.0961,
+        "ypos": 305.079,
+        "direction": 2.4062
+      },
+      "robot2": {
+        "xpos": 167.3413,
+        "ypos": 133.6369,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 117.4318,
+        "ypos": 307.3478,
+        "direction": 2.3462
+      },
+      "robot2": {
+        "xpos": 170.0907,
+        "ypos": 129.4607,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 114.9083,
+        "ypos": 309.7724,
+        "direction": 2.2862
+      },
+      "robot2": {
+        "xpos": 172.84,
+        "ypos": 125.2844,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 112.5347,
+        "ypos": 312.3438,
+        "direction": 2.2262
+      },
+      "robot2": {
+        "xpos": 175.5894,
+        "ypos": 121.1082,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 110.3196,
+        "ypos": 315.053,
+        "direction": 2.1662
+      },
+      "robot2": {
+        "xpos": 178.3388,
+        "ypos": 116.9319,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 108.271,
+        "ypos": 317.8901,
+        "direction": 2.1062
+      },
+      "robot2": {
+        "xpos": 181.0881,
+        "ypos": 112.7557,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 106.3961,
+        "ypos": 320.845,
+        "direction": 2.0462
+      },
+      "robot2": {
+        "xpos": 183.8375,
+        "ypos": 108.5795,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 1.9862
+      },
+      "robot2": {
+        "xpos": 186.5869,
+        "ypos": 104.4032,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.0262
+      },
+      "robot2": {
+        "xpos": 189.3362,
+        "ypos": 100.227,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.0662
+      },
+      "robot2": {
+        "xpos": 192.0856,
+        "ypos": 96.0507,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.1062
+      },
+      "robot2": {
+        "xpos": 194.835,
+        "ypos": 91.8745,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.1462
+      },
+      "robot2": {
+        "xpos": 197.5843,
+        "ypos": 87.6983,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.1862
+      },
+      "robot2": {
+        "xpos": 200.3337,
+        "ypos": 83.522,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.2262
+      },
+      "robot2": {
+        "xpos": 203.0831,
+        "ypos": 79.3458,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.2662
+      },
+      "robot2": {
+        "xpos": 205.8324,
+        "ypos": 75.1696,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.3062
+      },
+      "robot2": {
+        "xpos": 208.5818,
+        "ypos": 70.9933,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.3462
+      },
+      "robot2": {
+        "xpos": 211.3312,
+        "ypos": 66.8171,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.3862
+      },
+      "robot2": {
+        "xpos": 214.0805,
+        "ypos": 62.6408,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.4262
+      },
+      "robot2": {
+        "xpos": 216.8299,
+        "ypos": 58.4646,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.4662
+      },
+      "robot2": {
+        "xpos": 219.5793,
+        "ypos": 54.2884,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.5062
+      },
+      "robot2": {
+        "xpos": 222.3286,
+        "ypos": 50.1121,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.5462
+      },
+      "robot2": {
+        "xpos": 225.078,
+        "ypos": 45.9359,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.5862
+      },
+      "robot2": {
+        "xpos": 227.8274,
+        "ypos": 41.7596,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.6262
+      },
+      "robot2": {
+        "xpos": 230.5767,
+        "ypos": 37.5834,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.6662
+      },
+      "robot2": {
+        "xpos": 233.3261,
+        "ypos": 33.4072,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.7062
+      },
+      "robot2": {
+        "xpos": 236.0755,
+        "ypos": 29.2309,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.7462
+      },
+      "robot2": {
+        "xpos": 238.8249,
+        "ypos": 25.0547,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.7862
+      },
+      "robot2": {
+        "xpos": 241.5742,
+        "ypos": 20.8784,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.8262
+      },
+      "robot2": {
+        "xpos": 244.3236,
+        "ypos": 16.7022,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.8662
+      },
+      "robot2": {
+        "xpos": 247.073,
+        "ypos": 12.526,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.9062
+      },
+      "robot2": {
+        "xpos": 249.8223,
+        "ypos": 8.3497,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.9462
+      },
+      "robot2": {
+        "xpos": 252.5717,
+        "ypos": 4.1735,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 2.9862
+      },
+      "robot2": {
+        "xpos": 255.3211,
+        "ypos": -0.0028,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 3.0262
+      },
+      "robot2": {
+        "xpos": 258.0704,
+        "ypos": -4.179,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 3.0662
+      },
+      "robot2": {
+        "xpos": 260.8198,
+        "ypos": -8.3552,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": 3.1062
+      },
+      "robot2": {
+        "xpos": 263.5692,
+        "ypos": -12.5315,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -3.137
+      },
+      "robot2": {
+        "xpos": 266.3185,
+        "ypos": -16.7077,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -3.097
+      },
+      "robot2": {
+        "xpos": 269.0679,
+        "ypos": -20.884,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -3.057
+      },
+      "robot2": {
+        "xpos": 271.8173,
+        "ypos": -25.0602,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -3.017
+      },
+      "robot2": {
+        "xpos": 274.5666,
+        "ypos": -29.2364,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.977
+      },
+      "robot2": {
+        "xpos": 277.316,
+        "ypos": -33.4127,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.937
+      },
+      "robot2": {
+        "xpos": 280.0654,
+        "ypos": -37.5889,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.897
+      },
+      "robot2": {
+        "xpos": 282.8147,
+        "ypos": -41.7652,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.857
+      },
+      "robot2": {
+        "xpos": 285.5641,
+        "ypos": -45.9414,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.817
+      },
+      "robot2": {
+        "xpos": 288.3135,
+        "ypos": -50.1176,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.777
+      },
+      "robot2": {
+        "xpos": 291.0628,
+        "ypos": -54.2939,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.737
+      },
+      "robot2": {
+        "xpos": 293.8122,
+        "ypos": -58.4701,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.697
+      },
+      "robot2": {
+        "xpos": 296.5616,
+        "ypos": -62.6464,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.657
+      },
+      "robot2": {
+        "xpos": 299.3109,
+        "ypos": -66.8226,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.617
+      },
+      "robot2": {
+        "xpos": 302.0603,
+        "ypos": -70.9988,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.577
+      },
+      "robot2": {
+        "xpos": 304.8097,
+        "ypos": -75.1751,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.537
+      },
+      "robot2": {
+        "xpos": 307.559,
+        "ypos": -79.3513,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.497
+      },
+      "robot2": {
+        "xpos": 310.3084,
+        "ypos": -83.5276,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.457
+      },
+      "robot2": {
+        "xpos": 313.0578,
+        "ypos": -87.7038,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.417
+      },
+      "robot2": {
+        "xpos": 315.8072,
+        "ypos": -91.88,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.377
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.9886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.337
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.9486
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.297
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.9086
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.257
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.8686
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.217
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.8286
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.177
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.7886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.137
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.7486
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.097
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.7086
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.057
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.6686
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -2.017
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.6286
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -1.977
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.5886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -1.937
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.5486
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -1.897
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.5086
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -1.857
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.4686
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -1.817
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.4286
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -1.777
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.3886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -1.737
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.3486
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -1.697
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.3086
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -1.657
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.2686
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -1.617
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.2286
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -1.577
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.1886
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -1.537
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.1486
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -1.497
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.1086
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -1.457
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.0686
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -1.417
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": -0.0286
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -1.377
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.0114
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.7018,
+        "ypos": 323.907,
+        "direction": -1.337
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.0514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 105.6143,
+        "ypos": 320.5286,
+        "direction": -1.397
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.0914
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 106.3226,
+        "ypos": 317.1015,
+        "direction": -1.457
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.1314
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 106.8241,
+        "ypos": 313.6382,
+        "direction": -1.517
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.1714
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 107.1171,
+        "ypos": 310.151,
+        "direction": -1.577
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.2114
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 107.2004,
+        "ypos": 306.6525,
+        "direction": -1.637
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.2514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 107.0737,
+        "ypos": 303.1553,
+        "direction": -1.697
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.2914
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 106.7376,
+        "ypos": 299.672,
+        "direction": -1.757
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.3314
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 106.1933,
+        "ypos": 296.2152,
+        "direction": -1.817
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.3714
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 105.4426,
+        "ypos": 292.7971,
+        "direction": -1.877
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.4114
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 104.4883,
+        "ypos": 289.4303,
+        "direction": -1.937
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.4514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 103.3338,
+        "ypos": 286.1267,
+        "direction": -1.997
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.4914
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 101.9833,
+        "ypos": 282.8983,
+        "direction": -2.057
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.5314
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 100.4417,
+        "ypos": 279.7567,
+        "direction": -2.117
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.5714
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 98.7144,
+        "ypos": 276.7132,
+        "direction": -2.177
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.6114
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 96.8078,
+        "ypos": 273.7788,
+        "direction": -2.237
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.6514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 94.7286,
+        "ypos": 270.9639,
+        "direction": -2.297
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.6914
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 92.4844,
+        "ypos": 268.2788,
+        "direction": -2.357
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.7314
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 90.0832,
+        "ypos": 265.7331,
+        "direction": -2.417
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.7714
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 87.5337,
+        "ypos": 263.336,
+        "direction": -2.477
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.8114
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 84.845,
+        "ypos": 261.096,
+        "direction": -2.537
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 82.0268,
+        "ypos": 259.0214,
+        "direction": -2.597
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.8914
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 79.0894,
+        "ypos": 257.1194,
+        "direction": -2.657
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.9314
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 76.0431,
+        "ypos": 255.397,
+        "direction": -2.717
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 0.9714
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 72.899,
+        "ypos": 253.8604,
+        "direction": -2.777
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.0114
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 69.6685,
+        "ypos": 252.515,
+        "direction": -2.837
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.0514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 66.3631,
+        "ypos": 251.3658,
+        "direction": -2.897
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.0914
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 62.9947,
+        "ypos": 250.4169,
+        "direction": -2.957
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.1314
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 59.5755,
+        "ypos": 249.6716,
+        "direction": -3.017
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.1714
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 56.1178,
+        "ypos": 249.1328,
+        "direction": -3.077
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.2114
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 52.634,
+        "ypos": 248.8022,
+        "direction": -3.137
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.2514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 49.1366,
+        "ypos": 248.6811,
+        "direction": 3.0862
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.2914
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 45.6383,
+        "ypos": 248.77,
+        "direction": 3.0262
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.3314
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 42.1515,
+        "ypos": 249.0685,
+        "direction": 2.9662
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.3714
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 38.689,
+        "ypos": 249.5755,
+        "direction": 2.9062
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.4114
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 35.2631,
+        "ypos": 250.2893,
+        "direction": 2.8462
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.4514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 31.8861,
+        "ypos": 251.2071,
+        "direction": 2.7862
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.4914
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 28.5703,
+        "ypos": 252.3259,
+        "direction": 2.7262
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.5314
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 25.3275,
+        "ypos": 253.6414,
+        "direction": 2.6662
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.5714
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 22.1694,
+        "ypos": 255.1491,
+        "direction": 2.6062
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.6114
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 19.1075,
+        "ypos": 256.8434,
+        "direction": 2.5462
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.6514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 16.1526,
+        "ypos": 258.7182,
+        "direction": 2.4862
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.6914
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 13.3155,
+        "ypos": 260.7669,
+        "direction": 2.4262
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.7314
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 10.6063,
+        "ypos": 262.982,
+        "direction": 2.3662
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.7714
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 8.0348,
+        "ypos": 265.3555,
+        "direction": 2.3062
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.8114
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 5.6103,
+        "ypos": 267.879,
+        "direction": 2.2462
+      },
+      "robot2": {
+        "xpos": 318.5565,
+        "ypos": -96.0563,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 3.3414,
+        "ypos": 270.5434,
+        "direction": 2.1862
+      },
+      "robot2": {
+        "xpos": 317.1718,
+        "ypos": -91.2519,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 1.2364,
+        "ypos": 273.339,
+        "direction": 2.1262
+      },
+      "robot2": {
+        "xpos": 315.787,
+        "ypos": -86.4474,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -0.6971,
+        "ypos": 276.2558,
+        "direction": 2.0662
+      },
+      "robot2": {
+        "xpos": 314.4022,
+        "ypos": -81.643,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -2.4523,
+        "ypos": 279.2832,
+        "direction": 2.0062
+      },
+      "robot2": {
+        "xpos": 313.0175,
+        "ypos": -76.8386,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -4.0228,
+        "ypos": 282.4105,
+        "direction": 1.9462
+      },
+      "robot2": {
+        "xpos": 311.6327,
+        "ypos": -72.0342,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -5.4029,
+        "ypos": 285.6263,
+        "direction": 1.8862
+      },
+      "robot2": {
+        "xpos": 310.248,
+        "ypos": -67.2298,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -6.5878,
+        "ypos": 288.9191,
+        "direction": 1.8262
+      },
+      "robot2": {
+        "xpos": 308.8632,
+        "ypos": -62.4253,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -7.573,
+        "ypos": 292.2771,
+        "direction": 1.7662
+      },
+      "robot2": {
+        "xpos": 307.4785,
+        "ypos": -57.6209,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.3551,
+        "ypos": 295.688,
+        "direction": 1.7062
+      },
+      "robot2": {
+        "xpos": 306.0937,
+        "ypos": -52.8165,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9313,
+        "ypos": 299.1397,
+        "direction": 1.6462
+      },
+      "robot2": {
+        "xpos": 304.7089,
+        "ypos": -48.0121,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -9.2994,
+        "ypos": 302.6198,
+        "direction": 1.5862
+      },
+      "robot2": {
+        "xpos": 303.3242,
+        "ypos": -43.2077,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -9.4583,
+        "ypos": 306.1157,
+        "direction": 1.5262
+      },
+      "robot2": {
+        "xpos": 301.9394,
+        "ypos": -38.4032,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -9.4072,
+        "ypos": 309.6148,
+        "direction": 1.4662
+      },
+      "robot2": {
+        "xpos": 300.5547,
+        "ypos": -33.5988,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 1.5262
+      },
+      "robot2": {
+        "xpos": 299.1699,
+        "ypos": -28.7944,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 1.4862
+      },
+      "robot2": {
+        "xpos": 297.7851,
+        "ypos": -23.99,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 1.4462
+      },
+      "robot2": {
+        "xpos": 296.4004,
+        "ypos": -19.1856,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 1.4062
+      },
+      "robot2": {
+        "xpos": 295.0156,
+        "ypos": -14.3811,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 1.3662
+      },
+      "robot2": {
+        "xpos": 293.6309,
+        "ypos": -9.5767,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 1.3262
+      },
+      "robot2": {
+        "xpos": 292.2461,
+        "ypos": -4.7723,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 1.2862
+      },
+      "robot2": {
+        "xpos": 290.8614,
+        "ypos": 0.0321,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 1.2462
+      },
+      "robot2": {
+        "xpos": 289.4766,
+        "ypos": 4.8365,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 1.2062
+      },
+      "robot2": {
+        "xpos": 288.0918,
+        "ypos": 9.641,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 1.1662
+      },
+      "robot2": {
+        "xpos": 286.7071,
+        "ypos": 14.4454,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 1.1262
+      },
+      "robot2": {
+        "xpos": 285.3223,
+        "ypos": 19.2498,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 1.0862
+      },
+      "robot2": {
+        "xpos": 283.9376,
+        "ypos": 24.0542,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 1.0462
+      },
+      "robot2": {
+        "xpos": 282.5528,
+        "ypos": 28.8586,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 1.0062
+      },
+      "robot2": {
+        "xpos": 281.168,
+        "ypos": 33.6631,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.9662
+      },
+      "robot2": {
+        "xpos": 279.7833,
+        "ypos": 38.4675,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.9262
+      },
+      "robot2": {
+        "xpos": 278.3985,
+        "ypos": 43.2719,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.8862
+      },
+      "robot2": {
+        "xpos": 277.0138,
+        "ypos": 48.0763,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.8462
+      },
+      "robot2": {
+        "xpos": 275.629,
+        "ypos": 52.8807,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.8062
+      },
+      "robot2": {
+        "xpos": 274.2443,
+        "ypos": 57.6851,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.7662
+      },
+      "robot2": {
+        "xpos": 272.8595,
+        "ypos": 62.4896,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.7262
+      },
+      "robot2": {
+        "xpos": 271.4747,
+        "ypos": 67.294,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.6862
+      },
+      "robot2": {
+        "xpos": 270.09,
+        "ypos": 72.0984,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.6462
+      },
+      "robot2": {
+        "xpos": 268.7052,
+        "ypos": 76.9028,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.6062
+      },
+      "robot2": {
+        "xpos": 267.3205,
+        "ypos": 81.7072,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.5662
+      },
+      "robot2": {
+        "xpos": 265.9357,
+        "ypos": 86.5117,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.5262
+      },
+      "robot2": {
+        "xpos": 264.5509,
+        "ypos": 91.3161,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.4862
+      },
+      "robot2": {
+        "xpos": 263.1662,
+        "ypos": 96.1205,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.4462
+      },
+      "robot2": {
+        "xpos": 261.7814,
+        "ypos": 100.9249,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.4062
+      },
+      "robot2": {
+        "xpos": 260.3967,
+        "ypos": 105.7293,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.3662
+      },
+      "robot2": {
+        "xpos": 259.0119,
+        "ypos": 110.5338,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.3262
+      },
+      "robot2": {
+        "xpos": 257.6272,
+        "ypos": 115.3382,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.2862
+      },
+      "robot2": {
+        "xpos": 256.2424,
+        "ypos": 120.1426,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.2462
+      },
+      "robot2": {
+        "xpos": 254.8576,
+        "ypos": 124.947,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.2062
+      },
+      "robot2": {
+        "xpos": 253.4729,
+        "ypos": 129.7514,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.1662
+      },
+      "robot2": {
+        "xpos": 252.0881,
+        "ypos": 134.5559,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.1262
+      },
+      "robot2": {
+        "xpos": 250.7034,
+        "ypos": 139.3603,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.0862
+      },
+      "robot2": {
+        "xpos": 249.3186,
+        "ypos": 144.1647,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.0462
+      },
+      "robot2": {
+        "xpos": 247.9339,
+        "ypos": 148.9691,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": 0.0062
+      },
+      "robot2": {
+        "xpos": 246.5491,
+        "ypos": 153.7735,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": -0.0338
+      },
+      "robot2": {
+        "xpos": 245.1643,
+        "ypos": 158.578,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": -0.0738
+      },
+      "robot2": {
+        "xpos": 243.7796,
+        "ypos": 163.3824,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": -0.1138
+      },
+      "robot2": {
+        "xpos": 242.3948,
+        "ypos": 168.1868,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": -0.1538
+      },
+      "robot2": {
+        "xpos": 241.0101,
+        "ypos": 172.9912,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": -0.1938
+      },
+      "robot2": {
+        "xpos": 239.6253,
+        "ypos": 177.7956,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -8.9375,
+        "ypos": 313.0826,
+        "direction": -0.2338
+      },
+      "robot2": {
+        "xpos": 238.2405,
+        "ypos": 182.6,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": -4.3114,
+        "ypos": 312.0052,
+        "direction": -0.2438
+      },
+      "robot2": {
+        "xpos": 236.8558,
+        "ypos": 187.4045,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 0.3038,
+        "ypos": 310.8816,
+        "direction": -0.2538
+      },
+      "robot2": {
+        "xpos": 235.471,
+        "ypos": 192.2089,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 4.9075,
+        "ypos": 309.712,
+        "direction": -0.2638
+      },
+      "robot2": {
+        "xpos": 234.0863,
+        "ypos": 197.0133,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 9.4993,
+        "ypos": 308.4963,
+        "direction": -0.2738
+      },
+      "robot2": {
+        "xpos": 232.7015,
+        "ypos": 201.8177,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 14.0787,
+        "ypos": 307.2348,
+        "direction": -0.2838
+      },
+      "robot2": {
+        "xpos": 231.3168,
+        "ypos": 206.6221,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 18.6453,
+        "ypos": 305.9276,
+        "direction": -0.2938
+      },
+      "robot2": {
+        "xpos": 229.932,
+        "ypos": 211.4266,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 23.1985,
+        "ypos": 304.5748,
+        "direction": -0.3038
+      },
+      "robot2": {
+        "xpos": 228.5472,
+        "ypos": 216.231,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 27.738,
+        "ypos": 303.1765,
+        "direction": -0.3138
+      },
+      "robot2": {
+        "xpos": 227.1625,
+        "ypos": 221.0354,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 33.445,
+        "ypos": 301.3244,
+        "direction": -0.3138
+      },
+      "robot2": {
+        "xpos": 225.7777,
+        "ypos": 225.8398,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 39.152,
+        "ypos": 299.4723,
+        "direction": -0.3138
+      },
+      "robot2": {
+        "xpos": 224.393,
+        "ypos": 230.6442,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 44.859,
+        "ypos": 297.6202,
+        "direction": -0.3138
+      },
+      "robot2": {
+        "xpos": 223.0082,
+        "ypos": 235.4487,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 50.566,
+        "ypos": 295.7682,
+        "direction": -0.3138
+      },
+      "robot2": {
+        "xpos": 221.6234,
+        "ypos": 240.2531,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 56.273,
+        "ypos": 293.9161,
+        "direction": -0.3138
+      },
+      "robot2": {
+        "xpos": 220.2387,
+        "ypos": 245.0575,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 61.98,
+        "ypos": 292.064,
+        "direction": -0.3138
+      },
+      "robot2": {
+        "xpos": 218.8539,
+        "ypos": 249.8619,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 67.687,
+        "ypos": 290.2119,
+        "direction": -0.3138
+      },
+      "robot2": {
+        "xpos": 217.4692,
+        "ypos": 254.6663,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 73.394,
+        "ypos": 288.3598,
+        "direction": -0.3138
+      },
+      "robot2": {
+        "xpos": 216.0844,
+        "ypos": 259.4708,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 77.9046,
+        "ypos": 286.871,
+        "direction": -0.3038
+      },
+      "robot2": {
+        "xpos": 214.6997,
+        "ypos": 264.2752,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 82.4299,
+        "ypos": 285.4274,
+        "direction": -0.2938
+      },
+      "robot2": {
+        "xpos": 213.3149,
+        "ypos": 269.0796,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 86.9694,
+        "ypos": 284.0291,
+        "direction": -0.2838
+      },
+      "robot2": {
+        "xpos": 211.9301,
+        "ypos": 273.884,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 91.5227,
+        "ypos": 282.6763,
+        "direction": -0.2738
+      },
+      "robot2": {
+        "xpos": 210.5454,
+        "ypos": 278.6884,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 96.0893,
+        "ypos": 281.369,
+        "direction": -0.2638
+      },
+      "robot2": {
+        "xpos": 209.1606,
+        "ypos": 283.4929,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 100.6687,
+        "ypos": 280.1075,
+        "direction": -0.2538
+      },
+      "robot2": {
+        "xpos": 207.7759,
+        "ypos": 288.2973,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 105.2604,
+        "ypos": 278.8919,
+        "direction": -0.2438
+      },
+      "robot2": {
+        "xpos": 206.3911,
+        "ypos": 293.1017,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 108.5238,
+        "ypos": 277.4379,
+        "direction": -0.2338
+      },
+      "robot2": {
+        "xpos": 206.3467,
+        "ypos": 298.1905,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 111.0363,
+        "ypos": 275.7033,
+        "direction": -0.2238
+      },
+      "robot2": {
+        "xpos": 207.0647,
+        "ypos": 303.6059,
+        "direction": 1.8514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 113.7018,
+        "ypos": 274.0043,
+        "direction": -0.2138
+      },
+      "robot2": {
+        "xpos": 209.0253,
+        "ypos": 304.2275,
+        "direction": 1.8914
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 116.4105,
+        "ypos": 272.3088,
+        "direction": -0.2038
+      },
+      "robot2": {
+        "xpos": 210.9533,
+        "ypos": 304.892,
+        "direction": 1.9314
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 119.1644,
+        "ypos": 270.6174,
+        "direction": -0.1938
+      },
+      "robot2": {
+        "xpos": 212.8463,
+        "ypos": 305.5988,
+        "direction": 1.9714
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 121.9655,
+        "ypos": 268.9307,
+        "direction": -0.1838
+      },
+      "robot2": {
+        "xpos": 214.7016,
+        "ypos": 306.3474,
+        "direction": 2.0114
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 124.816,
+        "ypos": 267.2497,
+        "direction": -0.1738
+      },
+      "robot2": {
+        "xpos": 216.5166,
+        "ypos": 307.1369,
+        "direction": 2.0514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 127.7182,
+        "ypos": 265.5755,
+        "direction": -0.1638
+      },
+      "robot2": {
+        "xpos": 218.2887,
+        "ypos": 307.9663,
+        "direction": 2.0914
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 130.6744,
+        "ypos": 263.9094,
+        "direction": -0.1538
+      },
+      "robot2": {
+        "xpos": 220.015,
+        "ypos": 308.8343,
+        "direction": 2.1314
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 133.6869,
+        "ypos": 262.253,
+        "direction": -0.1438
+      },
+      "robot2": {
+        "xpos": 221.6927,
+        "ypos": 309.7396,
+        "direction": 2.1714
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 136.7581,
+        "ypos": 260.608,
+        "direction": -0.1338
+      },
+      "robot2": {
+        "xpos": 223.3189,
+        "ypos": 310.6803,
+        "direction": 2.2114
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 139.8905,
+        "ypos": 258.9767,
+        "direction": -0.1238
+      },
+      "robot2": {
+        "xpos": 224.8908,
+        "ypos": 311.6545,
+        "direction": 2.2514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 143.0865,
+        "ypos": 257.3612,
+        "direction": -0.1138
+      },
+      "robot2": {
+        "xpos": 226.4055,
+        "ypos": 312.6598,
+        "direction": 2.2914
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 146.3482,
+        "ypos": 255.7644,
+        "direction": -0.1038
+      },
+      "robot2": {
+        "xpos": 227.8602,
+        "ypos": 313.6936,
+        "direction": 2.3314
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 149.6782,
+        "ypos": 254.1892,
+        "direction": -0.0938
+      },
+      "robot2": {
+        "xpos": 229.2522,
+        "ypos": 314.753,
+        "direction": 2.3714
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 153.0785,
+        "ypos": 252.6389,
+        "direction": -0.0838
+      },
+      "robot2": {
+        "xpos": 230.5787,
+        "ypos": 315.8347,
+        "direction": 2.4114
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 156.5511,
+        "ypos": 251.1173,
+        "direction": -0.0738
+      },
+      "robot2": {
+        "xpos": 231.8373,
+        "ypos": 316.9351,
+        "direction": 2.4514
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 160.0979,
+        "ypos": 249.6284,
+        "direction": -0.0638
+      },
+      "robot2": {
+        "xpos": 233.0258,
+        "ypos": 318.0501,
+        "direction": 2.4914
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 163.7205,
+        "ypos": 248.1765,
+        "direction": -0.0538
+      },
+      "robot2": {
+        "xpos": 234.1419,
+        "ypos": 319.1753,
+        "direction": 2.5314
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 167.4203,
+        "ypos": 246.7665,
+        "direction": -0.0438
+      },
+      "robot2": {
+        "xpos": 235.1839,
+        "ypos": 320.3062,
+        "direction": 2.5714
+      }
+    },
+    {
+      "robot1": {
+        "xpos": 171.1981,
+        "ypos": 245.4034,
+        "direction": -0.0338
+      },
+      "robot2": {
+        "xpos": 236.1504,
+        "ypos": 321.4376,
+        "direction": 2.6114
+      }
+    }
+  ]
+}
