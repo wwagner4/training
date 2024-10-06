@@ -496,7 +496,6 @@ collisions_testdata = [
 
 @pytest.mark.parametrize("file_name, expected", collisions_testdata)
 def test_collisions(file_name: str, expected: rw.SimEvents):
-    print("------------------------------")
     base_dir = Path(__file__).parent / "data"
     file = base_dir / file_name
     sim = rwu.read_file(file)

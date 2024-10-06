@@ -57,7 +57,7 @@ class PosDir:
 
 
 @dataclass
-class SensorDto:
+class CombiSensorDto:
     pos_dir: PosDir
     combi_sensor: CombiSensor
 
@@ -68,9 +68,9 @@ class StartCommand(SendCommand):
 
 
 @dataclass
-class SensorCommand(ReceiveCommand):
-    robot1_sensor: SensorDto
-    robot2_sensor: SensorDto
+class CombiSensorCommand(ReceiveCommand):
+    robot1_sensor: CombiSensorDto
+    robot2_sensor: CombiSensorDto
 
 
 @dataclass
@@ -82,8 +82,8 @@ class DiffDriveCommand(SendCommand):
 
 @dataclass
 class FinishedOkCommand(ReceiveCommand):
-    robot1_rewards: list[(str, str)]
-    robot2_rewards: list[(str, str)]
+    robot1_finish_properties: list[(str, str)]
+    robot2_finish_properties: list[(str, str)]
 
 
 @dataclass_json
@@ -98,98 +98,242 @@ class FinishedErrorCommand(ReceiveCommand):
     message: str
 
 
-# noinspection PyUnresolvedReferences
+class Controller:
+    def take_step(self, sensor: CombiSensor) -> DiffDriveValues:
+        pass
+
+    def name(self) -> str:
+        pass
+
+    def description(self) -> dict:
+        pass
+
+
+@dataclass(frozen=True)
+class Response:
+    def is_finished(self) -> bool:
+        pass
+
+
+@dataclass(frozen=True)
+class ActionResponse(Response):
+    simulation_states: list[SimulationState]
+    sensor1: CombiSensor
+    sensor2: CombiSensor
+    obj_id: str | None
+    cnt: int
+
+    def is_finished(self) -> bool:
+        return False
+
+
+@dataclass(frozen=True)
+class ErrorResponse(Response):
+    message: str
+
+    def is_finished(self) -> bool:
+        return True
+
+
+@dataclass(frozen=True)
+class FinishedResponse(Response):
+    message: str
+
+    def is_finished(self) -> bool:
+        return True
+
+
+@dataclass(frozen=True)
+class ObservationRequest:
+    diffDrive1: DiffDriveValues
+    diffDrive2: DiffDriveValues
+    simulation_states: list[SimulationState]
+    obj_id: str
+    cnt: int
+
+
+def reset(
+    port: int,
+    sim_name: str,
+    name1: str,
+    desc1: dict,
+    name2: str,
+    desc2: dict,
+    record: bool,
+) -> Response:
+    obj_id = _insert_new_sim(name1, desc1, name2, desc2, port, sim_name, record)
+    return _step(StartCommand(), [], port, obj_id, 0)
+
+
 def start(
     port: int,
     sim_name: str,
     controller_name1: ControllerName,
     controller_name2: ControllerName,
+    record: bool,
 ):
     controller1 = ControllerProvider.get(controller_name1)
     controller2 = ControllerProvider.get(controller_name2)
 
-    simulation_states = []
+    def create_request(response: Response) -> ObservationRequest:
+        # print(f"### create_request {response}")
+        match response:
+            case ActionResponse(
+                simulation_states=simulation_states,
+                sensor1=sensor1,
+                sensor2=sensor2,
+                obj_id=obj_id,
+                cnt=cnt,
+            ):
+                diff_drive1 = controller1.take_step(sensor1)
+                diff_drive2 = controller2.take_step(sensor2)
+                return ObservationRequest(
+                    diffDrive1=diff_drive1,
+                    diffDrive2=diff_drive2,
+                    cnt=cnt + 1,
+                    obj_id=obj_id,
+                    simulation_states=simulation_states,
+                )
+            case _:
+                raise ValueError(f"Unknown response {response}")
 
-    with db.create_client() as client:
+    response: Response = reset(
+        port,
+        sim_name,
+        controller1.name(),
+        controller1.description(),
+        controller2.name(),
+        controller2.description(),
+        record,
+    )
+    while True:
+        if response.is_finished():
+            return
+        request: ObservationRequest = create_request(response)
+        response = step(request, port)
 
-        def check_running():
-            running_sim = db.find_running(client, "running", port)
-            print(f"--- Found running for {port} {running_sim}")
-            if running_sim:
-                raise RuntimeError(f"Baseport {port} is currently running")
 
-        def insert_new_sim() -> str:
-            sim_robot1 = db.SimulationRobot(
-                name=controller1.name(),
-                description=controller1.description(),
-            )
-            sim_robot2 = db.SimulationRobot(
-                name=controller2.name(),
-                description=controller2.description(),
-            )
-            sim = db.Simulation(
-                port=port,
-                name=sim_name,
-                robot1=sim_robot1,
-                robot2=sim_robot2,
-            )
-            _obj_id = db.insert(client, sim.to_dict())
-            print(f"--- Wrote to database id:{_obj_id} sim:{sim}")
-            return _obj_id
+def step(request: ObservationRequest, port: int) -> Response:
+    """
 
-        def send_command_and_wait(cmd: SendCommand) -> ReceiveCommand:
-            send_str = format_command(cmd)
-            # print(f"---> Sending {cmd} - {send_str}")
-            resp_str = udp.send_and_wait(send_str, port, 10)
-            resp = parse_command(resp_str)
-            # print(f"<--- Result {resp} {resp_str}")
-            return resp
+    :rtype: object
+    """
+    cmd = DiffDriveCommand(
+        robot1_diff_drive_values=request.diffDrive1,
+        robot2_diff_drive_values=request.diffDrive2,
+        stepsCount=request.cnt,
+    )
+    return _step(
+        command=cmd,
+        simulation_states=request.simulation_states,
+        obj_id=request.obj_id,
+        port=port,
+        cnt=request.cnt,
+    )
 
-        check_running()
-        obj_id = insert_new_sim()
-        try:
-            command = StartCommand()
-            cnt = 0
-            while True:
-                cnt += 1
-                print("")
-                response: ReceiveCommand = send_command_and_wait(command)
-                match response:
-                    case SensorCommand(s1, s2):
-                        # print("sensors", s1, s2)
-                        state = SimulationState(s1.pos_dir, s2.pos_dir)
-                        simulation_states.append(state)
 
-                        r1 = controller1.take_step(s1.combi_sensor)
-                        r2 = controller2.take_step(s2.combi_sensor)
-                        # print(
-                        #   "## sensor",
-                        #   s1.combi_sensor.front_distance,
-                        #   s2.combi_sensor.front_distance)
+def _step(
+    command: SendCommand,
+    simulation_states: list[SimulationState],
+    port: int,
+    obj_id: str | None,
+    cnt: int,
+) -> Response:
+    try:
+        response: ReceiveCommand = _send_command_and_wait(command, port)
+        match response:
+            case CombiSensorCommand(s1, s2):
+                # print("sensors", s1, s2)
+                state = SimulationState(s1.pos_dir, s2.pos_dir)
+                simulation_states.append(state)
 
-                        command = DiffDriveCommand(r1, r2, cnt)
-                    case FinishedOkCommand(r1, r2):
-                        events_dict = {"r1": r1, "r2": r2}
-                        dicts = [s.to_dict() for s in simulation_states]
+                return ActionResponse(
+                    simulation_states=simulation_states,
+                    sensor1=s1.combi_sensor,
+                    sensor2=s2.combi_sensor,
+                    obj_id=obj_id,
+                    cnt=cnt,
+                )
+            case FinishedOkCommand(r1, r2):
+                events_dict = {"r1": r1, "r2": r2}
+                dicts = [s.to_dict() for s in simulation_states]
+                if obj_id:
+                    with db.create_client() as client:
                         db.update_status_finished(client, obj_id, events_dict, dicts)
-                        print(
-                            f"Finished with OK: {obj_id} {events_dict}"
-                            f"{simulation_states[:5]}..."
-                        )
-                        break
-                    case FinishedErrorCommand(msg):
+                # print(
+                #     f"Finished with OK: steps: {cnt} db_id: {obj_id} {events_dict}"
+                #     f"{simulation_states[:5]}..."
+                # )
+                msg = f"Finished with OK: steps: {cnt} db_id: {obj_id}"
+                return FinishedResponse(
+                    message=msg,
+                )
+            case FinishedErrorCommand(msg):
+                if obj_id:
+                    with db.create_client() as client:
                         db.update_status_error(client, obj_id, msg)
-                        print(f"Finished with ERROR: {obj_id} {msg}")
-                        break
+                msg = f"Finished with ERROR: steps: {cnt} db_id: {obj_id} {msg}"
+                # print(msg)
+                return ErrorResponse(
+                    message=msg,
+                )
+    except BaseException as ex:
+        return _handle_exception(ex, obj_id)
 
-        except BaseException as ex:
-            msg = util.message(ex)
-            print(traceback.format_exc())
-            print(f"ERROR: {msg}")
+
+def _handle_exception(ex: BaseException, obj_id: str | None) -> Response:
+    msg = util.message(ex)
+    print(traceback.format_exc())
+    print(f"ERROR: {msg}")
+    if obj_id:
+        with db.create_client() as client:
             db.update_status_error(client, obj_id, msg)
+    return ErrorResponse(msg)
 
 
-def format_command(cmd: SendCommand) -> str:
+def _insert_new_sim(
+    name1: str,
+    desc1: dict,
+    name2: str,
+    desc2: dict,
+    port: int,
+    sim_name: str,
+    record: bool,
+) -> str:
+    _obj_id = None
+    if record:
+        sim_robot1 = db.SimulationRobot(
+            name=name1,
+            description=desc1,
+        )
+        sim_robot2 = db.SimulationRobot(
+            name=name2,
+            description=desc2,
+        )
+        sim = db.Simulation(
+            port=port,
+            name=sim_name,
+            robot1=sim_robot1,
+            robot2=sim_robot2,
+        )
+        # print("--- Writing to database")
+        # pprint.pprint(sim)
+        with db.create_client() as client:
+            _obj_id = db.insert(client, sim.to_dict())
+        # print(f"--- Wrote to database id:{_obj_id} sim:{sim}")
+    return _obj_id
+
+
+def _send_command_and_wait(cmd: SendCommand, port: int) -> ReceiveCommand:
+    send_str = _format_command(cmd)
+    # print(f"---> Sending {cmd} - {send_str}")
+    resp_str = udp.send_and_wait(send_str, port, 10)
+    resp = _parse_command(resp_str)
+    # print(f"<--- Result {resp} {resp_str}")
+    return resp
+
+
+def _format_command(cmd: SendCommand) -> str:
     def format_float(value: float) -> str:
         return f"{value:.4f}"
 
@@ -207,10 +351,10 @@ def format_command(cmd: SendCommand) -> str:
             raise NotImplementedError(f"format_command {cmd}")
 
 
-def parse_command(data: str) -> ReceiveCommand:
-    def parse_sensor_dto(sensor_data: str) -> SensorDto:
+def _parse_command(data: str) -> ReceiveCommand:
+    def parse_sensor_dto(sensor_data: str) -> CombiSensorDto:
         ds = sensor_data.split(";")
-        return SensorDto(
+        return CombiSensorDto(
             pos_dir=PosDir(float(ds[0]), float(ds[1]), float(ds[2])),
             combi_sensor=CombiSensor(
                 left_distance=float(ds[3]),
@@ -233,23 +377,12 @@ def parse_command(data: str) -> ReceiveCommand:
             return FinishedErrorCommand(body)
         case "B":
             (r1, r2) = body.split("#")
-            return SensorCommand(parse_sensor_dto(r1), parse_sensor_dto(r2))
+            return CombiSensorCommand(parse_sensor_dto(r1), parse_sensor_dto(r2))
         case "D":
             (r1, r2) = body.split("#")
             return FinishedOkCommand(parse_finished(r1), parse_finished(r2))
         case _:
             raise NotImplementedError(f"parse_command {data}")
-
-
-class Controller:
-    def take_step(self, sensor: CombiSensor) -> DiffDriveValues:
-        pass
-
-    def name(self) -> str:
-        pass
-
-    def description(self) -> dict:
-        pass
 
 
 class ControllerProvider:
