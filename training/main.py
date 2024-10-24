@@ -3,8 +3,10 @@ from pathlib import Path
 import typer
 from typing_extensions import Annotated
 
+import training.sgym_training as sgym
 import training.simdb
 import training.simrunner as sr
+import training.simrunner_tournament as srt
 import training.tryout as to
 import training.util
 
@@ -14,7 +16,7 @@ simpath_help = "Path to the simulator git module"
 simpath_default = Path.home() / "prj" / "SUMOSIM" / "sumosim"
 
 
-@app.command()
+@app.command(help="Runs simulations for combinations of controllers")
 def start(
     sim_name: Annotated[str, typer.Option("--name", "-n", help="Simulation name")],
     port: Annotated[
@@ -23,38 +25,73 @@ def start(
             "--port", "-p", help="The port on which the simulation is listening"
         ),
     ] = 4444,
+    controllers: Annotated[
+        list[sr.ControllerName],
+        typer.Option("--controllers", "-c", help="Name of controllers"),
+    ] = (sr.ControllerName.TUMBLR, sr.ControllerName.BLIND_TUMBLR),
+    reward_handler: Annotated[
+        sr.RewardHandlerName,
+        typer.Option("--reward-handler", help="Name of the reward handler"),
+    ] = sr.RewardHandlerName.CONTINUOS_CONSIDER_ALL,
+    combination_type: Annotated[
+        srt.CombinationType,
+        typer.Option(
+            "--combination-type", help="Combination of robots for the tournament"
+        ),
+    ] = srt.CombinationType.WITHOUT_REPLACEMENT,
+    epoch_count: Annotated[
+        int,
+        typer.Option("--epoch-count", "-e", help="Number of epochs per match"),
+    ] = 30,
+    max_simulation_steps: Annotated[
+        int,
+        typer.Option(
+            "--max-simulation-steps",
+            help="Maximum number of steps per simulation if no robot wins",
+        ),
+    ] = 1000,
     record: Annotated[
         bool,
         typer.Option(
             "--record", "-r", help="Define if the simulation is recorded or not"
         ),
     ] = False,
-    controller1: Annotated[
-        sr.ControllerName,
-        typer.Option("--controller1", "-c1", help="Name of controller 1"),
-    ] = sr.ControllerName.TUMBLR,
-    controller2: Annotated[
-        sr.ControllerName,
-        typer.Option("--controller2", "-c2", help="Name of controller 2"),
-    ] = sr.ControllerName.STAY_IN_FIELD,
 ):
-    sr.start(port, sim_name, controller1, controller2, record)
+    srt.start(
+        port,
+        sim_name,
+        controllers,
+        reward_handler,
+        combination_type,
+        max_simulation_steps,
+        epoch_count,
+        record,
+    )
 
 
-@app.command()
+@app.command(help="If something has to be tried out: Do it here")
 def tryout():
     to.main()
 
 
-@app.command()
+@app.command(help="Runs a gymnasium training. Not yet finished")
+def gym():
+    sgym.main()
+
+
+@app.command(help="Some database management")
 def db(
     query: Annotated[
         str,
         typer.Option(
-            help="Name of a query function in module 'simdb'. E.g. 'count_running'"
+            "--query",
+            "-q",
+            help="Name of a query function in module 'simdb'. E.g. 'count_running'",
         ),
     ],
-    verbose: Annotated[bool, typer.Option("-v", help="Verbose output")] = False,
+    verbose: Annotated[
+        bool, typer.Option("--verbose", "-v", help="Verbose output")
+    ] = False,
 ):
     training.simdb(query)
 

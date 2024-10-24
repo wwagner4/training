@@ -6,11 +6,18 @@ def test_format_command_start():
     assert data == "A|"
 
 
-def test_format_diff_drive():
+def test_format_diff_drive_1():
     r1 = sr.DiffDriveValues(1.5, 4.3)
     r2 = sr.DiffDriveValues(-1.2, 44.0)
-    data = sr._format_command(sr.DiffDriveCommand(r1, r2, 123))
-    assert data == "C|4.3000;1.5000#44.0000;-1.2000#123"
+    data = sr._format_command(sr.DiffDriveCommand(r1, r2, 123, True))
+    assert data == "C|4.3000;1.5000#44.0000;-1.2000#123#1"
+
+
+def test_format_diff_drive_2():
+    r1 = sr.DiffDriveValues(1.5, 4.3)
+    r2 = sr.DiffDriveValues(-1.2, 44.0)
+    data = sr._format_command(sr.DiffDriveCommand(r1, r2, 111, False))
+    assert data == "C|4.3000;1.5000#44.0000;-1.2000#111#0"
 
 
 def test_parse_sensor():

@@ -1,34 +1,13 @@
 import datetime as dt
 import pprint
 from abc import ABC
-from dataclasses import dataclass
 
 import pymongo
 from bson import ObjectId
-from dataclasses_json import dataclass_json
 
 SIM_STATUS_RUNNING = "running"
 SIM_STATUS_FINISHED = "finished"
 SIM_STATUS_ERROR = "error"
-
-
-@dataclass_json
-@dataclass
-class SimulationRobot:
-    name: str
-    description: dict
-
-
-@dataclass_json
-@dataclass
-class Simulation:
-    port: int
-    name: str
-    robot1: SimulationRobot
-    robot2: SimulationRobot
-    started_at: dt.datetime = dt.datetime.now()
-    status: str = SIM_STATUS_RUNNING
-    message: str = ""
 
 
 def create_client() -> ABC:

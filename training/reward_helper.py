@@ -1,8 +1,4 @@
-import math
 from dataclasses import dataclass
-from typing import Tuple
-
-import numpy as np
 
 
 @dataclass
@@ -51,40 +47,6 @@ def overlapping(a: Interval, b: Interval) -> bool:
 def validate_interval(i: Interval):
     if i.start > i.end:
         raise ValueError(f"End value of interval must be grater than start value {i}")
-
-
-def cart2pol(x: float, y: float) -> Tuple[float, float]:
-    rho = np.sqrt(x**2 + y**2)
-    phi = norm(np.arctan2(y, x))
-    return rho, phi
-
-
-def pol2cart(r: float, phi: float) -> Tuple[float, float]:
-    x = r * np.cos(phi)
-    y = r * np.sin(phi)
-    return x, y
-
-
-def np_cart2pol(cart: np.array) -> np.array:
-    r = np.sqrt(cart[0] ** 2 + cart[1] ** 2)
-    phi = norm(np.arctan2(cart[1], cart[0]))
-    return np.array([r, phi])
-
-
-def np_pol2cart(pol: np.array) -> np.array:
-    x = pol[0] * np.cos(pol[1])
-    y = pol[0] * np.sin(pol[1])
-    return np.array([x, y])
-
-
-def f_pol(pol: np.array) -> str:
-    return f"[{pol[0]:.3f}, {pol[1]:.3f}r|{math.degrees(pol[1]):.3f}d]"
-
-
-def norm(phi: float) -> float:
-    if phi < 0.0:
-        return phi + (math.pi * 2.0)
-    return phi
 
 
 def intervals_boolean(booleans: list[bool]) -> list[Interval]:
