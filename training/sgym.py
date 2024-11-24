@@ -12,12 +12,14 @@ import training.simrunner as sr
 class SEnvConfig:
     max_wheel_speed: float
     max_view_distance: float
+    max_simulation_steps: int
     dtype: np.generic = np.float32
 
 
 default_senv_config = SEnvConfig(
     max_wheel_speed=7,
     max_view_distance=700,
+    max_simulation_steps=1000,
     dtype=np.float32,
 )
 
@@ -30,14 +32,12 @@ class SEnv(gym.Env):
         sim_name: str,
         opponent: sr.Controller,
         reward_handler: sr.RewardHandler,
-        record: bool,
     ):
         self.senv_config = senv_config
         self.port = port
         self.sim_name = sim_name
         self.opponent_controller = opponent
         self.reward_handler = reward_handler
-        self.record = record
 
         self.sim_action_response: sr.SensorResponse | None = None
 
@@ -51,12 +51,8 @@ class SEnv(gym.Env):
         response = sr.reset(
             self.port,
             self.sim_name,
-            "GYM",
-            {},
-            self.opponent_controller.name(),
-            self.opponent_controller.description(),
+            self.senv_config.max_simulation_steps,
             self.reward_handler,
-            self.record,
         )
         match response:
             case sr.SensorResponse(sensor1=sensor1):
@@ -74,10 +70,17 @@ class SEnv(gym.Env):
             diffDrive1=mapping_action_space_to_diff_drive(action),
             diffDrive2=self.opponent_controller.take_step(sensor2),
             simulation_states=self.sim_action_response.simulation_states,
-            obj_id=self.sim_action_response.obj_id,
             cnt=cnt + 1,
         )
-        response = sr.step(request, self.reward_handler, self.port)
+        should_stop = cnt > self.senv_config.max_simulation_steps
+        response = sr.step(
+            request,
+            self.reward_handler,
+            self.port,
+            should_stop,
+            self.senv_config.max_simulation_steps,
+            None,
+        )
         match response:
             case sr.SensorResponse(sensor1=sensor1, reward=reward):
                 self.sim_action_response = response
@@ -95,7 +98,7 @@ class SEnv(gym.Env):
                 terminated = True
                 truncated = False
                 info = {"status": "OK", "message": message}
-                return observation, reward[0], terminated, truncated, info
+                return observation, reward, terminated, truncated, info
             case sr.ErrorResponse(message):
                 observation = {}
                 terminated = True

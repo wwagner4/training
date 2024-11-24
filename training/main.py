@@ -3,11 +3,11 @@ from pathlib import Path
 import typer
 from typing_extensions import Annotated
 
+import training.explore.qlearning as ql
 import training.sgym_training as sgym
 import training.simdb
 import training.simrunner as sr
 import training.simrunner_tournament as srt
-import training.tryout as to
 import training.util
 
 app = typer.Typer(pretty_exceptions_enable=False)
@@ -71,7 +71,7 @@ def start(
 
 @app.command(help="If something has to be tried out: Do it here")
 def tryout():
-    to.main()
+    ql.tryout()
 
 
 @app.command(help="Runs a gymnasium training. Not yet finished")

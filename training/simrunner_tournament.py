@@ -2,7 +2,6 @@ import itertools as it
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
-from subprocess import run
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -84,7 +83,6 @@ def start(
     }
     line_keys = [[0, 3, 4], [1], [2]]
     _suptitle = suptitle(desc, line_keys)
-    img_path = plot_rewards(out_dir, name, _suptitle, df)
     print(f"Wrote results for {name} to {out_dir}")
 
 

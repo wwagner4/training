@@ -12,7 +12,9 @@ def main():
     port = 4444
 
     opponent_name = sr.ControllerName.TUMBLR
-    reward_handler = sr.RewardHandlerProvider.get(sr.RewardHandlerName.FIRST)
+    reward_handler = sr.RewardHandlerProvider.get(
+        sr.RewardHandlerName.CONTINUOS_CONSIDER_ALL
+    )
     record = True
     epoch_count = 100
 
@@ -30,7 +32,6 @@ def main():
             sim_name=sim_name,
             opponent=opponent,
             reward_handler=reward_handler,
-            record=record,
         )
         observation, info = env.reset()
         cnt = 0
