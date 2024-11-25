@@ -3,6 +3,7 @@ from typing import Any
 import numpy as np
 import pytest
 
+import training.explore.qlearning as ql
 import training.sgym as sgym
 import training.simrunner as sr
 
@@ -60,9 +61,30 @@ action_space_to_diff_drive_a_testdata = [
 
 
 @pytest.mark.parametrize("space, expected", action_space_to_diff_drive_a_testdata)
-def test_action_space_to_diff_drive_a(
-    space: Any, expected: sr.DiffDriveValues
-) -> sr.DiffDriveValues:
+def test_action_space_to_diff_drive_a(space: Any, expected: sr.DiffDriveValues):
     result = sgym.mapping_action_space_to_diff_drive(space)
     assert _as_a.contains(space)
     assert result == expected
+
+
+continuous_to_discrete_testdata = [
+    (10.0, 3, (-100.0001, 0)),
+    (10.0, 3, (-10.0001, 0)),
+    (10.0, 3, (-10.0, 0)),
+    (10.0, 3, (-3.334, 0)),
+    (10.0, 3, (-3.332, 1)),
+    (10.0, 3, (0.0, 1)),
+    (10.0, 3, (3.332, 1)),
+    (10.0, 3, (3.334, 2)),
+    (10.0, 3, (4, 2)),
+    (10.0, 3, (10.0, 2)),
+    (10.0, 3, (10.0001, 2)),
+    (10.0, 3, (100.0001, 2)),
+]
+
+
+@pytest.mark.parametrize("max_value, n, expected", continuous_to_discrete_testdata)
+def test_continuous_to_discrete(max_value: float, n: int, expected: tuple):
+    v, i = expected
+    result = ql.continuous_to_discrete(v, max_value, n)
+    assert i == result
