@@ -627,7 +627,7 @@ def test_consider_all_reward_handler_both_rotating(
         )
 
     rh: RewardHandler = sr.RewardHandlerProvider.get(
-        sr.RewardHandlerName.CONTINUOS_CONSIDER_ALL
+        sr.RewardHandlerName.CONTINUOUS_CONSIDER_ALL
     )
 
     for _j in range(10):
@@ -686,7 +686,7 @@ def test_consider_all_reward_handler_one_rotating(
     angle: int, distance: float, expected_reward1: float, expected_reward2: float
 ):
     rh: RewardHandler = sr.RewardHandlerProvider.get(
-        sr.RewardHandlerName.CONTINUOS_CONSIDER_ALL
+        sr.RewardHandlerName.CONTINUOUS_CONSIDER_ALL
     )
     off = vh.pol2cart(np.array([distance, math.pi / 2.0]))
     xpos = off[0]

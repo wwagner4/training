@@ -1,6 +1,6 @@
 import pytest
 
-from training.sumosim_helper import row_col
+from training.helper import row_col
 
 row_col_testdata = [
     (10, (4, 3)),

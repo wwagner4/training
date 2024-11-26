@@ -7,9 +7,20 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 import training.consts
+import training.helper as sh
 import training.simrunner as sr
 from training.simrunner import SimInfo
-from training.sumosim_helper import row_col
+
+
+class RewardCollector:
+    def __init__(self):
+        self.data = []
+
+    def add(self, name1: str, name2: str, value1: float, value2: float):
+        self.data.append((name1, name2, value1, value2))
+
+    def data_frame(self) -> pd.DataFrame:
+        return pd.DataFrame(self.data, columns=["c1", "c2", "r1", "r2"])
 
 
 class CombinationType(str, Enum):
@@ -47,31 +58,31 @@ def start(
 
     combinations = _tournament_combinations(controller_names, combination_type)
     combinations_count = len(combinations)
-    i = 1
-    result_data = []
-    for c1, c2 in combinations:
-        for j in range(epoch_count):
-            r1, r2, msg = run_epoch(
+    combination_nr = 1
+    result_data: RewardCollector = RewardCollector()
+    for controller_name1, controller_name2 in combinations:
+        for epoch_nr in range(epoch_count):
+            reward1, reward2, msg = run_epoch(
                 port,
                 name,
                 max_simulation_steps,
-                i,
-                j,
-                c1,
-                c2,
+                combination_nr,
+                epoch_nr,
+                controller_name1,
+                controller_name2,
                 reward_handler_name,
                 record,
             )
             print(
-                f"Finished epoch c:{i}/{combinations_count} "
-                f"e:{j + 1}/{epoch_count} "
-                f"r1:{r1:10.2f} r2:{r2:10.2f} {msg}"
+                f"Finished epoch c:{combination_nr}/{combinations_count} "
+                f"e:{epoch_nr + 1}/{epoch_count} "
+                f"r1:{reward1:10.2f} r2:{reward2:10.2f} {msg}"
             )
-            result_data.append((c1.value, c2.value, r1, r2))
-            j += 1
-        i += 1
-    df = pd.DataFrame(result_data, columns=["c1", "c2", "r1", "r2"])
-    write_tournament_data(out_dir, name, df)
+            result_data.add(
+                controller_name1.value, controller_name2.value, reward1, reward2
+            )
+            epoch_nr += 1
+        combination_nr += 1
 
     controller_names_str = ", ".join([c.value for c in controller_names])
     desc = {
@@ -81,8 +92,9 @@ def start(
         "max sim steps": max_simulation_steps,
         "epoch count": epoch_count,
     }
-    line_keys = [[0, 3, 4], [1], [2]]
-    _suptitle = suptitle(desc, line_keys)
+    sh.write_dict_data(result_data.data_frame().to_json, out_dir, name)
+    lines = sh.create_lines(desc, [[0, 3, 4], [1], [2]])
+    plot_epoch_datas(data=result_data, out_dir=out_dir, name=name, suptitle=lines)
     print(f"Wrote results for {name} to {out_dir}")
 
 
@@ -124,12 +136,7 @@ def run_epoch(
             max_simulation_steps=max_simulation_steps,
         )
     try:
-        response: sr.Response = sr.reset(
-            port,
-            sim_name,
-            max_simulation_steps,
-            reward_handler,
-        )
+        response: sr.Response = sr.reset(port, max_simulation_steps, reward_handler)
         cnt = 0
         cumulative_reward1 = 0.0
         cumulative_reward2 = 0.0
@@ -144,11 +151,11 @@ def run_epoch(
                     print(error_msg)
                     raise RuntimeError(error_msg)
                 case sr.SensorResponse(
-                    reward=reward,
+                    reward1=reward1,
+                    reward2=reward2,
                     simulation_states=simulation_states,
                     cnt=cnt,
                 ):
-                    reward1, reward2 = reward
                     cumulative_reward1 += reward1
                     cumulative_reward2 += reward2
                     # print(f"### {epoch_name} {cnt} reward:{reward}")
@@ -163,6 +170,8 @@ def run_epoch(
                         max_simulation_steps,
                         sim_info,
                     )
+                case _:
+                    raise RuntimeError(f"Could not match response:{response}")
     except BaseException as ex:
         print(f"### Error running {sim_name} {ex}")
         raise ex
@@ -178,36 +187,23 @@ def _tournament_combinations(
             return list(it.combinations(names, 2))
 
 
-def suptitle(desc: dict, line_keys: list[list[int]]) -> str:
-    k = dict([x for x in enumerate(desc)])
-
-    def elem(i: int) -> str:
-        key = k[i]
-        value = desc[key]
-        return f"{key}:{value}"
-
-    def line(index: list[int]) -> str:
-        return " ".join([elem(i) for i in index])
-
-    return "\n".join([line(a) for a in line_keys])
-
-
-def write_tournament_data(out_dir: Path, name: str, df: pd.DataFrame):
-    filename = f"{name}.json"
-    file = out_dir / filename
-    df.to_json(file, indent=2)
-
-
-def plot_rewards(
-    out_dir: Path, name: str, _suptitle: str, result: pd.DataFrame
+def plot_epoch_datas(
+    data: RewardCollector, out_dir: Path, name: str, suptitle: str
 ) -> Path:
-    groups = result.groupby(["c1", "c2"])
+    """
+    :param data: A RewardCollector
+    :param out_dir:
+    :param name:
+    :param suptitle:
+    :return:
+    """
+    groups = data.data_frame().groupby(["c1", "c2"])
     num_groups = groups.ngroups
 
-    n_rows, n_cols = row_col(num_groups)
+    n_rows, n_cols = sh.row_col(num_groups)
     fig, axes = plt.subplots(nrows=n_rows, ncols=n_cols, figsize=(12, 15))
 
-    gl = list(groups)
+    group_list = list(groups)
     for i in range(n_cols):
         for j in range(n_rows):
             index = j * n_cols + i
@@ -219,8 +215,8 @@ def plot_rewards(
                 ax = axes[i]
             else:
                 ax = axes[j][i]
-            if index < len(gl):
-                key, grouped_data = gl[j * n_cols + i]
+            if index < len(group_list):
+                key, grouped_data = group_list[j * n_cols + i]
                 name1, name2 = key
                 title = f"{name1}  -  {name2}"
                 ax.boxplot(grouped_data[["r1", "r2"]], labels=(name1, name2))
@@ -228,7 +224,7 @@ def plot_rewards(
                 ax.set_ylim([-300, 300])
             else:
                 ax.axis("off")
-    plt.suptitle(_suptitle, y=0.98)
+    plt.suptitle(suptitle, y=0.98)
     filename = f"{name}.png"
     file_path = out_dir / filename
     fig.savefig(file_path)

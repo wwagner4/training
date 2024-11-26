@@ -50,7 +50,7 @@ class ControllerName(str, Enum):
 
 class RewardHandlerName(str, Enum):
     END_CONSIDER_ALL = "end-consider-all"
-    CONTINUOS_CONSIDER_ALL = "continuos-consider-all"
+    CONTINUOUS_CONSIDER_ALL = "continuous-consider-all"
 
 
 class SectorName(Enum):
@@ -134,10 +134,11 @@ class Response:
 
 @dataclass(frozen=True)
 class SensorResponse(Response):
-    reward: float
     simulation_states: list[SimulationState]
     sensor1: CombiSensor
     sensor2: CombiSensor
+    reward1: float
+    reward2: float
     cnt: int
 
 
@@ -182,10 +183,7 @@ class RewardHandler(ABC):
 
 
 def reset(
-    port: int,
-    sim_name: str,
-    max_simulation_steps: int,
-    reward_handler: RewardHandler,
+    port: int, max_simulation_steps: int, reward_handler: RewardHandler
 ) -> Response:
     return _step(
         StartCommand(),
@@ -253,12 +251,13 @@ def _step(
         case CombiSensorCommand(s1, s2):
             state = SimulationState(s1.pos_dir, s2.pos_dir)
             simulation_states.append(state)
-            reward = calculate_reward(reward_handler, state)
+            reward1, reward2 = calculate_reward(reward_handler, state)
             return SensorResponse(
-                reward=reward,
                 simulation_states=simulation_states,
                 sensor1=s1.combi_sensor,
                 sensor2=s2.combi_sensor,
+                reward1=reward1,
+                reward2=reward2,
                 cnt=cnt,
             )
         case FinishedOkCommand(properties1, properties2):
@@ -465,7 +464,7 @@ class RewardHandlerProvider:
                 class_ = module.EndConsiderAllRewardHandler
                 return class_()
         match name:
-            case RewardHandlerName.CONTINUOS_CONSIDER_ALL:
+            case RewardHandlerName.CONTINUOUS_CONSIDER_ALL:
                 module = importlib.import_module("training.reward")
                 class_ = module.ConsiderAllRewardHandler
                 return class_()

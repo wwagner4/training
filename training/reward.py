@@ -231,7 +231,7 @@ class ConsiderAllRewardHandler(ContinuousRewardHandler):
         return self.em
 
     def name(self) -> str:
-        return sr.RewardHandlerName.CONTINUOS_CONSIDER_ALL.value
+        return sr.RewardHandlerName.CONTINUOUS_CONSIDER_ALL.value
 
 
 def continuous_end_events_from_simulation_states(

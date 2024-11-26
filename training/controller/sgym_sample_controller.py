@@ -22,6 +22,7 @@ def sgym_config():
         max_wheel_speed=7,
         max_view_distance=700,
         dtype=np.float32,
+        max_simulation_steps=1000,
     )
 
 
@@ -29,11 +30,11 @@ class SGymSampleController(sr.Controller):
     def __init__(
         self,
     ):
-        self.action_space = sgym.crete_action_space(sgym_config())
+        self.action_space = sgym.cont_act_space(sgym_config())
 
     def take_step(self, sensor: sr.CombiSensor) -> sr.DiffDriveValues:
         action = self.action_space.sample()
-        ddv = sgym.mapping_action_space_to_diff_drive(action)
+        ddv = sgym.map_cont_act_to_diff_drive(action)
         return ddv
 
     def name(self) -> str:

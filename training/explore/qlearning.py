@@ -1,27 +1,40 @@
-import math
+import time
+from datetime import datetime
+from pathlib import Path
 
-import training.sgym as sgym
+import pandas as pd
+
+import training.explore.blackjack as bj
+import training.helper as hlp
+import training.sgym.qlearn as sgym_qlearn
 
 
-def continuous_to_discrete(value: float, max_value: float, step_count: int) -> int:
-    d = 2.0 * max_value / step_count
-    i = int(math.floor((value + max_value) / d))
-    return min(max(0, i), (step_count - 1))
+def tryout01():
+    s = datetime.now()
+    count = 20
+    for i in range(count):
+        time.sleep(0.287362)
+        print(f"{hlp.progress_str(i, count, s)}")
+
+    print(f"finished at:{datetime.now()}")
+
+
+def tryout03():
+    bj.main()
+
+
+def tryout02():
+    n = 121
+    x = sgym_qlearn.initial_rewards(n)
+    for i, v in enumerate(x):
+        print(f"-- {i} {v}")
 
 
 def tryout():
-    print("Exploring qlearning")
-
-    config = sgym.default_senv_config
-
-    print(f"### config {config}")
-    _action_space = sgym.crete_action_space(sgym.default_senv_config)
-    print(_action_space)
-
-    for x in [-12, -10, -3.334, -3.332, 0, 3.332, 3.334, 4, 6, 10, 11, 1000]:
-        _n = continuous_to_discrete(x, 10, 3)
-        print(f"{x:10.4f} -->> {_n:<10d}")
-
-    # for i  in range(5):
-    #     action = action_space.sample()
-    #     print(f"### action {i} - {type(action)} {action}")
+    name = "Q-A-34476-131000"
+    work_dir = Path.home() / "tmp" / "sumosim"
+    data_file = f"{name}.json"
+    data_path = work_dir / data_file
+    data = pd.read_json(data_path)
+    out_file = sgym_qlearn.plot_boxplot(data, name, work_dir)
+    print(f"wrote plot {out_file}")
