@@ -1,8 +1,7 @@
 import time
 from datetime import datetime
-from pathlib import Path
 
-import pandas as pd
+import numpy as np
 
 import training.explore.blackjack as bj
 import training.helper as hlp
@@ -31,10 +30,10 @@ def tryout02():
 
 
 def tryout():
-    name = "Q-A-34476-131000"
-    work_dir = Path.home() / "tmp" / "sumosim"
-    data_file = f"{name}.json"
-    data_path = work_dir / data_file
-    data = pd.read_json(data_path)
-    out_file = sgym_qlearn.plot_boxplot(data, name, work_dir)
-    print(f"wrote plot {out_file}")
+    x = (
+        np.random.rand(
+            30,
+        )
+        * 0.1
+    )
+    print(x)

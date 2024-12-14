@@ -8,11 +8,21 @@ import gymnasium.spaces as gyms
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import seaborn as sbn
 
 import training.helper as hlp
 import training.sgym.core as sgym
 import training.simrunner as sr
 from training.simrunner import DiffDriveValues
+
+q_train_config = sgym.SEnvConfig(
+    max_wheel_speed=7,
+    wheel_speed_steps=10,
+    max_view_distance=700,
+    view_distance_steps=3,
+    max_simulation_steps=1000,
+    dtype=np.float32,
+)
 
 
 def q_train(
@@ -23,7 +33,7 @@ def q_train(
     reward_handler_name: sr.RewardHandlerName,
 ):
     loop_name = "q-train"
-    doc_interval = 500
+    doc_interval = 100
 
     reward_handler = sr.RewardHandlerProvider.get(reward_handler_name)
     print(
@@ -55,11 +65,9 @@ def q_train(
                 max_simulation_steps=sgym.default_senv_config.max_simulation_steps,
             )
 
-        cfg = sgym.default_senv_config
-
         env = sgym.SEnv(
-            senv_config=cfg,
-            senv_mapping=q_sgym_mapping(cfg),
+            senv_config=q_train_config,
+            senv_mapping=q_sgym_mapping(q_train_config),
             port=port,
             sim_name=sim_name,
             opponent=opponent,
@@ -97,7 +105,7 @@ def q_train(
         results.append(
             {
                 "sim_steps": cnt,
-                "max_sim_steps": cfg.max_simulation_steps,
+                "max_sim_steps": q_train_config.max_simulation_steps,
                 "epoch_nr": epoch_nr,
                 "max_epoch_nr": epoch_count,
                 "reward": cuml_reward,
@@ -105,8 +113,8 @@ def q_train(
         )
         env.close()
         if epoch_nr % doc_interval == 0 and epoch_nr > 0:
-            document(training_name, results)
-    document(training_name, results)
+            document(training_name, results, agent, epoch_nr)
+    document(training_name, results, agent, None)
 
 
 def get_q_act_space(config: sgym.SEnvConfig) -> gym.Space:
@@ -177,12 +185,12 @@ def q_sgym_mapping(cfg: sgym.SEnvConfig) -> sgym.SEnvMapping:
 
 
 def initial_rewards(n: int) -> list[float]:
-    high_value = 0.1
-    low_value = 0.0
-    out = np.full((n,), low_value)
-    imedian = n // 2
-    out[imedian] = high_value
-    return out
+    return (
+        np.random.rand(
+            n,
+        )
+        * 0.1
+    )
 
 
 class QAgent:
@@ -219,10 +227,6 @@ class QAgent:
 
         self.training_error = []
 
-    def start_samples(self):
-        samples = [np.int64(50) for _i in range(self.env.action_space.n)]
-        return samples
-
     def get_action(self, obs: tuple) -> int:
         """
         Returns the best action with probability (1 - epsilon)
@@ -244,14 +248,18 @@ class QAgent:
         next_obs: tuple,
     ):
         """Updates the Q-value of an action."""
+        # Make reward a positive value
+        reward = (reward + 150) * 0.1
         future_q_value = (not terminated) * np.max(self.q_values[next_obs])
         temporal_difference = (
             reward + self.discount_factor * future_q_value - self.q_values[obs][action]
         )
 
-        self.q_values[obs][action] = (
-            self.q_values[obs][action] + self.lr * temporal_difference
-        )
+        current_q_value = self.q_values[obs][action]
+        next_q_value = max(0.0, current_q_value + self.lr * temporal_difference)
+        # print(f"## change q value for {obs} {action} :
+        # {current_q_value:5.4f} -> {next_q_value:5.4f}")
+        self.q_values[obs][action] = next_q_value
         self.training_error.append(temporal_difference)
 
     def decay_epsilon(self):
@@ -274,15 +282,18 @@ def _curry_velo_from_index(
     return inner
 
 
-def document(name: str, results: list[dict]):
+def document(name: str, results: list[dict], agent: QAgent, epoch_nr: int | None):
     work_dir = Path.home() / "tmp" / "sumosim"
     work_dir.mkdir(exist_ok=True, parents=True)
+
+    heat_path = plot_q_values(agent, epoch_nr, name, work_dir)
+    print(f"Wrote heatmap to {heat_path}")
 
     data_path = work_dir / f"{name}.json"
     df = pd.DataFrame(results)
     df.to_json(data_path, indent=2)
-
     print(f"Wrote data to {data_path}")
+
     plot_path = plot_boxplot(df, name, work_dir)
     print(f"Wrote plot to {plot_path}")
 
@@ -295,6 +306,36 @@ def plot_mean(data: pd.DataFrame, name: str, work_dir: Path) -> Path:
     ax.set_title(name)
     ax.set_ylim(ymin=-100, ymax=100)
     out_path = work_dir / f"{name}-mean.png"
+    fig.savefig(out_path)
+    plt.close(fig)
+    return out_path
+
+
+def plot_q_values(
+    agent: QAgent, epoch_nr: int | None, name: str, work_dir: Path
+) -> Path:
+    def all_obs() -> list:
+        all = []
+        for i0 in range(4):
+            for i1 in range(q_train_config.view_distance_steps):
+                for i2 in range(q_train_config.view_distance_steps):
+                    for i3 in range(q_train_config.view_distance_steps):
+                        all.append((i0, i1, i2, i3))
+        return all
+
+    all = all_obs()
+    mv = []
+    for obs in all:
+        values = agent.q_values[obs]
+        mv.append(values)
+    matrix = np.matrix(mv, dtype=q_train_config.dtype)
+    print(f"matrix {matrix.shape}")
+    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 12))
+    sbn.heatmap(matrix, vmin=0.0, vmax=1.0, ax=ax)
+
+    out_path = work_dir / f"{name}-heat.png"
+    if epoch_nr:
+        out_path = work_dir / f"{name}-{epoch_nr:010d}-heat.png"
     fig.savefig(out_path)
     plt.close(fig)
     return out_path

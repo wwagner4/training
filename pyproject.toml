@@ -17,6 +17,7 @@ gymnasium = ">=1.0.0"
 pandas = ">=2.2.3"
 pyyaml = ">=6.0.2"
 tqdm = "^4.67.1"
+seaborn = "^0.13.2"
 
 
 [tool.poetry.dev-dependencies]
