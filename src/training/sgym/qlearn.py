@@ -193,6 +193,20 @@ def initial_rewards(n: int) -> list[float]:
     )
 
 
+def calc_next_q_value(
+    reward: float,
+    terminated: float,
+    next_obs_q_values: list[float],
+    current_q_value: float,
+    discount_factor: float,
+    learning_rate: float,
+) -> tuple[float, float]:
+    future_q_value = (not terminated) * np.max(next_obs_q_values)
+    temporal_difference = reward + discount_factor * future_q_value - current_q_value
+    q_value = current_q_value + learning_rate * temporal_difference
+    return temporal_difference, q_value
+
+
 class QAgent:
     def __init__(
         self,
@@ -248,18 +262,14 @@ class QAgent:
         next_obs: tuple,
     ):
         """Updates the Q-value of an action."""
-        # Make reward a positive value
-        reward = (reward + 150) * 0.1
-        future_q_value = (not terminated) * np.max(self.q_values[next_obs])
-        temporal_difference = (
-            reward + self.discount_factor * future_q_value - self.q_values[obs][action]
+        temporal_difference, self.q_values[obs][action] = calc_next_q_value(
+            reward,
+            terminated,
+            self.q_values[next_obs],
+            self.q_values[obs][action],
+            self.discount_factor,
+            self.lr,
         )
-
-        current_q_value = self.q_values[obs][action]
-        next_q_value = max(0.0, current_q_value + self.lr * temporal_difference)
-        # print(f"## change q value for {obs} {action} :
-        # {current_q_value:5.4f} -> {next_q_value:5.4f}")
-        self.q_values[obs][action] = next_q_value
         self.training_error.append(temporal_difference)
 
     def decay_epsilon(self):
@@ -329,7 +339,6 @@ def plot_q_values(
         values = agent.q_values[obs]
         mv.append(values)
     matrix = np.matrix(mv, dtype=q_train_config.dtype)
-    print(f"matrix {matrix.shape}")
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 12))
     sbn.heatmap(matrix, vmin=0.0, vmax=1.0, ax=ax)
 
