@@ -89,7 +89,7 @@ def sample(
 ):
     reward_handler = sr.RewardHandlerProvider.get(reward_handler_name)
     print(
-        f"### sgym sample e:{epoch_count} p:{port} "
+        f"Started sgym sample e:{epoch_count} p:{port} "
         f"o:{opponent_name.value} rh:{reward_handler_name.value} r:{record}"
     )
 

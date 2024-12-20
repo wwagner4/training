@@ -3,13 +3,14 @@ from pathlib import Path
 import typer
 from typing_extensions import Annotated
 
-import training.explore.qlearning as ql
 import training.sgym.qlearn as sgym_qlearn
 import training.sgym.sample as sgym_sample
 import training.simdb
 import training.simrunner as sr
 import training.simrunner_tournament as srt
 import training.util
+import training.tryout as to
+import training.explore.analysis as an
 
 app = typer.Typer(pretty_exceptions_enable=False)
 
@@ -72,7 +73,7 @@ def start(
 
 @app.command(help="If something has to be tried out: Do it here")
 def tryout():
-    ql.tryout()
+    to.main()
 
 
 @app.command(help="Runs a gymnasium sample session")
@@ -149,6 +150,16 @@ def db(
     ],
 ):
     training.simdb(query)
+
+
+@app.command(help="Runs a gymnasium sample session")
+def analysis(
+    analysis_name: Annotated[
+        an.AnalysisName,
+        typer.Option("--analysis", "-a", help="Name of the analysis to be processed"),
+    ] = an.AnalysisName.ADJUST_REWARD,
+):
+    an.main(analysis_name)
 
 
 if __name__ == "__main__":

@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 import training.consts
-import training.helper as sh
+import training.helper as hlp
 import training.simrunner as sr
 from training.simrunner import SimInfo
 
@@ -17,10 +17,10 @@ class RewardCollector:
         self.data = []
 
     def add(self, name1: str, name2: str, value1: float, value2: float):
-        self.data.append((name1, name2, value1, value2))
+        self.data.append({"c1": name1, "c2": name2, "r1": value1, "r2": value2})
 
     def data_frame(self) -> pd.DataFrame:
-        return pd.DataFrame(self.data, columns=["c1", "c2", "r1", "r2"])
+        return pd.DataFrame(self.data)
 
 
 class CombinationType(str, Enum):
@@ -50,7 +50,10 @@ def start(
             f"Defining max-simulation-steps greater than that makes no sense"
         )
 
-    out_dir = Path.home() / "tmp" / "sumosim"
+    t_id = hlp.time_id()
+    name = f"{name}-{t_id}"
+
+    out_dir = Path.home() / "tmp" / "sumosim" / "start"
     out_dir.mkdir(exist_ok=True, parents=True)
     for f in out_dir.iterdir():
         if name in f.name:
@@ -73,11 +76,12 @@ def start(
                 reward_handler_name,
                 record,
             )
-            print(
-                f"Finished epoch c:{combination_nr}/{combinations_count} "
-                f"e:{epoch_nr + 1}/{epoch_count} "
-                f"r1:{reward1:10.2f} r2:{reward2:10.2f} {msg}"
-            )
+            if epoch_count % 200 == 0 and epoch_count > 0:
+                print(
+                    f"Finished epoch c:{combination_nr}/{combinations_count} "
+                    f"e:{epoch_nr + 1}/{epoch_count} "
+                    f"r1:{reward1:10.2f} r2:{reward2:10.2f} {msg}"
+                )
             result_data.add(
                 controller_name1.value, controller_name2.value, reward1, reward2
             )
@@ -92,8 +96,8 @@ def start(
         "max sim steps": max_simulation_steps,
         "epoch count": epoch_count,
     }
-    sh.write_dict_data(result_data.data_frame().to_json, out_dir, name)
-    lines = sh.create_lines(desc, [[0, 3, 4], [1], [2]])
+    hlp.write_dict_data(result_data.data_frame(), out_dir, name)
+    lines = hlp.create_lines(desc, [[0, 3, 4], [1], [2]])
     plot_epoch_datas(data=result_data, out_dir=out_dir, name=name, suptitle=lines)
     print(f"Wrote results for {name} to {out_dir}")
 
@@ -200,7 +204,7 @@ def plot_epoch_datas(
     groups = data.data_frame().groupby(["c1", "c2"])
     num_groups = groups.ngroups
 
-    n_rows, n_cols = sh.row_col(num_groups)
+    n_rows, n_cols = hlp.row_col(num_groups)
     fig, axes = plt.subplots(nrows=n_rows, ncols=n_cols, figsize=(12, 15))
 
     group_list = list(groups)

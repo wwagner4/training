@@ -3,19 +3,12 @@
 ### Getting started
 
 #### Prerequisits
-* python 3.10+
-* poetry. For creating a virtual environment
+* uv
 * docker and docker compose
 
-Create the virual environment by running
-
-```
-poetry install
-poetry shell
-```
-#### Starting a sumosim robo map
-
 ##### Start a database
+
+In SUMOSIM/sumosim run: 
 ```
 docker compose up -d
 ```
@@ -31,10 +24,14 @@ e.g
 
 sumosim start --port 5555
 ```
-
+### Running
+`uv run sumot --help`
 
 ### Formating
-in project root call: `ruff format training/`
+in project root call: `ruff format`
 
 ### Linting
 in project root call: `ruff check` or `ruff check --fix`
+
+### Create a video from images
+`ffmpeg -framerate 10 -pattern_type glob -i '*.png' -c:v libx264 -pix_fmt yuv420p q-values-002.mp4`

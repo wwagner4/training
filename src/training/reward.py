@@ -45,13 +45,13 @@ class RobotEndEvents(RobotContinuousEndEvents):
 
 
 @dataclass
-class RobotContinouosEvents:
+class RobotContinuousEvents:
     robot_push_events: RobotPushEvents
 
 
 class EventMapper(ABC):
     @abstractmethod
-    def map_robot_continuous_events(self, events: RobotContinouosEvents) -> float:
+    def map_robot_continuous_events(self, events: RobotContinuousEvents) -> float:
         pass
 
     @abstractmethod
@@ -66,7 +66,7 @@ class EventMapper(ABC):
 
 
 class ConsiderAllEventMapper(EventMapper):
-    def map_robot_continuous_events(self, events: RobotContinouosEvents) -> float:
+    def map_robot_continuous_events(self, events: RobotContinuousEvents) -> float:
         match events.robot_push_events:
             case RobotPushEvents.PUSH:
                 return 0.5
@@ -286,8 +286,8 @@ def continuous_events_from_simulation_state(
     robot2_can_see = can_see(state.robot2, state.robot1)
     robot1_push_events = push_events(_dist, bool(robot1_can_see), bool(robot2_can_see))
     robot2_push_events = push_events(_dist, bool(robot2_can_see), bool(robot1_can_see))
-    e1 = RobotContinouosEvents(robot_push_events=robot1_push_events)
-    e2 = RobotContinouosEvents(robot_push_events=robot2_push_events)
+    e1 = RobotContinuousEvents(robot_push_events=robot1_push_events)
+    e2 = RobotContinuousEvents(robot_push_events=robot2_push_events)
     return e1, e2
 
 

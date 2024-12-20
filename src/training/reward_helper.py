@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 
 
-@dataclass
+@dataclass(frozen=True)
 class Interval:
     start: int
     end: int
 
 
-@dataclass
+@dataclass(frozen=True)
 class CollisionIntervals:
     inner: list[Interval]
     end: Interval | None

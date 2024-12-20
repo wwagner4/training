@@ -15,11 +15,10 @@ def row_col(n: int) -> tuple[int, int]:
     return rows, cols
 
 
-def write_dict_data(data: list, out_dir: Path, name: str) -> Path:
+def write_dict_data(data: pd.DataFrame, out_dir: Path, name: str) -> Path:
     filename = f"{name}.json"
     file = out_dir / filename
-    df = pd.DataFrame(data)
-    df.to_json(file, indent=2)
+    data.to_json(file, indent=2)
     return file
 
 
@@ -92,3 +91,8 @@ def progress_str(nr: int, count: int, start_time: datetime) -> str:
     _for = f1(int((until_time - now).total_seconds()))
     _for_all = f1(int((until_time - start_time).total_seconds()))
     return f"{nr}/{count} {start} -> {until} {_for}/{_for_all}"
+
+
+def create_values(n: int, min: float, max: float) -> list[float]:
+    diff = (max - min) / (n - 1)
+    return [min + x * diff for x in range(n)]

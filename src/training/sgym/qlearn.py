@@ -1,5 +1,6 @@
 from collections import defaultdict
 from collections.abc import Callable
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 
@@ -15,7 +16,19 @@ import training.sgym.core as sgym
 import training.simrunner as sr
 from training.simrunner import DiffDriveValues
 
-q_train_config = sgym.SEnvConfig(
+
+@dataclass(frozen=True)
+class QLearnConfig:
+    learning_rate: float
+    initial_epsilon: float
+    epsilon_decay: float
+    final_epsilon: float
+    discount_factor: float
+    doc_interval: int
+    doc_duration: int
+
+
+q_learn_env_config = sgym.SEnvConfig(
     max_wheel_speed=7,
     wheel_speed_steps=10,
     max_view_distance=700,
@@ -24,6 +37,15 @@ q_train_config = sgym.SEnvConfig(
     dtype=np.float32,
 )
 
+q_learn_config = QLearnConfig(
+    learning_rate=0.01,
+    initial_epsilon=0.01,
+    epsilon_decay=0.001,
+    final_epsilon=0.05,
+    discount_factor=0.95,
+    doc_interval=500,
+    doc_duration=20,
+)
 
 def q_train(
     name: str,
@@ -33,11 +55,10 @@ def q_train(
     reward_handler_name: sr.RewardHandlerName,
 ):
     loop_name = "q-train"
-    doc_interval = 100
 
     reward_handler = sr.RewardHandlerProvider.get(reward_handler_name)
     print(
-        f"### sgym {loop_name} e:{epoch_count} p:{port} "
+        f"Started {loop_name} e:{epoch_count} p:{port} "
         f"o:{opponent_name.value} rh:{reward_handler_name.value}"
     )
 
@@ -49,6 +70,7 @@ def q_train(
     results = []
     start_time = datetime.now()
     training_name = f"Q-{name}-{run_id}"
+    agent = None
     for epoch_nr in range(epoch_count):
         sim_name = f"{training_name}-{epoch_nr:06d}"
         opponent = sr.ControllerProvider.get(opponent_name)
@@ -66,8 +88,8 @@ def q_train(
             )
 
         env = sgym.SEnv(
-            senv_config=q_train_config,
-            senv_mapping=q_sgym_mapping(q_train_config),
+            senv_config=q_learn_env_config,
+            senv_mapping=q_sgym_mapping(q_learn_env_config),
             port=port,
             sim_name=sim_name,
             opponent=opponent,
@@ -77,11 +99,12 @@ def q_train(
 
         agent = QAgent(
             env=env,
-            learning_rate=0.01,
-            initial_epsilon=0.01,
-            epsilon_decay=0.001,
-            final_epsilon=0.05,
-            discount_factor=0.95,
+            reward_handler=reward_handler_name,
+            learning_rate=q_learn_config.learning_rate,
+            initial_epsilon=q_learn_config.initial_epsilon,
+            epsilon_decay=q_learn_config.epsilon_decay,
+            final_epsilon=q_learn_config.final_epsilon,
+            discount_factor=q_learn_config.discount_factor,
         )
 
         obs, _info = env.reset()
@@ -98,23 +121,30 @@ def q_train(
             obs = next_obs
             cnt += 1
 
-        progr = hlp.progress_str(epoch_nr, epoch_count, start_time)
-        print(
-            f"### finished epoch {training_name} {progr} " f"reward:{cuml_reward:10.2f}"
-        )
+        if epoch_nr % (q_learn_config.doc_interval // 10) == 0 and epoch_nr > 0:
+            progr = hlp.progress_str(epoch_nr, epoch_count, start_time)
+            print(
+                f"Finished epoch {training_name} {progr} " f"reward:{cuml_reward:10.2f}"
+            )
         results.append(
             {
                 "sim_steps": cnt,
-                "max_sim_steps": q_train_config.max_simulation_steps,
+                "max_sim_steps": q_learn_env_config.max_simulation_steps,
                 "epoch_nr": epoch_nr,
                 "max_epoch_nr": epoch_count,
                 "reward": cuml_reward,
             }
         )
         env.close()
-        if epoch_nr % doc_interval == 0 and epoch_nr > 0:
-            document(training_name, results, agent, epoch_nr)
-    document(training_name, results, agent, None)
+        work_dir = Path.home() / "tmp" / "sumosim" / "q" / training_name
+        work_dir.mkdir(exist_ok=True, parents=True)
+
+        if do_plot_q_values(
+            epoch_nr, q_learn_config.doc_interval, q_learn_config.doc_duration
+        ):
+            document_q_values(training_name, agent, epoch_nr, work_dir)
+        if epoch_nr % q_learn_config.doc_interval == 0 and epoch_nr > 0:
+            document(training_name, results, work_dir)
 
 
 def get_q_act_space(config: sgym.SEnvConfig) -> gym.Space:
@@ -185,11 +215,11 @@ def q_sgym_mapping(cfg: sgym.SEnvConfig) -> sgym.SEnvMapping:
 
 
 def initial_rewards(n: int) -> list[float]:
-    return (
+    return list(
         np.random.rand(
             n,
         )
-        * 0.1
+        * 0.001
     )
 
 
@@ -207,10 +237,25 @@ def calc_next_q_value(
     return temporal_difference, q_value
 
 
+def adjust_end(reward: float) -> float:
+    min_value = -150.0
+    max_value = 220.0
+    _r = (reward - min_value) / (max_value - min_value)
+    return min(max(0.0, _r), 1.0)
+
+
+def adjust_cont(reward: float) -> float:
+    min_value = -160.0
+    max_value = 660.0
+    _r = (reward - min_value) / (max_value - min_value)
+    return min(max(0.0, _r), 1.0)
+
+
 class QAgent:
     def __init__(
         self,
         env: gym.Env,
+        reward_handler: sr.RewardHandlerName,
         learning_rate: float,
         initial_epsilon: float,
         epsilon_decay: float,
@@ -234,6 +279,7 @@ class QAgent:
 
         self.lr = learning_rate
         self.discount_factor = discount_factor
+        self.reward_handler = reward_handler
 
         self.epsilon = initial_epsilon
         self.epsilon_decay = epsilon_decay
@@ -262,6 +308,15 @@ class QAgent:
         next_obs: tuple,
     ):
         """Updates the Q-value of an action."""
+
+        match self.reward_handler:
+            case sr.RewardHandlerName.END_CONSIDER_ALL:
+                reward = adjust_end(reward)
+            case sr.RewardHandlerName.CONTINUOUS_CONSIDER_ALL:
+                reward = adjust_cont(reward)
+            case _:
+                raise ValueError(f"Unknown reward handler {self.reward_handler}")
+
         temporal_difference, self.q_values[obs][action] = calc_next_q_value(
             reward,
             terminated,
@@ -292,20 +347,22 @@ def _curry_velo_from_index(
     return inner
 
 
-def document(name: str, results: list[dict], agent: QAgent, epoch_nr: int | None):
-    work_dir = Path.home() / "tmp" / "sumosim"
-    work_dir.mkdir(exist_ok=True, parents=True)
+def do_plot_q_values(n: int, interval: int, duration: int) -> bool:
+    return bool(n % interval < duration)
 
-    heat_path = plot_q_values(agent, epoch_nr, name, work_dir)
-    print(f"Wrote heatmap to {heat_path}")
 
+def document_q_values(name: str, agent: QAgent, epoch_nr: int | None, work_dir: Path):
+    work_dir = work_dir / "v"
+    work_dir.mkdir(parents=True, exist_ok=True)
+    plot_q_values(agent, epoch_nr, name, work_dir)
+
+
+def document(name: str, results: list[dict], work_dir: Path):
     data_path = work_dir / f"{name}.json"
     df = pd.DataFrame(results)
     df.to_json(data_path, indent=2)
-    print(f"Wrote data to {data_path}")
-
-    plot_path = plot_boxplot(df, name, work_dir)
-    print(f"Wrote plot to {plot_path}")
+    out = plot_boxplot(df, name, work_dir)
+    print(f"--- wrote boxplot to {out}")
 
 
 def plot_mean(data: pd.DataFrame, name: str, work_dir: Path) -> Path:
@@ -321,30 +378,29 @@ def plot_mean(data: pd.DataFrame, name: str, work_dir: Path) -> Path:
     return out_path
 
 
-def plot_q_values(
-    agent: QAgent, epoch_nr: int | None, name: str, work_dir: Path
-) -> Path:
+def plot_q_values(agent: QAgent, epoch_nr: int, name: str, work_dir: Path) -> Path:
     def all_obs() -> list:
         all = []
         for i0 in range(4):
-            for i1 in range(q_train_config.view_distance_steps):
-                for i2 in range(q_train_config.view_distance_steps):
-                    for i3 in range(q_train_config.view_distance_steps):
+            for i1 in range(q_learn_env_config.view_distance_steps):
+                for i2 in range(q_learn_env_config.view_distance_steps):
+                    for i3 in range(q_learn_env_config.view_distance_steps):
                         all.append((i0, i1, i2, i3))
         return all
 
-    all = all_obs()
-    mv = []
-    for obs in all:
+    _all = all_obs()
+    obs_action_data = []
+    for obs in _all:
         values = agent.q_values[obs]
-        mv.append(values)
-    matrix = np.matrix(mv, dtype=q_train_config.dtype)
+        obs_action_data.append(values)
+    obs_action_matrix = np.matrix(obs_action_data, dtype=q_learn_env_config.dtype)
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 12))
-    sbn.heatmap(matrix, vmin=0.0, vmax=1.0, ax=ax)
+    sbn.heatmap(obs_action_matrix, vmin=0.0, vmax=1.0, ax=ax)
+    ax.set_title(f"Q Values for {name}")
+    ax.set_xlabel("action")
+    ax.set_ylabel("observation")
 
-    out_path = work_dir / f"{name}-heat.png"
-    if epoch_nr:
-        out_path = work_dir / f"{name}-{epoch_nr:010d}-heat.png"
+    out_path = work_dir / f"{name}-{epoch_nr:010d}-heat.png"
     fig.savefig(out_path)
     plt.close(fig)
     return out_path
