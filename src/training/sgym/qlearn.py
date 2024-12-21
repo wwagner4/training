@@ -43,8 +43,8 @@ q_learn_config = QLearnConfig(
     epsilon_decay=0.001,
     final_epsilon=0.05,
     discount_factor=0.95,
-    doc_interval=500,
-    doc_duration=20,
+    doc_interval=1000,
+    doc_duration=100,
 )
 
 def q_train(
@@ -396,7 +396,7 @@ def plot_q_values(agent: QAgent, epoch_nr: int, name: str, work_dir: Path) -> Pa
     obs_action_matrix = np.matrix(obs_action_data, dtype=q_learn_env_config.dtype)
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 12))
     sbn.heatmap(obs_action_matrix, vmin=0.0, vmax=1.0, ax=ax)
-    ax.set_title(f"Q Values for {name}")
+    ax.set_title(f"Q Values for {name} epoch {epoch_nr}")
     ax.set_xlabel("action")
     ax.set_ylabel("observation")
 

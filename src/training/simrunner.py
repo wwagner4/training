@@ -39,8 +39,7 @@ class ReceiveCommand:
 
 
 class ControllerName(str, Enum):
-    FAST_CIRCLE = ("fast-circle",)
-    SLOW_CIRCLE = ("slow-circle",)
+    STAND_STILL = ("stand-still",)
     STAY_IN_FIELD = ("stay-in-field",)
     TUMBLR = ("tumblr",)
     BLIND_TUMBLR = ("blind-tumblr",)
@@ -409,17 +408,11 @@ class ControllerProvider:
     @staticmethod
     def get(name: ControllerName) -> Controller:
         match name:
-            case ControllerName.FAST_CIRCLE:
+            case ControllerName.STAND_STILL:
                 module = importlib.import_module(
-                    "training.controller.circle_controller"
+                    "training.controller.stand_still_controller"
                 )
-                class_ = module.FastCircleController
-                return class_()
-            case ControllerName.SLOW_CIRCLE:
-                module = importlib.import_module(
-                    "training.controller.circle_controller"
-                )
-                class_ = module.SlowCircleController
+                class_ = module.StandStillController
                 return class_()
             case ControllerName.TUMBLR:
                 module = importlib.import_module(
