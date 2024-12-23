@@ -1,6 +1,5 @@
 import datetime as dt
 import pprint
-from abc import ABC
 
 import pymongo
 from bson import ObjectId
@@ -10,9 +9,9 @@ SIM_STATUS_FINISHED = "finished"
 SIM_STATUS_ERROR = "error"
 
 
-def create_client() -> ABC:
+def create_client(db_host: str, db_port: int) -> pymongo.MongoClient:
     # noinspection PyTypeChecker
-    return pymongo.MongoClient("mongodb://localhost:27017/")
+    return pymongo.MongoClient(f"mongodb://{db_host}:{db_port}/")
 
 
 def _sim_collection(client: pymongo.MongoClient):
@@ -65,11 +64,16 @@ def find_running(
     return list(sims.find(query))
 
 
+def list_match_name_part(client, name_part: str) -> list[dict]:
+    pattern_str = f".*{name_part}.*"
+    return list(_sim_collection(client).find({"name": {"$regex": pattern_str}}))
+
+
 ################## query #####################
 
 
-def count_running():
-    with create_client() as client:
+def count_running(db_host: str, db_port: int):
+    with create_client(db_host, db_port) as client:
         sims = _sim_collection(client)
         query = {
             "status": SIM_STATUS_RUNNING,
@@ -78,8 +82,8 @@ def count_running():
         print(f"{cnt} simulations are currently running")
 
 
-def list_running():
-    with create_client() as client:
+def list_running(db_host: str, db_port: int):
+    with create_client(db_host, db_port) as client:
         sims = _sim_collection(client)
         query = {
             "status": SIM_STATUS_RUNNING,
@@ -88,23 +92,23 @@ def list_running():
             print(f"{i} {r}")
 
 
-def list_latest_full():
-    with create_client() as client:
+def list_latest_full(db_host: str, db_port: int):
+    with create_client(db_host, db_port) as client:
         sims = _sim_collection(client)
         for i, r in enumerate(sims.find().sort({"started_at": -1}).limit(10)):
             print(f"{i} {r}")
 
 
-def list_all():
-    with create_client() as client:
+def list_all(db_host: str, db_port: int):
+    with create_client(db_host, db_port) as client:
         sims = _sim_collection(client)
         for i, r in enumerate(sims.find().sort({"started_at": -1}).limit(10)):
             print(f"--- {i} ---------------------------------")
             pprint.pprint(r)
 
 
-def list_latest():
-    with create_client() as client:
+def list_latest(db_host: str, db_port: int):
+    with create_client(db_host, db_port) as client:
         sims = _sim_collection(client)
         for i, r in enumerate(
             sims.find({}, {"started_at": 1, "status": 1, "name": 1, "description": 1})
@@ -119,8 +123,8 @@ def list_latest():
             pprint.pprint(r)
 
 
-def delete_old_running():
-    with create_client() as client:
+def delete_old_running(db_host: str, db_port: int):
+    with create_client(db_host, db_port) as client:
         sims = _sim_collection(client)
         now = dt.datetime.now()
         diff = dt.timedelta(days=1)
@@ -133,8 +137,8 @@ def delete_old_running():
         print(f"deleted {answer.deleted_count} using {query}")
 
 
-def delete_old():
-    with create_client() as client:
+def delete_old(db_host: str, db_port: int):
+    with create_client(db_host, db_port) as client:
         sims = _sim_collection(client)
         now = dt.datetime.now()
         diff = dt.timedelta(hours=24)

@@ -1,6 +1,6 @@
 import pytest
 
-from training.helper import row_col
+import training.helper as hlp
 
 row_col_testdata = [
     (10, (4, 3)),
@@ -10,5 +10,21 @@ row_col_testdata = [
 
 @pytest.mark.parametrize("n, expected", row_col_testdata)
 def test_row_col(n: int, expected: (int, int)):
-    result = row_col(n)
+    result = hlp.row_col(n)
+    assert result == expected
+
+
+parse_integers_data = [
+    ("", []),
+    ("1", [1]),
+    ("1,200,4", [1, 200, 4]),
+    ("1, 3", [1, 3]),
+    ("1, \n3\n", [1, 3]),
+    ("\t1,\t3\n", [1, 3]),
+]
+
+
+@pytest.mark.parametrize("integers, expected", parse_integers_data)
+def test_parse_integers(integers: str, expected: list[int]) -> None:
+    result = hlp.parse_integers(integers)
     assert result == expected

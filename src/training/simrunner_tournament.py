@@ -35,7 +35,10 @@ class Result:
 
 
 def start(
-    port: int,
+    sim_host: str,
+    sim_port: int,
+    db_host: str,
+    db_port: int,
     name: str,
     controller_names: list[sr.ControllerName],
     reward_handler_name: sr.RewardHandlerName,
@@ -66,7 +69,10 @@ def start(
     for controller_name1, controller_name2 in combinations:
         for epoch_nr in range(epoch_count):
             reward1, reward2, msg = run_epoch(
-                port,
+                sim_host,
+                sim_port,
+                db_host,
+                db_port,
                 name,
                 max_simulation_steps,
                 combination_nr,
@@ -103,7 +109,10 @@ def start(
 
 
 def run_epoch(
-    port: int,
+    sim_host: str,
+    sim_port: int,
+    db_host: str,
+    db_port: int,
     name: str,
     max_simulation_steps: int,
     combination_number: int,
@@ -132,7 +141,7 @@ def run_epoch(
     if record:
         sim_info = SimInfo(
             sim_name=sim_name,
-            port=port,
+            port=sim_port,
             name1=controller1.name(),
             desc1=controller1.description(),
             name2=controller2.name(),
@@ -140,7 +149,9 @@ def run_epoch(
             max_simulation_steps=max_simulation_steps,
         )
     try:
-        response: sr.Response = sr.reset(port, max_simulation_steps, reward_handler)
+        response: sr.Response = sr.reset(
+            sim_host, sim_port, db_host, db_port, max_simulation_steps, reward_handler
+        )
         cnt = 0
         cumulative_reward1 = 0.0
         cumulative_reward2 = 0.0
@@ -169,7 +180,10 @@ def run_epoch(
                     response = sr.step(
                         request,
                         reward_handler,
-                        port,
+                        sim_host,
+                        sim_port,
+                        db_host,
+                        db_port,
                         stop,
                         max_simulation_steps,
                         sim_info,

@@ -16,7 +16,4 @@ class StandStillController(sr.Controller):
         return "stand-still"
 
     def description(self) -> dict:
-        return {
-            "description": "Robot which does not move at all"
-        }
-
+        return {"description": "Robot which does not move at all"}

@@ -83,13 +83,14 @@ def sample(
     name: str,
     epoch_count: int,
     record: bool,
-    port: int,
+    sim_host: str,
+    sim_port: int,
     opponent_name: sr.ControllerName,
     reward_handler_name: sr.RewardHandlerName,
 ):
     reward_handler = sr.RewardHandlerProvider.get(reward_handler_name)
     print(
-        f"Started sgym sample e:{epoch_count} p:{port} "
+        f"Started sgym sample e:{epoch_count} p:{sim_port} "
         f"o:{opponent_name.value} rh:{reward_handler_name.value} r:{record}"
     )
 
@@ -108,7 +109,7 @@ def sample(
                 desc1={"info": "Agent with sample actions"},
                 name2=opponent.name(),
                 desc2=opponent.description(),
-                port=port,
+                port=sim_port,
                 sim_name=sim_name,
                 max_simulation_steps=sgym.default_senv_config.max_simulation_steps,
             )
@@ -116,7 +117,8 @@ def sample(
         env = sgym.SEnv(
             senv_config=sgym.default_senv_config,
             senv_mapping=cont_sgym_mapping(),
-            port=port,
+            sim_host=sim_host,
+            sim_port=sim_port,
             sim_name=sim_name,
             opponent=opponent,
             reward_handler=reward_handler,

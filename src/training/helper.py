@@ -1,5 +1,5 @@
 import math
-import time
+import uuid
 from datetime import datetime
 from pathlib import Path
 
@@ -42,8 +42,8 @@ def create_lines(desc: dict, line_index_list: list[list[int]]) -> str:
     return "\n".join([line(a) for a in line_index_list])
 
 
-def time_id() -> str:
-    return f"{int(time.time() * 10) % 86400:05d}"
+def unique() -> str:
+    return str(uuid.uuid4())[0:6]
 
 
 def cont_to_discrete(
@@ -96,3 +96,10 @@ def progress_str(nr: int, count: int, start_time: datetime) -> str:
 def create_values(n: int, min: float, max: float) -> list[float]:
     diff = (max - min) / (n - 1)
     return [min + x * diff for x in range(n)]
+
+
+def parse_integers(integers: str) -> list[int]:
+    if not integers:
+        return []
+    split = integers.split(",")
+    return [int(i.strip()) for i in split]

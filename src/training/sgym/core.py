@@ -41,7 +41,10 @@ class SEnv(gym.Env):
         self,
         senv_config: SEnvConfig,
         senv_mapping: SEnvMapping,
-        port: int,
+        sim_host: str,
+        sim_port: int,
+        db_host: str,
+        db_port: int,
         sim_name: str,
         opponent: sr.Controller,
         reward_handler: sr.RewardHandler,
@@ -49,7 +52,10 @@ class SEnv(gym.Env):
     ):
         self.senv_config = senv_config
         self.senv_config1 = senv_mapping
-        self.port = port
+        self.sim_host = sim_host
+        self.sim_port = sim_port
+        self.db_host = db_host
+        self.db_port = db_port
         self.sim_name = sim_name
         self.opponent_controller = opponent
         self.reward_handler = reward_handler
@@ -65,7 +71,12 @@ class SEnv(gym.Env):
     ) -> tuple[dict[str, Any], dict[str, Any]]:
         super().reset(seed=seed)
         response = sr.reset(
-            self.port, self.senv_config.max_simulation_steps, self.reward_handler
+            self.sim_host,
+            self.sim_port,
+            self.db_host,
+            self.db_port,
+            self.senv_config.max_simulation_steps,
+            self.reward_handler,
         )
         match response:
             case sr.SensorResponse(sensor1=sensor1):
@@ -90,7 +101,10 @@ class SEnv(gym.Env):
         response = sr.step(
             request,
             self.reward_handler,
-            self.port,
+            self.sim_host,
+            self.sim_port,
+            self.db_host,
+            self.db_port,
             should_stop,
             self.senv_config.max_simulation_steps,
             self.sim_info,
