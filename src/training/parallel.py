@@ -114,18 +114,20 @@ def start_simulator(sim_name: str, network_name: str) -> str:
         return "<already running>"
 
 
-def is_parallel_index_valid(
-    parallel_config: ParallelConfig, max_parallel: int, parallel_index: int
-) -> str | None:
+def parse_parallel_indexes(parallel_indexes: str, parallel_config: ParallelConfig, max_parallel: int) -> list[int]:
     configs = create_train_configs1(parallel_config, max_parallel)
+    if parallel_indexes.lower() == "all":
+        return list(range(len(configs)))
+    indexes = hlp.parse_integers(parallel_indexes)
     max_index = len(configs) - 1
-    if parallel_index <= max_index:
-        return None
-    return (
-        f"ERROR: Cannot start simulation for parallel index {parallel_index} "
-        f"of {parallel_config.value} "
-        f"with max_parallel {max_parallel}. Max index is {max_index}"
-    )
+    for index in indexes:
+        if index > max_index:
+            raise ValueError (
+            f"ERROR: Cannot start simulation for parallel index {parallel_index} "
+            f"of {parallel_config.value} "
+            f"with max_parallel {max_parallel}. Max index is {max_index}"
+            )
+    return indexes
 
 
 def start_training(
@@ -141,9 +143,6 @@ def start_training(
     keep_container: bool,
     out_dir: Path,
 ) -> str:
-    msg = is_parallel_index_valid(parallel_config, max_parallel, parallel_index)
-    if msg is not None:
-        return msg
     out_dir_str = str(out_dir.absolute())
     user = call(["id", "-u"]).strip()
     group = call(["id", "-g"]).strip()
@@ -248,6 +247,7 @@ def parallel_main(
     db_host: str,
     db_port: int,
     keep_container: bool,
+    record: bool,
     out_dir: str,
 ):
     print("Started parallel")
@@ -255,7 +255,7 @@ def parallel_main(
     out_path.mkdir(exist_ok=True, parents=True)
     if subdir_exists(out_path, name):
         raise RuntimeError(f"Output directory '{out_path}' {name} already exists")
-    for parallel_index in hlp.parse_integers(parallel_indexes):
+    for parallel_index in parse_parallel_indexes(parallel_indexes, parallel_config, max_parallel):
         start_training_configuration(
             name,
             parallel_config,

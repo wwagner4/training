@@ -35,19 +35,6 @@ def cont_obs_space(config: sgym.SEnvConfig) -> gym.Space:
 def map_cont_sensor_to_obs(
     sensor: sr.CombiSensor, config: sgym.SEnvConfig
 ) -> dict[str, any]:
-    def view_mapping() -> int:
-        match sensor.opponent_in_sector:
-            case sr.SectorName.UNDEF:
-                return 0
-            case sr.SectorName.LEFT:
-                return 1
-            case sr.SectorName.CENTER:
-                return 2
-            case sr.SectorName.RIGHT:
-                return 3
-            case _:
-                raise ValueError(f"Wrong sector name {sensor.opponent_in_sector}")
-
     value = [
         [
             sensor.left_distance,
@@ -56,7 +43,7 @@ def map_cont_sensor_to_obs(
         ]
     ]
     return {
-        "view": view_mapping(),
+        "view": sr.sector_mapping(sensor.opponent_in_sector),
         "border": np.array(value, dtype=config.dtype),
     }
 

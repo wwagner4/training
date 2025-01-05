@@ -84,7 +84,7 @@ def start(
             )
             if epoch_count % 200 == 0 and epoch_count > 0:
                 print(
-                    f"Finished epoch c:{combination_nr}/{combinations_count} "
+                    f"Finished epoch c:{combination_nr + 1}/{combinations_count} "
                     f"e:{epoch_nr + 1}/{epoch_count} "
                     f"r1:{reward1:10.2f} r2:{reward2:10.2f} {msg}"
                 )

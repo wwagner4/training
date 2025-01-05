@@ -171,7 +171,7 @@ def _q_train(
     print(
         f"Started {name} l:{loop_name} e:{epoch_count} h:{sim_host} p:{sim_port} "
         f"o:{opponent_name.value} rh:{reward_handler_name.value} "
-        f"di:{doc_interval} dd:{doc_duration}  rc:{record_count}"
+        f"di:{doc_interval} dd:{doc_duration}  rc:{record_count} d:{out_path.absolute()}"
     )
     opponent = sr.ControllerProvider.get(opponent_name)
     env = sgym.SEnv(
@@ -237,7 +237,7 @@ def _q_train(
         )
         if epoch_nr % (max(1, doc_interval // 10)) == 0:
             progr = hlp.progress_str(epoch_nr, epoch_count, start_time)
-            print(f"Finished epoch {name} {progr} " f"reward:{cuml_reward:10.2f}")
+            print(f"Finished epoch {name} {progr} " f"reward:{cuml_reward:15.5f}")
         if do_plot_q_values(
             epoch_nr, doc_interval, doc_duration, plot_q_values_full
         ) or is_last(epoch_count, epoch_nr):
@@ -247,7 +247,7 @@ def _q_train(
         if (epoch_nr % doc_interval == 0 and epoch_nr > 0) or is_last(
             epoch_count, epoch_nr
         ):
-            document(name, results, q_learn_config, out_path)
+            document(name, results, epoch_nr, q_learn_config, out_path)
     env.close()
     print(f"Finished training {name} {loop_name} p:{sim_port}")
     return sim_port
@@ -303,26 +303,13 @@ def get_q_obs_space(config: sgym.SEnvConfig) -> gym.Space:
 def map_q_sensor_to_obs(
     sensor: sr.CombiSensor, config: sgym.SEnvConfig
 ) -> tuple[int, int, int, int]:
-    def view_mapping() -> int:
-        match sensor.opponent_in_sector:
-            case sr.SectorName.UNDEF:
-                return 0
-            case sr.SectorName.LEFT:
-                return 1
-            case sr.SectorName.CENTER:
-                return 2
-            case sr.SectorName.RIGHT:
-                return 3
-            case _:
-                raise ValueError(f"Wrong sector name {sensor.opponent_in_sector}")
-
     def discrete(distance: float) -> int:
         return hlp.cont_to_discrete(
             distance, 0.0, config.max_view_distance, config.view_distance_steps
         )
 
     return (
-        view_mapping(),
+        sr.sector_mapping(sensor.opponent_in_sector),
         discrete(sensor.left_distance),
         discrete(sensor.front_distance),
         discrete(sensor.right_distance),
@@ -503,26 +490,18 @@ def document_q_values(
     plot_q_values(agent, epoch_nr, sim_nr, name, work_dir, q_learn_env_config)
 
 
-def document(name: str, results: list[dict], config: QLearnConfig, work_dir: Path):
+def document(
+    name: str, results: list[dict], epoch_nr: int, config: QLearnConfig, work_dir: Path
+):
     data_path = work_dir / f"{name}.json"
     df = pd.DataFrame(results)
     df.to_json(data_path, indent=2)
     plot_boxplot(df, name, config, work_dir)
-    # print(f"--- wrote boxplot to {out}")
-
-
-def plot_mean(data: pd.DataFrame, name: str, work_dir: Path) -> Path:
-    matplotlib.use("agg")
-    y = data["reward"]
-    x1, y1 = hlp.compress_means(y, 100)
-    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 12))
-    ax.plot(x1, y1, label="reward")
-    ax.set_title(name)
-    ax.set_ylim(ymin=-100, ymax=100)
-    out_path = work_dir / f"{name}-mean.png"
-    fig.savefig(out_path)
-    plt.close(fig)
-    return out_path
+    plot_all(df, name, config, work_dir)
+    plain_dir = work_dir / "plain"
+    plain_dir.mkdir(parents=True, exist_ok=True)
+    plot_plain(df, name, epoch_nr, config, plain_dir)
+    print(f"Wrote plots for {name} to {work_dir.absolute()}")
 
 
 def plot_q_values(
@@ -562,6 +541,15 @@ def plot_q_values(
     return out_path
 
 
+def title(column: str, name: str, config: QLearnConfig) -> str:
+    lines = [
+        f"{column} {name}",
+        f"discount:{config.discount_factor} learning-rate:{config.learning_rate}",
+        f"initial-epsilon:{config.initial_epsilon} final-epsilon:{config.final_epsilon} epsilon-decay:{config.epsilon_decay}",
+    ]
+    return "\n".join(lines)
+
+
 def plot_boxplot(
     data: pd.DataFrame, name: str, config: QLearnConfig, work_dir: Path
 ) -> Path:
@@ -569,33 +557,19 @@ def plot_boxplot(
     column = "reward"
     y = data[column]
 
-    def title() -> str:
-        lines = [
-            f"{column} {name}",
-            f"discount:{config.discount_factor} learning-rate:{config.learning_rate}",
-            f"initial-epsilon:{config.initial_epsilon} final-epsilon:{config.final_epsilon} epsilon-decay:{config.epsilon_decay}",
-        ]
-        return "\n".join(lines)
-
     def split_data(data: list[float], n: int) -> list[list[str], list[list[float]]]:
         data_len = len(data)
         if data_len < 10 * n:
             # Less than 10 data per boxplot
             return [str(data_len)], [data]
-        if data_len <= n:
-            return range(data_len), data
-        d = np.array(data)
-        cropped = (data_len // n) * n
-        split = np.split(d[0:cropped], n)
-        diff = cropped // n
-        xs = range(0, cropped, diff)
+        xs, ys = hlp.compress_means(data, n)
         xs_str = [str(x) for x in xs]
-        return xs_str, split
+        return xs_str, ys
 
     x1, y1 = split_data(y, 15)
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 12))
     ax.boxplot(y1, labels=x1)
-    ax.set_title(title())
+    ax.set_title(title(column, name, config))
     ax.set_ylim(ymin=-200, ymax=200)
     ax.set_ylabel(column)
     ax.set_xlabel("epoch nr")
@@ -606,9 +580,12 @@ def plot_boxplot(
     return out_path
 
 
-def plot_all(data: pd.DataFrame, name: str, work_dir: Path) -> Path:
+def plot_all(
+    data: pd.DataFrame, name: str, config: QLearnConfig, work_dir: Path
+) -> Path:
     matplotlib.use("agg")
-    y = data["reward"]
+    column = "reward"
+    y = data[column]
     window_size = 1
     y1 = np.convolve(y, np.ones(window_size) / window_size, mode="valid")
     window_size = 10
@@ -617,8 +594,26 @@ def plot_all(data: pd.DataFrame, name: str, work_dir: Path) -> Path:
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 12))
     ax.plot(y1, label="reward")
     ax.plot(y2, label="reward (flat)")
-    ax.set_title(name)
+    ax.set_title(title(column, name, config))
     out_path = work_dir / f"{name}-all.png"
+
+    fig.savefig(out_path)
+    plt.close(fig)
+    return out_path
+
+
+def plot_plain(
+    data: pd.DataFrame, name: str, epoch_nr: int, config: QLearnConfig, work_dir: Path
+) -> Path:
+    matplotlib.use("agg")
+    column = "reward"
+    y = data[column]
+    window_size = 1
+
+    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 12))
+    ax.plot(y, label="reward")
+    ax.set_title(title(column, name, config))
+    out_path = work_dir / f"{name}-{epoch_nr:05d}plain.png"
 
     fig.savefig(out_path)
     plt.close(fig)

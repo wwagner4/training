@@ -312,9 +312,9 @@ def parallel(
         typer.Option(
             "--parallel-indexes",
             "-i",
-            help="Comma separated list of indexes. E.g. '1,2,3,4'",
+            help="Comma separated list of indexes or 'all'. E.g. '1,2,3,4', 'all'",
         ),
-    ],
+    ] = "all",
     epoch_count: Annotated[
         int,
         typer.Option(
@@ -338,6 +338,12 @@ def parallel(
             help="Keep container after processing. Useful for error analyse",
         ),
     ] = False,
+    record: Annotated[
+        bool,
+        typer.Option(
+            "--record", "-r", help="Define if the simulation is recorded or not"
+        ),
+    ] = False,
     out_dir: Annotated[
         str,
         typer.Option("--out-dir", "-o", help="Output directory. Must be absolute"),
@@ -352,6 +358,7 @@ def parallel(
         db_host=db_host,
         db_port=db_port,
         keep_container=keep_container,
+        record=record,
         out_dir=out_dir,
     )
 

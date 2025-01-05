@@ -45,10 +45,8 @@ class SEnv(gym.Env):
         sim_port: int,
         db_host: str,
         db_port: int,
-        sim_name: str,
         opponent: sr.Controller,
         reward_handler: sr.RewardHandler,
-        sim_info: sr.SimInfo,
     ):
         self.senv_config = senv_config
         self.senv_config1 = senv_mapping
@@ -56,10 +54,10 @@ class SEnv(gym.Env):
         self.sim_port = sim_port
         self.db_host = db_host
         self.db_port = db_port
-        self.sim_name = sim_name
+        self.sim_name = None
         self.opponent_controller = opponent
         self.reward_handler = reward_handler
-        self.sim_info = sim_info
+        self.sim_info = None
 
         self.sim_action_response: sr.SensorResponse | None = None
 
@@ -67,9 +65,15 @@ class SEnv(gym.Env):
         self.observation_space = senv_mapping.obs_space(senv_config)
 
     def reset(
-        self, seed: int | None = None, options: dict[str, Any] | None = None
+        self,
+        sim_info: sr.SimInfo | None,
+        sim_name: str,
+        seed: int | None = None,
+        options: dict[str, Any] | None = None,
     ) -> tuple[dict[str, Any], dict[str, Any]]:
         super().reset(seed=seed)
+        self.sim_info = sim_info
+        self.sim_name = sim_name
         response = sr.reset(
             self.sim_host,
             self.sim_port,

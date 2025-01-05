@@ -480,3 +480,17 @@ class RewardHandlerProvider:
                 return class_()
             case _:
                 raise RuntimeError(f"Unknown reward handler {name}")
+
+
+def sector_mapping(sector_name: SectorName) -> int:
+    match sector_name:
+        case SectorName.UNDEF:
+            return 0
+        case SectorName.LEFT:
+            return 1
+        case SectorName.CENTER:
+            return 2
+        case SectorName.RIGHT:
+            return 3
+        case _:
+            raise ValueError(f"Wrong sector name {sensor.opponent_in_sector}")

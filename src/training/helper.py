@@ -64,10 +64,10 @@ def compress_means(data: list[float], n: int) -> list[list[float], list[float]]:
     if data_len <= n:
         return range(data_len), data
     d = np.array(data)
-    croped = (data_len // n) * n
-    split = np.split(d[0:croped], n)
-    diff = croped // n
-    xs = range(0, croped, diff)
+    cropped = (data_len // n) * n
+    split = np.split(d[0:cropped], n)
+    diff = cropped // n
+    xs = range(0, cropped, diff)
     return xs, np.mean(split, axis=1)
 
 
@@ -83,14 +83,14 @@ def progress_str(nr: int, count: int, start_time: datetime) -> str:
     start = f(start_time)
     now = datetime.now()
     if nr == 0:
-        return f"{nr}/{count} since::{start}"
+        return f"{nr + 1}/{count} since::{start}"
     diff = now - start_time
     step_time = diff / nr
     until_time = start_time + (count * step_time)
     until = f(until_time)
     _for = f1(int((until_time - now).total_seconds()))
     _for_all = f1(int((until_time - start_time).total_seconds()))
-    return f"{nr}/{count} {start} -> {until} {_for}/{_for_all}"
+    return f"{nr + 1}/{count} {start} -> {until} {_for}/{_for_all}"
 
 
 def create_values(n: int, min: float, max: float) -> list[float]:
