@@ -87,6 +87,7 @@ def q_config(
             opponent_name=sr.ControllerName.STAND_STILL,
             reward_handler_name=sr.RewardHandlerName.CONTINUOUS_CONSIDER_ALL,
             record=False,
+            plot_q_values_full=False,
             out_dir=out_dir,
             q_learn_env_config=default_env_config,
             q_learn_config=q_learn_config,
@@ -114,22 +115,24 @@ def q_train(
     opponent_name: sr.ControllerName,
     reward_handler_name: sr.RewardHandlerName,
     record: bool,
+    plot_q_values_full: bool,
     out_dir: str,
 ) -> int:
     return _q_train(
-        name,
-        auto_naming,
-        epoch_count,
-        sim_host,
-        sim_port,
-        db_host,
-        db_port,
-        opponent_name,
-        reward_handler_name,
-        record,
-        out_dir,
-        default_env_config,
-        default_q_learn_config,
+        name=name,
+        auto_naming=auto_naming,
+        epoch_count=epoch_count,
+        sim_host=sim_host,
+        sim_port=sim_port,
+        db_host=db_host,
+        db_port=db_port,
+        opponent_name=opponent_name,
+        reward_handler_name=reward_handler_name,
+        record=record,
+        plot_q_values_full=plot_q_values_full,
+        out_dir=out_dir,
+        q_learn_env_config=default_env_config,
+        q_learn_config=default_q_learn_config,
     )
 
 
@@ -144,6 +147,7 @@ def _q_train(
     opponent_name: sr.ControllerName,
     reward_handler_name: sr.RewardHandlerName,
     record: bool,
+    plot_q_values_full: bool,
     out_dir: str,
     q_learn_env_config: sgym.SEnvConfig,
     q_learn_config: QLearnConfig,
@@ -169,11 +173,28 @@ def _q_train(
         f"o:{opponent_name.value} rh:{reward_handler_name.value} "
         f"di:{doc_interval} dd:{doc_duration}  rc:{record_count}"
     )
-    agent = None
+    opponent = sr.ControllerProvider.get(opponent_name)
+    env = sgym.SEnv(
+        senv_config=q_learn_env_config,
+        senv_mapping=q_sgym_mapping(q_learn_env_config),
+        sim_host=sim_host,
+        sim_port=sim_port,
+        db_host=db_host,
+        db_port=db_port,
+        opponent=opponent,
+        reward_handler=reward_handler,
+    )
+    agent = QAgent(
+        env=env,
+        reward_handler=reward_handler_name,
+        learning_rate=q_learn_config.learning_rate,
+        initial_epsilon=q_learn_config.initial_epsilon,
+        epsilon_decay=q_learn_config.epsilon_decay,
+        final_epsilon=q_learn_config.final_epsilon,
+        discount_factor=q_learn_config.discount_factor,
+    )
     for epoch_nr in range(epoch_count):
         sim_name = f"{name}-{epoch_nr:06d}"
-        opponent = sr.ControllerProvider.get(opponent_name)
-
         sim_info = None
         if record and (
             epoch_nr % record_interval == 0 or is_last(epoch_count, epoch_nr)
@@ -187,32 +208,8 @@ def _q_train(
                 sim_name=sim_name,
                 max_simulation_steps=sgym.default_senv_config.max_simulation_steps,
             )
-
-        env = sgym.SEnv(
-            senv_config=q_learn_env_config,
-            senv_mapping=q_sgym_mapping(q_learn_env_config),
-            sim_host=sim_host,
-            sim_port=sim_port,
-            db_host=db_host,
-            db_port=db_port,
-            sim_name=sim_name,
-            opponent=opponent,
-            reward_handler=reward_handler,
-            sim_info=sim_info,
-        )
-
-        agent = QAgent(
-            env=env,
-            reward_handler=reward_handler_name,
-            learning_rate=q_learn_config.learning_rate,
-            initial_epsilon=q_learn_config.initial_epsilon,
-            epsilon_decay=q_learn_config.epsilon_decay,
-            final_epsilon=q_learn_config.final_epsilon,
-            discount_factor=q_learn_config.discount_factor,
-        )
-
-        obs, _info = env.reset()
-        cnt = 0
+        obs, _info = env.reset(sim_info, sim_name)
+        sim_nr = 0
         episode_over = False
         cuml_reward = 0.0
         while not episode_over:
@@ -223,30 +220,35 @@ def _q_train(
             cuml_reward += reward
             episode_over = terminated or truncated
             obs = next_obs
-            cnt += 1
+            if plot_q_values_full:
+                document_q_values(
+                    name, agent, epoch_nr, sim_nr, out_path, q_learn_env_config
+                )
+            sim_nr += 1
 
-        if epoch_nr % (max(1, doc_interval // 10)) == 0 and epoch_nr > 0:
-            progr = hlp.progress_str(epoch_nr, epoch_count, start_time)
-            print(f"Finished epoch {name} {progr} " f"reward:{cuml_reward:10.2f}")
         results.append(
             {
-                "sim_steps": cnt,
+                "sim_steps": sim_nr,
                 "max_sim_steps": q_learn_env_config.max_simulation_steps,
                 "epoch_nr": epoch_nr,
                 "max_epoch_nr": epoch_count,
                 "reward": cuml_reward,
             }
         )
-        env.close()
-
-        if do_plot_q_values(epoch_nr, doc_interval, doc_duration) or is_last(
-            epoch_count, epoch_nr
-        ):
-            document_q_values(name, agent, epoch_nr, out_path, q_learn_env_config)
+        if epoch_nr % (max(1, doc_interval // 10)) == 0:
+            progr = hlp.progress_str(epoch_nr, epoch_count, start_time)
+            print(f"Finished epoch {name} {progr} " f"reward:{cuml_reward:10.2f}")
+        if do_plot_q_values(
+            epoch_nr, doc_interval, doc_duration, plot_q_values_full
+        ) or is_last(epoch_count, epoch_nr):
+            document_q_values(
+                name, agent, epoch_nr, sim_nr, out_path, q_learn_env_config
+            )
         if (epoch_nr % doc_interval == 0 and epoch_nr > 0) or is_last(
             epoch_count, epoch_nr
         ):
             document(name, results, q_learn_config, out_path)
+    env.close()
     print(f"Finished training {name} {loop_name} p:{sim_port}")
     return sim_port
 
@@ -482,20 +484,23 @@ def _curry_velo_from_index(
     return inner
 
 
-def do_plot_q_values(n: int, interval: int, duration: int) -> bool:
-    return bool(n % interval < duration)
+def do_plot_q_values(
+    n: int, interval: int, duration: int, plot_q_values_full: bool
+) -> bool:
+    return not plot_q_values_full and bool(n % interval < duration)
 
 
 def document_q_values(
     name: str,
     agent: QAgent,
-    epoch_nr: int | None,
+    epoch_nr: int,
+    sim_nr: int,
     work_dir: Path,
     q_learn_env_config: sgym.SEnvConfig,
 ):
     work_dir = work_dir / "v"
     work_dir.mkdir(parents=True, exist_ok=True)
-    plot_q_values(agent, epoch_nr, name, work_dir, q_learn_env_config)
+    plot_q_values(agent, epoch_nr, sim_nr, name, work_dir, q_learn_env_config)
 
 
 def document(name: str, results: list[dict], config: QLearnConfig, work_dir: Path):
@@ -523,6 +528,7 @@ def plot_mean(data: pd.DataFrame, name: str, work_dir: Path) -> Path:
 def plot_q_values(
     agent: QAgent,
     epoch_nr: int,
+    sim_nr: int,
     name: str,
     work_dir: Path,
     q_learn_env_config: sgym.SEnvConfig,
@@ -550,13 +556,15 @@ def plot_q_values(
     ax.set_xlabel("action")
     ax.set_ylabel("observation")
 
-    out_path = work_dir / f"{name}-{epoch_nr:010d}-heat.png"
+    out_path = work_dir / f"{name}-{epoch_nr:08d}{sim_nr:08d}-heat.png"
     fig.savefig(out_path)
     plt.close(fig)
     return out_path
 
 
-def plot_boxplot(data: pd.DataFrame, name: str, config: QLearnConfig,work_dir: Path) -> Path:
+def plot_boxplot(
+    data: pd.DataFrame, name: str, config: QLearnConfig, work_dir: Path
+) -> Path:
     matplotlib.use("agg")
     column = "reward"
     y = data[column]
@@ -568,7 +576,6 @@ def plot_boxplot(data: pd.DataFrame, name: str, config: QLearnConfig,work_dir: P
             f"initial-epsilon:{config.initial_epsilon} final-epsilon:{config.final_epsilon} epsilon-decay:{config.epsilon_decay}",
         ]
         return "\n".join(lines)
-    
 
     def split_data(data: list[float], n: int) -> list[list[str], list[list[float]]]:
         data_len = len(data)

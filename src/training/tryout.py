@@ -1,11 +1,7 @@
-import seaborn as sb
-import matplotlib.pyplot as plt
-import numpy as np
-from pprint import pprint
 import training.sgym.qlearn as ql
-import random
 import pandas as pd
 from pathlib import Path
+
 
 def main():
     print("-- tryout")

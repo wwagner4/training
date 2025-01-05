@@ -192,6 +192,13 @@ def qtrain(
             "--record", "-r", help="Define if the simulation is recorded or not"
         ),
     ] = False,
+    plot_q_values_full: Annotated[
+        bool,
+        typer.Option(
+            "--plot-q-values-full",
+            help="Plot q values for every simulation step. Use only with --epoch-count <= 10",
+        ),
+    ] = False,
     out_dir: Annotated[
         str,
         typer.Option("--out-dir", "-o", help="Output directory. Must be absolute"),
@@ -208,6 +215,7 @@ def qtrain(
         opponent,
         reward_handler,
         record,
+        plot_q_values_full,
         out_dir,
     )
 
@@ -326,7 +334,8 @@ def parallel(
     keep_container: Annotated[
         bool,
         typer.Option(
-            "--keep-container", help="Keep container after processing. Useful for error analyse"
+            "--keep-container",
+            help="Keep container after processing. Useful for error analyse",
         ),
     ] = False,
     out_dir: Annotated[
