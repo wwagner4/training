@@ -128,7 +128,7 @@ def main():
         cuml_rewards.append(cuml_reward / step_cnt)
         agent.decay_epsilon()
     # plot(agent, env)
-    cs = hlp.compress_means(cuml_rewards, 10)
+    _, cs = hlp.compress_means(cuml_rewards, 10)
     for c in cs:
         print(f"-- {c:7.2f}")
 

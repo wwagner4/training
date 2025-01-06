@@ -47,6 +47,7 @@ default_q_learn_config = QLearnConfig(
 
 def q_config(
     name: str,
+    record: bool,
     parallel_config: parallel.ParallelConfig,
     max_parallel: int,
     parallel_index: int,
@@ -86,7 +87,7 @@ def q_config(
             db_port=db_port,
             opponent_name=sr.ControllerName.STAND_STILL,
             reward_handler_name=sr.RewardHandlerName.CONTINUOUS_CONSIDER_ALL,
-            record=False,
+            record=record,
             plot_q_values_full=False,
             out_dir=out_dir,
             q_learn_env_config=default_env_config,
@@ -169,9 +170,9 @@ def _q_train(
 
     record_interval = max(1, epoch_count // record_count)
     print(
-        f"Started {name} l:{loop_name} e:{epoch_count} h:{sim_host} p:{sim_port} "
-        f"o:{opponent_name.value} rh:{reward_handler_name.value} "
-        f"di:{doc_interval} dd:{doc_duration}  rc:{record_count} d:{out_path.absolute()}"
+        f"Started name:{name} loop-name:{loop_name} epoch-count:{epoch_count} sim-host:{sim_host} sim-port:{sim_port} "
+        f"opponent:{opponent_name.value} reward-handler:{reward_handler_name.value} "
+        f"doc-interval:{doc_interval} doc-duration:{doc_duration}  record-count:{record_count} record:{record} out-path:{out_path.absolute()}"
     )
     opponent = sr.ControllerProvider.get(opponent_name)
     env = sgym.SEnv(
@@ -562,22 +563,33 @@ def plot_boxplot(
         if data_len < 10 * n:
             # Less than 10 data per boxplot
             return [str(data_len)], [data]
-        xs, ys = hlp.compress_means(data, n)
+        if data_len <= n:
+            return range(data_len), data
+        d = np.array(data)
+        cropped = (data_len // n) * n
+        split = np.split(d[0:cropped], n)
+        diff = cropped // n
+        xs = range(0, cropped, diff)
         xs_str = [str(x) for x in xs]
-        return xs_str, ys
+        return xs_str, split
 
     x1, y1 = split_data(y, 15)
-    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 12))
-    ax.boxplot(y1, labels=x1)
-    ax.set_title(title(column, name, config))
-    ax.set_ylim(ymin=-200, ymax=200)
-    ax.set_ylabel(column)
-    ax.set_xlabel("epoch nr")
-    ax.tick_params(axis="x", rotation=45)
-    out_path = work_dir / f"{name}-boxplot.png"
-    fig.savefig(out_path)
-    plt.close(fig)
-    return out_path
+    try:
+        fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 12))
+        ax.boxplot(y1, labels=x1)
+        ax.set_title(title(column, name, config))
+        ax.set_ylim(ymin=-20, ymax=300)
+        ax.set_ylabel(column)
+        ax.set_xlabel("epoch nr")
+        ax.tick_params(axis="x", rotation=45)
+        out_path = work_dir / f"{name}-boxplot.png"
+        fig.savefig(out_path)
+        plt.close(fig)
+        return out_path
+    except ValueError as ve:
+        print(f"x1:{x1}")
+        print(f"y1:{y1}")
+        raise ve
 
 
 def plot_all(
@@ -608,9 +620,8 @@ def plot_plain(
     matplotlib.use("agg")
     column = "reward"
     y = data[column]
-    window_size = 1
 
-    fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 12))
+    fig, ax = plt.subplots(figsize=(12, 12))
     ax.plot(y, label="reward")
     ax.set_title(title(column, name, config))
     out_path = work_dir / f"{name}-{epoch_nr:05d}plain.png"

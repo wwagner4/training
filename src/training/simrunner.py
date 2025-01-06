@@ -493,4 +493,4 @@ def sector_mapping(sector_name: SectorName) -> int:
         case SectorName.RIGHT:
             return 3
         case _:
-            raise ValueError(f"Wrong sector name {sensor.opponent_in_sector}")
+            raise ValueError(f"Wrong sector name {sector_name}")

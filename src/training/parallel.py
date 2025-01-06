@@ -114,7 +114,9 @@ def start_simulator(sim_name: str, network_name: str) -> str:
         return "<already running>"
 
 
-def parse_parallel_indexes(parallel_indexes: str, parallel_config: ParallelConfig, max_parallel: int) -> list[int]:
+def parse_parallel_indexes(
+    parallel_indexes: str, parallel_config: ParallelConfig, max_parallel: int
+) -> list[int]:
     configs = create_train_configs1(parallel_config, max_parallel)
     if parallel_indexes.lower() == "all":
         return list(range(len(configs)))
@@ -122,10 +124,10 @@ def parse_parallel_indexes(parallel_indexes: str, parallel_config: ParallelConfi
     max_index = len(configs) - 1
     for index in indexes:
         if index > max_index:
-            raise ValueError (
-            f"ERROR: Cannot start simulation for parallel index {parallel_index} "
-            f"of {parallel_config.value} "
-            f"with max_parallel {max_parallel}. Max index is {max_index}"
+            raise ValueError(
+                f"ERROR: Cannot start simulation for parallel index {index} "
+                f"of {parallel_config.value} "
+                f"with max_parallel {max_parallel}. Max index is {max_index}"
             )
     return indexes
 
@@ -141,6 +143,7 @@ def start_training(
     db_host: str,
     db_port: str,
     keep_container: bool,
+    record: bool,
     out_dir: Path,
 ) -> str:
     out_dir_str = str(out_dir.absolute())
@@ -170,6 +173,7 @@ def start_training(
         "qconfig",
         "--name",
         name,
+        "--record" if record else None,
         "--parallel-config",
         parallel_config.value,
         "--max-parallel",
@@ -203,6 +207,7 @@ def start_training_configuration(
     db_host: str,
     db_port: int,
     keep_container: bool,
+    record: bool,
     out_dir: Path,
 ):
     out_dir.mkdir(exist_ok=True, parents=True)
@@ -226,6 +231,7 @@ def start_training_configuration(
         db_host=db_host,
         db_port=db_port,
         keep_container=keep_container,
+        record=record,
         out_dir=out_dir,
     )
     print(f"Started training {name} {training_run_id}")
@@ -255,7 +261,9 @@ def parallel_main(
     out_path.mkdir(exist_ok=True, parents=True)
     if subdir_exists(out_path, name):
         raise RuntimeError(f"Output directory '{out_path}' {name} already exists")
-    for parallel_index in parse_parallel_indexes(parallel_indexes, parallel_config, max_parallel):
+    for parallel_index in parse_parallel_indexes(
+        parallel_indexes, parallel_config, max_parallel
+    ):
         start_training_configuration(
             name,
             parallel_config,
@@ -265,5 +273,6 @@ def parallel_main(
             db_host,
             db_port,
             keep_container,
+            record,
             out_path,
         )

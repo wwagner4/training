@@ -244,6 +244,12 @@ def qconfig(
             help="Parallel configuration",
         ),
     ],
+    record: Annotated[
+        bool,
+        typer.Option(
+            "--record", "-r", help="Define if the simulation is recorded or not"
+        ),
+    ] = False,
     sim_host: Annotated[
         str,
         typer.Option(
@@ -278,6 +284,7 @@ def qconfig(
 ):
     sgym_qlearn.q_config(
         name=name,
+        record=record,
         parallel_config=parallel_config,
         max_parallel=max_parallel,
         parallel_index=parallel_index,
