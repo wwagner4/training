@@ -5,6 +5,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+import subprocess as sp
 
 
 def row_col(n: int) -> tuple[int, int]:
@@ -103,3 +104,15 @@ def parse_integers(integers: str) -> list[int]:
         return []
     split = integers.split(",")
     return [int(i.strip()) for i in split]
+
+
+def call(command: list[str], ignore_stderr: bool = False) -> str:
+    process = sp.Popen(command, stdout=sp.PIPE, stderr=sp.PIPE)
+    b_out, b_err = process.communicate()
+    if b_err and not ignore_stderr:
+        cmd_str = " ".join(command)
+        msg = f"ERROR: calling '{cmd_str}'. \n{b_err.decode()}"
+        raise RuntimeError(msg)
+    if ignore_stderr:
+        return b_out.decode() + b_err.decode()
+    return b_out.decode()

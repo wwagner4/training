@@ -1,17 +1,19 @@
-import subprocess as sp
 import socket
 import itertools as it
 from pathlib import Path
 from dataclasses import dataclass
 from enum import Enum
-
 import training.helper as hlp
+
 
 _port = 4444
 
 
 class ParallelConfig(Enum):
     Q_TRYOUT = "q-tryout"
+    Q_01 = "q-01"
+    Q_DISC_0 = "q-disc-0"
+    Q_LR_0 = "q-lr-0"
 
 
 @dataclass(frozen=True)
@@ -29,6 +31,26 @@ def create_train_configs1(
                 "L": [0.1, 0.01, 0.001],
                 "E": [0.1, 0.05, 0.01],
                 "D": [0.99, 0.95, 0.5],
+            }
+            return create_train_configs(values_dict, max_parallel)
+        case ParallelConfig.Q_01:
+            values_dict = {
+                "L": [0.07, 0.1, 0.2],
+                "E": [0.07, 0.1, 0.2],
+                "D": [0.4, 0.5, 0.6],
+            }
+        case ParallelConfig.Q_DISC_0:
+            values_dict = {
+                "L": [0.1],
+                "E": [0.1],
+                "D": [0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9],
+            }
+            return create_train_configs(values_dict, max_parallel)
+        case ParallelConfig.Q_LR_0:
+            values_dict = {
+                "L": [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.2, 0.3, 0.5],
+                "E": [0.1],
+                "D": [0.75],
             }
             return create_train_configs(values_dict, max_parallel)
         case _:
@@ -70,19 +92,9 @@ def create_train_configs(
     ]
 
 
-def call(command: list[str]) -> str:
-    process = sp.Popen(command, stdout=sp.PIPE, stderr=sp.PIPE)
-    b_out, b_err = process.communicate()
-    if b_err:
-        cmd_str = " ".join(command)
-        msg = f"ERROR: calling '{cmd_str}'. \n{b_err.decode()}"
-        raise RuntimeError(msg)
-    return b_out.decode()
-
-
 def create_network(name: str) -> str:
     try:
-        return call(["docker", "network", "create", name])
+        return hlp.call(["docker", "network", "create", name])
     except RuntimeError as er:
         if "exists" not in str(er).lower():
             raise er
@@ -91,7 +103,7 @@ def create_network(name: str) -> str:
 
 def start_simulator(sim_name: str, network_name: str) -> str:
     try:
-        return call(
+        return hlp.call(
             [
                 "docker",
                 "run",
@@ -147,8 +159,8 @@ def start_training(
     out_dir: Path,
 ) -> str:
     out_dir_str = str(out_dir.absolute())
-    user = call(["id", "-u"]).strip()
-    group = call(["id", "-g"]).strip()
+    user = hlp.call(["id", "-u"]).strip()
+    group = hlp.call(["id", "-g"]).strip()
     db_host_ip = socket.gethostbyname(db_host)
     train_name = f"sumo-train{parallel_index:02d}"
     cmd = [
@@ -195,7 +207,7 @@ def start_training(
     ]
     cmd = [x for x in cmd if x is not None]
     print(f"Start training using: '{' '.join(cmd)}'")
-    return call(cmd)
+    return hlp.call(cmd)
 
 
 def start_training_configuration(

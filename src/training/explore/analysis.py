@@ -13,7 +13,55 @@ class AnalysisName(Enum):
     ADJUST_REWARD = "adjust-reward"
 
 
-def main(analysis_name: AnalysisName):
+class AnalysisReportName(Enum):
+    VIDEOS = "videos"
+
+
+def analysis_report_main(
+    analysis_report_name: AnalysisReportName, base_dir: str, prefix: str
+):
+    match analysis_report_name:
+        case AnalysisReportName.VIDEOS:
+            videos(base_dir, prefix)
+        case _:
+            raise ValueError(f"Unknown analysis name {analysis_report_name}")
+
+
+def videos(base_dir: str, prefix: str):
+    def video(name: str, video_dir: Path, out_dir: Path) -> Path:
+        infiles = f"{str(video_dir)}/*.png"
+        outfile = f"{str(out_dir)}/{name}.mp4"
+        print(
+            f"name: {name} vd: {video_dir} od: {out_dir} ifs: {infiles}  of: {outfile}"
+        )
+        cmd = [
+            "ffmpeg",
+            "-framerate",
+            "200",
+            "-pattern_type",
+            "glob",
+            "-i",
+            f"{str(infiles)}",
+            "-c:v",
+            "libx264",
+            "-pix_fmt",
+            "yuv420p",
+            str(outfile),
+        ]
+        print(f"calling: '{' '.join(cmd)}'")
+        hlp.call(cmd, ignore_stderr=True)
+        print(f"Created video: {outfile}")
+
+    base_path = Path(base_dir)
+    if not base_path.exists():
+        raise ValueError(f"Base directory does not exist {base_path.absolute()}")
+    files = [p for p in base_path.iterdir() if p.name.startswith(prefix)]
+    files_sorted = sorted(files, key=lambda p: p.name)
+    for f in files_sorted:
+        video(f.name, f / "v", base_dir)
+
+
+def analysis_main(analysis_name: AnalysisName):
     match analysis_name:
         case AnalysisName.NEXT_Q_VALUE:
             next_q_value()

@@ -384,14 +384,34 @@ def db(
     training.simdb(query)
 
 
-@app.command(help="Runs a gymnasium sample session")
+@app.command(help="Analysis for results")
 def analysis(
     analysis_name: Annotated[
         an.AnalysisName,
         typer.Option("--analysis", "-a", help="Name of the analysis to be processed"),
     ] = an.AnalysisName.ADJUST_REWARD,
 ):
-    an.main(analysis_name)
+    an.analysis_main(analysis_name)
+
+
+@app.command(help="Reports for results")
+def analysis_report(
+    base_dir: Annotated[
+        str,
+        typer.Option("--base-dir", "-d", help="Base directory. Must be absolute"),
+    ],
+    prefix: Annotated[
+        str,
+        typer.Option("--prefix", "-p", help="Prefix for directories to be analysed"),
+    ],
+    analysis_report_name: Annotated[
+        an.AnalysisReportName,
+        typer.Option(
+            "--analysis-report", "-a", help="Name of the analysis to be processed"
+        ),
+    ] = "videos",
+):
+    an.analysis_report_main(analysis_report_name, base_dir, prefix)
 
 
 @app.command(help="Export simulations from the local database to a file")
