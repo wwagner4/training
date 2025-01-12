@@ -156,12 +156,11 @@ def _q_train(
     reward_handler = sr.RewardHandlerProvider.get(reward_handler_name)
     results = []
     start_time = datetime.now()
+    out_path = Path(out_dir)
     if auto_naming:
         name = f"{name}-{hlp.unique()}"
-    out_path = Path(out_dir) / name
-    if out_path.exists():
-        raise FileExistsError(f"{name} was already used {out_path}. Choose another one")
-    out_path.mkdir(parents=True)
+        out_path = Path(out_dir) / name
+    out_path.mkdir(parents=True, exist_ok=True)
     loop_name = "q"
 
     doc_interval = calc_doc_interval(epoch_count)
@@ -486,7 +485,7 @@ def document_q_values(
     work_dir: Path,
     q_learn_env_config: sgym.SEnvConfig,
 ):
-    work_dir = work_dir / "v"
+    work_dir = work_dir / "q-value-heat"
     work_dir.mkdir(parents=True, exist_ok=True)
     plot_q_values(agent, epoch_nr, sim_nr, name, work_dir, q_learn_env_config)
 
@@ -499,9 +498,6 @@ def document(
     df.to_json(data_path, indent=2)
     plot_boxplot(df, name, config, work_dir)
     plot_all(df, name, config, work_dir)
-    plain_dir = work_dir / "plain"
-    plain_dir.mkdir(parents=True, exist_ok=True)
-    plot_plain(df, name, epoch_nr, config, plain_dir)
     print(f"Wrote plots for {name} to {work_dir.absolute()}")
 
 
@@ -532,7 +528,7 @@ def plot_q_values(
     obs_action_matrix = np.matrix(obs_action_data, dtype=q_learn_env_config.dtype)
     fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12, 12))
     sbn.heatmap(obs_action_matrix, vmin=0.0, vmax=1.0, ax=ax)
-    ax.set_title(f"Q Values for {name}")
+    ax.set_title(f"Q Values for {name} {epoch_nr:08d}")
     ax.set_xlabel("action")
     ax.set_ylabel("observation")
 

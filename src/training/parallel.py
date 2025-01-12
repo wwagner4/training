@@ -14,6 +14,11 @@ class ParallelConfig(Enum):
     Q_01 = "q-01"
     Q_DISC_0 = "q-disc-0"
     Q_LR_0 = "q-lr-0"
+    Q_EPS_0 = "q-eps-0"
+    Q_DISC_1 = "q-disc-1"
+    Q_LR_1 = "q-lr-1"
+    Q_EPS_1 = "q-eps-1"
+    Q_CROSS_0 = "q-cross-0"
 
 
 @dataclass(frozen=True)
@@ -51,6 +56,41 @@ def create_train_configs1(
                 "L": [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.2, 0.3, 0.5],
                 "E": [0.1],
                 "D": [0.75],
+            }
+            return create_train_configs(values_dict, max_parallel)
+        case ParallelConfig.Q_EPS_0:
+            values_dict = {
+                "L": [0.5],
+                "E": [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.3, 0.5, 0.6],
+                "D": [0.75],
+            }
+            return create_train_configs(values_dict, max_parallel)
+        case ParallelConfig.Q_DISC_1:
+            values_dict = {
+                "L": [0.5],
+                "E": [0.5],
+                "D": [0.4, 0.5, 0.6, 0.7],
+            }
+            return create_train_configs(values_dict, max_parallel)
+        case ParallelConfig.Q_LR_1:
+            values_dict = {
+                "L": [0.1, 0.3, 0.5, 0.7, 0.9],
+                "E": [0.5],
+                "D": [0.55],
+            }
+            return create_train_configs(values_dict, max_parallel)
+        case ParallelConfig.Q_EPS_1:
+            values_dict = {
+                "L": [0.5],
+                "E": [0.1, 0.3, 0.5, 0.7, 0.9],
+                "D": [0.55],
+            }
+            return create_train_configs(values_dict, max_parallel)
+        case ParallelConfig.Q_CROSS_0:
+            values_dict = {
+                "L": [0.5, 0.7, 0.1, 0.2],
+                "E": [0.5, 0.7, 0.1, 0.2],
+                "D": [0.2, 0.7, 0.8, 0.9, 0.99],
             }
             return create_train_configs(values_dict, max_parallel)
         case _:
@@ -251,7 +291,7 @@ def start_training_configuration(
 
 def subdir_exists(work_dir: Path, prefix: str) -> bool:
     for x in work_dir.iterdir():
-        if x.name.startswith(prefix):
+        if x.is_dir() and x.name.startswith(prefix):
             return True
     return False
 

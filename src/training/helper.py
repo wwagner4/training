@@ -2,6 +2,7 @@ import math
 import uuid
 from datetime import datetime
 from pathlib import Path
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -116,3 +117,19 @@ def call(command: list[str], ignore_stderr: bool = False) -> str:
     if ignore_stderr:
         return b_out.decode() + b_err.decode()
     return b_out.decode()
+
+
+def call1(command: list[str], work_path: Path | None = None) -> tuple[bool, str]:
+    if work_path is not None:
+        if not work_path.exists():
+            raise RuntimeError(
+                f"Cannot call {' '.join(command)}\nbecause workdir {work_path} does not exist"
+            )
+        process = sp.Popen(
+            command, stdout=sp.PIPE, stderr=sp.PIPE, cwd=work_path.absolute()
+        )
+    else:
+        process = sp.Popen(command, stdout=sp.PIPE, stderr=sp.PIPE)
+    b_out, b_err = process.communicate()
+    rc = process.returncode == 0
+    return rc, b_out.decode() + b_err.decode()

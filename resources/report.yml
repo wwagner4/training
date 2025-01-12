@@ -1,0 +1,102 @@
+title: SUMOSIM training
+description: |
+  Training sumorobots using reinforcement learning
+methods:
+- title: Q-Learning
+  abstract: Use Q-learning to train sumo agents
+  description: |
+    Description of q-learning...
+  trainings:
+  - prefix: Q0-DISC0
+    title: Cross validation over discount 5k
+    abstract: Try different discount factors 5k epochs
+    description: |
+      Number of epochs: 5000  
+      Using discount factors: 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9  
+      epsilon: 0.1  
+      learning rate 0.1
+  - prefix: Q0-LR2
+    title: Cross validation over learning rate 5k
+    abstract: Try different learning rates 5k epochs
+    description: |
+      Number of epochs: 5000  
+      Using learning rates: 0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.2, 0.3, 0.5  
+      epsilon: 0.1  
+      discount factor: 0.75
+  - prefix: Q0-EPS0
+    title: Cross validation over epsilon 5k
+    abstract: Try different epsilons 5k epochs
+    description: |
+      Number of epochs: 5000  
+      epsilons: 0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.3, 0.5, 0.6  
+      learning rate: 0.5  
+      discount factor: 0.75  
+  - prefix: Q0-DISC3
+    title: Cross validation over discount 2
+    abstract: Try different discount factors 10k epochs
+    description: |
+      Number of epochs: 10000  
+      Using discount factors: 0.4, 0.5, 0.6, 0.7  
+      epsilon: 0.5  
+      learning rate 0.5  
+  - prefix: Q0-LR3
+    title: Cross validation over learning rate 10k
+    abstract: Try different learning rates 10k epochs
+    description: |
+      Number of epochs: 10000  Q_LR_1
+      Using learning rates: 0.1, 0.3, 0.5, 0.7, 0.9  
+      epsilon: 0.5  
+      discount factor: 0.55
+  - prefix: Q0-EPS3
+    title: Cross validation over epsilon 10k
+    abstract: Try different epsilons 10k epochs
+    description: |
+      Number of epochs: 10000 Q_EPS_1 
+      epsilons: 0.1, 0.3, 0.5, 0.7, 0.9  
+      learning rate: 0.5  
+      discount factor: 0.55  
+  - prefix: T-CROSS-1
+    title: Cross validation on all Parameters 1 1000 epochs
+    abstract: Cross validation on all Parameters 1 1000 epochs
+    description: |
+      Used Values  
+      
+      ParallelConfig.Q_CROSS_0:
+      
+       "L": [0.5, 0.7, 0.1, 0.2],  
+       "E": [0.5, 0.7, 0.1, 0.2],  
+       "D": [0.2, 0.7, 0.8, 0.9, 0.99],  
+      
+      L: learning rate
+      E: epsilon
+      D: discount factor
+  - prefix: T-CROSS2
+    title: Cross validation on all Parameters 2 1000 epochs
+    abstract: Cross validation on all Parameters 2 1000 epochs
+    description: |
+      Used Values  
+      
+      ParallelConfig.Q_CROSS_0:
+      
+       "L": [0.5, 0.7, 0.1, 0.2],  
+       "E": [0.5, 0.7, 0.1, 0.2],  
+       "D": [0.2, 0.7, 0.8, 0.9, 0.99],  
+      
+      L: learning rate
+      E: epsilon
+      D: discount factor
+  - prefix: Q-CV4
+    title: Cross validation on all Parameters 20k epochs
+    abstract: Cross validation on all Parameters 20k epochs
+    description: |
+      Used Values  
+      
+      ParallelConfig.Q_CROSS_0:
+      
+       "L": [0.5, 0.7, 0.1, 0.2],  
+       "E": [0.5, 0.7, 0.1, 0.2],  
+       "D": [0.2, 0.7, 0.8, 0.9, 0.99],  
+      
+      L: learning rate
+      E: epsilon
+      D: discount factor

@@ -1,13 +1,25 @@
-import training.sgym.qlearn as ql
-import pandas as pd
 from pathlib import Path
+import shutil
 
 
 def main():
-    print("-- tryout")
-    data = [-100 + x for x in range(200)]
-    df = pd.DataFrame(data, columns=["reward"])
-    work_dir = Path.home() / "tmp" / "sumosim" / "tryout"
-    print(work_dir.exists())
-    pl = ql.plot_boxplot(df, "LINEAR", ql.default_q_learn_config, work_dir)
-    print(pl)
+    prefix = "A-SSS-X"
+    name = "A-SSS-X-999-hallo.2"
+    name1 = name[len(prefix) + 1 :]
+    print("--", prefix, name, name1)
+
+
+def rename():
+    print("-- rename")
+    indir = Path.home() / "tmp" / "sumosim" / "results1"
+    outdir = Path.home() / "tmp" / "sumosim" / "results"
+    outdir.mkdir(parents=True, exist_ok=True)
+    for f in indir.iterdir():
+        if f.name.startswith("P"):
+            stem = f.name[1:]
+            new_name = f"Q0-{stem}"
+            target = outdir / new_name
+            print(f"{str(f.name):50s} ---> {target}")
+            if not target.exists():
+                shutil.copy(f, target)
+                print(f"copied to {target}")

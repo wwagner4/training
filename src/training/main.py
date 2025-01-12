@@ -12,6 +12,7 @@ import training.util
 import training.tryout as to
 import training.explore.analysis as an
 import training.explore.export as exp
+import training.explore.report as _report
 import training.parallel as prl
 
 app = typer.Typer(pretty_exceptions_enable=False, add_completion=False)
@@ -20,7 +21,7 @@ sim_path_help = "Path to the simulator git module"
 sim_path_default = Path.home() / "prj" / "SUMOSIM" / "sumosim"
 
 
-@app.command(help="Runs simulations for combinations of controllers")
+@app.command(help="Simulations for combinations of controllers")
 def start(
     sim_name: Annotated[str, typer.Option("--name", "-n", help="Simulation name")],
     sim_host: Annotated[
@@ -85,7 +86,7 @@ def tryout():
     to.main()
 
 
-@app.command(help="Runs a gymnasium sample session")
+@app.command(help="Gymnasium sample session")
 def sample(
     name: Annotated[str, typer.Option("--name", "-n", help="Name of the run")],
     epoch_count: Annotated[
@@ -143,7 +144,7 @@ def sample(
     )
 
 
-@app.command(help="Runs a gymnasium q-learning session")
+@app.command(help="Gymnasium q-learning session")
 def qtrain(
     name: Annotated[str, typer.Option("--name", "-n", help="Name of the run")],
     epoch_count: Annotated[
@@ -220,7 +221,7 @@ def qtrain(
     )
 
 
-@app.command(help="Runs cross validation on q-learning session")
+@app.command(help="Q-learning session. Used by 'parallel'")
 def qconfig(
     name: Annotated[str, typer.Option("--name", help="Name of the run")],
     parallel_config: Annotated[
@@ -297,7 +298,7 @@ def qconfig(
     )
 
 
-@app.command(help="Runs a list of training configurations parallel")
+@app.command(help="List of learning sessions in parallel")
 def parallel(
     name: Annotated[str, typer.Option("--name", "-n", help="Name of the run")],
     parallel_config: Annotated[
@@ -384,7 +385,7 @@ def db(
     training.simdb(query)
 
 
-@app.command(help="Analysis for results")
+@app.command(help="Various Analyses")
 def analysis(
     analysis_name: Annotated[
         an.AnalysisName,
@@ -433,6 +434,20 @@ def export(
 ):
     multi_line = description.replace("\\n", "\n")
     exp.export_simulations(name, multi_line)
+
+
+@app.command(help="List of learning sessions in parallel")
+def report(
+    results_dir: Annotated[
+        list[str],
+        typer.Option("--results-dir", "-d", help="Input directory(s) for results"),
+    ],
+    out_dir: Annotated[str, typer.Option("--out-dir", "-o", help="Output directory")],
+):
+    _report.report(
+        results_dir_list=results_dir,
+        out_dir=out_dir,
+    )
 
 
 if __name__ == "__main__":

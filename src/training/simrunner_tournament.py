@@ -237,7 +237,7 @@ def plot_epoch_datas(
                 key, grouped_data = group_list[j * n_cols + i]
                 name1, name2 = key
                 title = f"{name1}  -  {name2}"
-                ax.boxplot(grouped_data[["r1", "r2"]], labels=(name1, name2))
+                ax.boxplots(grouped_data[["r1", "r2"]], labels=(name1, name2))
                 ax.set_title(title)
                 ax.set_ylim([-300, 300])
             else:
