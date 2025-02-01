@@ -7,6 +7,7 @@ import shutil
 import markdown as md
 from dataclasses import dataclass
 import training.helper as hlp
+import training.explore.enumdescs as edesc
 import re
 
 from dominate.dom_tag import dom_tag
@@ -131,6 +132,19 @@ def create_report_training(
 ) -> tuple[str, str] | None:
     prefix = training_dict["prefix"]
 
+    def tags_for_enumdescs(training_dict: dict) -> dom_tag:
+        enum_keys = training_dict.get("enumdescs")
+        if enum_keys is None:
+            return dt.div()
+        enum_texts = edesc.extract_enumdescs(enum_keys)
+        # print("### enum_texts", enum_texts)
+        return dt.p(
+            [
+                (dt.h3(key), du.raw(md.markdown(txt)))
+                for key, txt in zip(enum_keys, enum_texts)
+            ]
+        )
+
     def tags_for_combis(
         resources: Resources, combis: list[str], out_path: Path
     ) -> dom_tag:
@@ -146,7 +160,7 @@ def create_report_training(
                 target_path = res_path / res.name
                 if not target_path.exists():
                     shutil.copy(res, target_path)
-                    print(f"### Copied {res.name} to {res_path}")
+                    print(f"Copied {res.name} to {res_path}")
                 links.append(f"{prefix}/{res.name}")
             return links
 
@@ -165,15 +179,8 @@ def create_report_training(
 
         def tags_for_video_links(index: int, link: str) -> dom_tag:
             if index > 0 and index % 4 == 0:
-                return  (
-                    dt.br(),
-                    dt.a(f"video {index}", href=link)
-                )
-            return (
-                dt.a(f"video {index}", href=link)
-            )
-
-
+                return (dt.br(), dt.a(f"video {index}", href=link))
+            return dt.a(f"video {index}", href=link)
 
         def tags_for_resource(resourceLinks: ResourceLinks) -> dom_tag:
             return dt.div(
@@ -232,6 +239,7 @@ def create_report_training(
     with doc.body:
         dt.h1().add(training_dict["title"])
         dt.p().add(du.raw(md.markdown(training_dict["description"].strip())))
+        tags_for_enumdescs(training_dict)
         tags_for_combis(resources, _combis, out_path)
 
     with out_file.open("w") as f:

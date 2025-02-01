@@ -49,7 +49,7 @@ class SEnv(gym.Env):
         reward_handler: sr.RewardHandler,
     ):
         self.senv_config = senv_config
-        self.senv_config1 = senv_mapping
+        self.senv_mapping = senv_mapping
         self.sim_host = sim_host
         self.sim_port = sim_port
         self.db_host = db_host
@@ -85,7 +85,7 @@ class SEnv(gym.Env):
         match response:
             case sr.SensorResponse(sensor1=sensor1):
                 self.sim_action_response = response
-                obs = self.senv_config1.map_sensor(sensor1, self.senv_config)
+                obs = self.senv_mapping.map_sensor(sensor1, self.senv_config)
                 return obs, {}
             case sr.ErrorResponse(msg):
                 raise RuntimeError(f"Error on reset: '{msg}'")
@@ -96,7 +96,7 @@ class SEnv(gym.Env):
         sensor2 = self.sim_action_response.sensor2
         cnt = self.sim_action_response.cnt
         request = sr.ActionRequest(
-            diffDrive1=self.senv_config1.map_act(action, self.senv_config),
+            diffDrive1=self.senv_mapping.map_act(action, self.senv_config),
             diffDrive2=self.opponent_controller.take_step(sensor2),
             simulation_states=self.sim_action_response.simulation_states,
             cnt=cnt + 1,
@@ -116,7 +116,7 @@ class SEnv(gym.Env):
         match response:
             case sr.SensorResponse(sensor1=sensor1, reward1=reward):
                 self.sim_action_response = response
-                observation = self.senv_config1.map_sensor(sensor1, self.senv_config)
+                observation = self.senv_mapping.map_sensor(sensor1, self.senv_config)
                 terminated = False
                 truncated = False
                 info = {}

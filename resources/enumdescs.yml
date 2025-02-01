@@ -1,0 +1,223 @@
+- class_name: training.simrunner.RewardHandlerName
+  value: consider-all
+  desc: |
+    Considers all sensors.  
+    Calculates a reward after every step.  
+    
+    Positive rewarded actions.
+    
+    *  Agent collides with the opponent consciously. 
+    *  Agent pushes the opponent from the field conscoiusly.
+
+    Negative rewarded actions.
+
+    *  The agent moves from the field unforced. TODO find out reward values 
+    *  The agent is pushed from the field. 
+     
+    Rewards are calculated after every step and might be different from zero.
+- class_name: training.simrunner.RewardHandlerName
+  value: consider-all-end
+  desc: |
+    Considers all sensors.  
+    Calculates a reward after every step.  
+    
+    Positive rewarded actions.
+    
+    *  Agent collides with the opponent consciously. 
+    *  Agent pushes the opponent from the field conscoiusly.
+
+    Negative rewarded actions.
+    
+    *  The agent moves from the field unforced. TODO find out reward values 
+    *  The agent is pushed from the field. 
+     
+    Rewards are calculated only after the end of a match. All rewards before that are zero
+- class_name: training.parallel.ParallelConfig
+  value: q-disc-0
+  desc: |
+    <table>
+      <tr>
+        <td></td><td>L0</td>
+      </tr>
+      <tr>
+        <td>learning rate</td><td>0.1</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td></td><td>E0</td>
+      </tr>
+      <tr>
+        <td>epsilon</td><td>0.1</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td></td><td>D0</td><td>D1</td><td>D2</td><td>D3</td><td>D4</td><td>D5</td><td>D6</td>
+      </tr>
+      <tr>
+        <td>discount</td><td>0.6</td><td>0.65</td><td>0.7</td><td>0.75</td><td>0.8</td><td>0.85</td><td>0.9</td>
+      </tr>
+    </table>
+- class_name: training.parallel.ParallelConfig
+  value: q-lr-0
+  desc: |
+    <table>
+      <tr>
+        <td></td><td>L0</td><td>L1</td><td>L2</td><td>L3</td><td>L4</td><td>L5</td><td>L6</td><td>L7</td><td>L8</td><td>L9</td>
+      </tr>
+      <tr>
+        <td>learning rate</td><td>0.0001</td><td>0.0005</td><td>0.001</td><td>0.005</td><td>0.01</td><td>0.05</td><td>0.1</td><td>0.2</td><td>0.3</td><td>0.5</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td></td><td>E0</td>
+      </tr>
+      <tr>
+        <td>epsilon</td><td>0.1</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td></td><td>D0</td>
+      </tr>
+      <tr>
+        <td>discount</td><td>0.75</td>
+      </tr>
+    </table>
+- class_name: training.parallel.ParallelConfig
+  value: q-eps-0
+  desc: |
+    <table>
+      <tr>
+        <td></td><td>L0</td>
+      </tr>
+      <tr>
+        <td>learning rate</td><td>0.5</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td></td><td>E0</td><td>E1</td><td>E2</td><td>E3</td><td>E4</td><td>E5</td><td>E6</td><td>E7</td><td>E8</td><td>E9</td>
+      </tr>
+      <tr>
+        <td>epsilon</td><td>0.0001</td><td>0.0005</td><td>0.001</td><td>0.005</td><td>0.01</td><td>0.05</td><td>0.1</td><td>0.3</td><td>0.5</td><td>0.6</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td></td><td>D0</td>
+      </tr>
+      <tr>
+        <td>discount</td><td>0.75</td>
+      </tr>
+    </table>
+- class_name: training.parallel.ParallelConfig
+  value: q-disc-1
+  desc: |
+    <table>
+      <tr>
+        <td></td><td>L0</td>
+      </tr>
+      <tr>
+        <td>learning rate</td><td>0.5</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td></td><td>E0</td>
+      </tr>
+      <tr>
+        <td>epsilon</td><td>0.5</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td></td><td>D0</td><td>D1</td><td>D2</td><td>D3</td>
+      </tr>
+      <tr>
+        <td>discount</td><td>0.4</td><td>0.5</td><td>0.6</td><td>0.7</td>
+      </tr>
+    </table>
+- class_name: training.parallel.ParallelConfig
+  value: q-lr-1
+  desc: |
+    <table>
+      <tr>
+        <td></td><td>L0</td><td>L0</td><td>L0</td><td>L0</td><td>L0</td>
+      </tr>
+      <tr>
+        <td>learning rate</td><td>0.1</td><td>0.3</td><td>0.5</td><td>0.7</td><td>0.9</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td></td><td>E0</td>
+      </tr>
+      <tr>
+        <td>epsilon</td><td>0.5</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td></td><td>D0</td>
+      </tr>
+      <tr>
+        <td>discount</td><td>0.55</td>
+      </tr>
+    </table>
+- class_name: training.parallel.ParallelConfig
+  value: q-eps-1
+  desc: |
+    <table>
+      <tr>
+        <td></td><td>L0</td>
+      </tr>
+      <tr>
+        <td>learning rate</td><td>0.5</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td></td><td>E0</td><td>E0</td><td>E0</td><td>E0</td><td>E0</td>
+      </tr>
+      <tr>
+        <td>epsilon</td><td>0.1</td><td>0.3</td><td>0.5</td><td>0.7</td><td>0.9</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td></td><td>D0</td>
+      </tr>
+      <tr>
+        <td>discount</td><td>0.55</td>
+      </tr>
+    </table>
+- class_name: training.parallel.ParallelConfig
+  value: q-cross-0
+  desc: |
+    <table>
+      <tr>
+        <td></td><td>L0</td><td>L1</td><td>L2</td><td>L3</td>
+      </tr>
+      <tr>
+        <td>learning rate</td><td>0.5</td><td>0.7</td><td>0.1</td><td>0.2</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td></td><td>E0</td><td>E1</td><td>E2</td><td>E3</td>
+      </tr>
+      <tr>
+        <td>epsilon</td><td>0.5</td><td>0.7</td><td>0.1</td><td>0.2</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td></td><td>D0</td><td>D1</td><td>D2</td><td>D3</td><td>D4</td>
+      </tr>
+      <tr>
+        <td>discount</td><td>0.2</td><td>0.7</td><td>0.8</td><td>0.9</td><td>0.99</td>
+      </tr>
+    </table>

@@ -2,21 +2,27 @@ body {
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
+td {
+    border: lightgray 1px solid;
+    min-width: 3em;
+    padding: 0.2em
+}
+
+table {
+    margin-top: 1em;
+    border-collapse: collapse;
+}
+
 .container {
-    display: flex; /* Use flexbox for layout */
-    flex-wrap: wrap; /* Allow items to wrap onto multiple lines */
-    justify-content: center; /* Center the items horizontally */
-    align-items: center; /* Center the items vertically */
-    height: 100vh; /* Make container fill the viewport height */
-    /* background-color: white; /* Optional: Background color */
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .box {
-    background-color: #d9fbff;
+    background-color: #ffebd9;
     color: black;
-    padding: 20px;
-    margin: 10px; /* Add some spacing between boxes */
-    flex-grow: 1; /* Allow boxes to grow to fill available space */
-    min-width: 200px; /* Set a minimum width for boxes */
+    padding: 0.1em;
+    margin: 0.1em;
+    flex-grow: 1;
     text-align: center;
 }
