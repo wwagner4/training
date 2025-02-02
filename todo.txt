@@ -1,6 +1,6 @@
 sumosim
 
-    run another cross validation with unlimited reward values Q-CV5.
+    unlimited: run another cross validation with unlimited reward values Q-CV5.
         * Create branch Q-CV5 
         * Change description of existing trainings as limited, where limited means 
           that reward values were limited by min/max values.
@@ -8,16 +8,22 @@ sumosim
         * Describe new training as unlimited.
         - Run new cross validation Q-CV5 
 
+        sumot parallel -n Q-CV5 --parallel-config q-cross-1 --max-parallel 10 --epoch-count 20000 \
+          --db-host ben.local --keep-container --record --out-dir $HOME/tmp/sumosim/results-2025-02-Q-CV5
+
     mapping
-        - call one simulation
-        - extract mapping code to separate module sensor_mapping.py Class SensorMapping value Initial initial
-        - simulation still working ?
-        - define SensorMappingName  
-        - add sensorMappingName to cmd-line
-        - implement new sensor mapping NearBorder near-border 
+        * call qtrain
+        - extract mapping code to separate module sim_mapping.py with abstract Class SimMapping and implementation InitialSimMapping
+        - qtrain still working ?
+        - define SimMappingName
+        - add SimMappingName to cmd-line
+        - implement new simulation mapping NearBorderSimMapping near-border
         - Describe the mappings
+        - Extend the calculation of configs that values defining only one value are not considered.
         - add configuration values RewardHandler, SensorMapping, ... to parallel configs. e.g. 
           for sensor mapping SM values initial, near-border
+
+    sumot qtrain --auto-naming -o $HOME/tmp/sumosim/mapping --record -e 100 -n M01
 
     fetch-action 
         - currently eager: fetches the first max value. 
@@ -34,5 +40,5 @@ doctus
     remove split into trait and impl. e.g. DoctusSwing and DoctusSwingImpl
     combine DoctusSwingUtil and DoctusSchedulerJvm in DoctusJvmUtil. Beware DoctusJvmUtil in sumosim
 
-sumot parallel -n Q-CV5 --parallel-config q-cross-1 --max-parallel 10 --epoch-count 20000 \
-      --db-host ben.local --keep-container --record --out-dir $HOME/tmp/sumosim/results-2025-02-Q-CV5
+
+

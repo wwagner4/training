@@ -36,6 +36,14 @@ def start(
             "--sim-port", help="The port on which the simulation is listening"
         ),
     ] = 4444,
+    db_host: Annotated[
+        str,
+        typer.Option("--db-host", help="The host on which the simulation is listening"),
+    ] = "localhost",
+    db_port: Annotated[
+        int,
+        typer.Option("--db-port", help="The port on which the simulation is listening"),
+    ] = 27017,
     controllers: Annotated[
         list[sr.ControllerName],
         typer.Option("--controllers", "-c", help="Name of controllers"),
@@ -71,6 +79,8 @@ def start(
     srt.start(
         sim_host,
         sim_port,
+        db_host,
+        db_port,
         sim_name,
         controllers,
         reward_handler,

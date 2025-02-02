@@ -53,8 +53,8 @@ def start(
             f"Defining max-simulation-steps greater than that makes no sense"
         )
 
-    t_id = hlp.time_id()
-    name = f"{name}-{t_id}"
+    uid = hlp.unique()
+    name = f"{name}-{uid}"
 
     out_dir = Path.home() / "tmp" / "sumosim" / "start"
     out_dir.mkdir(exist_ok=True, parents=True)
@@ -237,7 +237,7 @@ def plot_epoch_datas(
                 key, grouped_data = group_list[j * n_cols + i]
                 name1, name2 = key
                 title = f"{name1}  -  {name2}"
-                ax.boxplots(grouped_data[["r1", "r2"]], labels=(name1, name2))
+                ax.boxplot(grouped_data[["r1", "r2"]], labels=(name1, name2))
                 ax.set_title(title)
                 ax.set_ylim([-300, 300])
             else:
