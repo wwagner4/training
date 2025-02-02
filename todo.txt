@@ -1,32 +1,53 @@
+sumosim
+
+    run another cross validation with unlimited reward values Q-CV5.
+        * Create branch Q-CV5 
+        * Change description of existing trainings as limited, where limited means 
+          that reward values were limited by min/max values.
+        * Define new ParallelConfig based on the results of Q-CV4
+        * Describe new training as unlimited.
+        - Run new cross validation Q-CV5 
+
+    mapping
+        - call one simulation
+        - extract mapping code to separate module sensor_mapping.py Class SensorMapping value Initial initial
+        - simulation still working ?
+        - define SensorMappingName  
+        - add sensorMappingName to cmd-line
+        - implement new sensor mapping NearBorder near-border 
+        - Describe the mappings
+        - add configuration values RewardHandler, SensorMapping, ... to parallel configs. e.g. 
+          for sensor mapping SM values initial, near-border
+
+    fetch-action 
+        - currently eager: fetches the first max value. 
+        - random max: Fetches a random value from all found max values.
+        
+    near-border-reward
+        - reward a push higher if it takes place near the border.
+            
+    reports
+        - 
+
 doctus
     remove package.scala
     remove split into trait and impl. e.g. DoctusSwing and DoctusSwingImpl
     combine DoctusSwingUtil and DoctusSchedulerJvm in DoctusJvmUtil. Beware DoctusJvmUtil in sumosim
 
-sumosim
-    calculate reward from recorded game infos for a robot. with testcases
-    send history of sensors or remember sensors in the controller
-    send collision info for advanced reward function
-    start gui if db not up and running
 
+------------------------------------------------------------------------------------------------
+call for Q-CV5
 
-calculate reward from recorded game infos for a robot. with testcases
-    for winning n = 1
-        by doing nothing. the opponent walked out +5
-        by pushing the opponent out +20
-    for loosing n = 1
-        by unforced walking out of the field -20
-        by being pushed out by the opponent -10
-    for pushing the opponent n >= 0
-        while seeing it +10
-        while not seeing it 0
-    for being pushed n >= 0
-        while seeing the opponent -10
-        while not seeing the opponent 0
+│ *  --name              -n      TEXT                   Name of the run [default: None] [required]                                                                                                                │
+│ *  --parallel-config           [q-cross-0|q-cross-1]  Parallel configuration [default: None] [required]                                                                                                         │
+│ *  --max-parallel              INTEGER                Number of maximal executable training processes on the local machine [default: None] [required]                                                           │
+│    --parallel-indexes  -i      TEXT                   Comma separated list of indexes or 'all'. E.g. '1,2,3,4', 'all' [default: all]                                                                            │
+│    --epoch-count       -e      INTEGER                Number of epochs to be run [default: 100]                                                                                                                 │
+│    --db-host                   TEXT                   The host on which the simulation is listening [default: localhost]                                                                                        │
+│    --db-port                   INTEGER                The port on which the simulation is listening [default: 27017]                                                                                            │
+│    --keep-container                                   Keep container after processing. Useful for error analyse                                                                                                 │
+│    --record            -r                             Define if the simulation is recorded or not                                                                                                               │
+│    --out-dir           -o      TEXT                   Output directory. Must be absolute [default: /tmp]      
 
-    reward is always >= 0
-
-    helper functions:
-    canSeeTheOpponent(myStatus, opponentStatus): Option[distance]
-    findColissions(): List[(myStatus, opponetStaus)]
-    findEnd(): (myStatus, opponetStaus) <- One of them should be out (the looser)
+sumot parallel -n Q-CV5 --parallel-config q-cross-1 --max-parallel 10 --epoch-count 20000 \
+      --db-host ben.local --keep-container --record --out-dir $HOME/tmp/sumosim/results-2025-02-Q-CV5

@@ -1,14 +1,21 @@
 title: SUMOSIM training
 description: |
-  Q-learning is a model-free reinforcement learning algorithm 
-  that teaches an agent to assign values to each action it 
-  might take, conditioned on the agent being in a 
-  particular state. It does not require a model of the environment (hence "model-free"), and it can handle problems with stochastic transitions and rewards without requiring adaptations. [wiki]
+  Sumosim is a simulation for sumo robots. Two robots are
+  placed on a circular field. Each of them tries to push
+  the opponent out of the field. Winner is who stays longer
+  in the field.
+
+  Sumosim is inspired by [Robot-sumo](https://en.wikipedia.org/wiki/Robot-sumo)
 methods:
 - title: Q-Learning
   abstract: Use Q-learning to train sumo agents
   description: |
-    Description of q-learning...
+    Q-learning is a model-free reinforcement learning algorithm 
+    that teaches an agent to assign values to each action it 
+    might take, conditioned on the agent being in a 
+    particular state. It does not require a model of the environment 
+    (hence "model-free"), and it can handle problems with stochastic 
+    transitions and rewards without requiring adaptations. [wiki]
   trainings:
   - prefix: Q0-DISC0
     title: Cross validation over discount 5k
@@ -17,7 +24,9 @@ methods:
       - training.simrunner.RewardHandlerName.consider-all
       - training.parallel.ParallelConfig.q-disc-0
     description: |
-      Number of epochs: 5000  
+      Number of epochs: 5000
+
+      Rewards are limited by a lower and upper limit. This might cause problems.  
   - prefix: Q0-LR2
     title: Cross validation over learning rate 5k
     abstract: Try different learning rates 5k epochs
@@ -26,6 +35,8 @@ methods:
       - training.parallel.ParallelConfig.q-lr-0
     description: |
       Number of epochs: 5000  
+      
+      Rewards are limited by a lower and upper limit. This might cause problems.  
   - prefix: Q0-EPS0
     title: Cross validation over epsilon 5k
     abstract: Try different epsilons 5k epochs
@@ -34,6 +45,8 @@ methods:
       - training.parallel.ParallelConfig.q-eps-0
     description: |
       Number of epochs: 5000  
+      
+      Rewards are limited by a lower and upper limit. This might cause problems.  
   - prefix: Q0-DISC3
     title: Cross validation over discount 2
     abstract: Try different discount factors 10k epochs
@@ -42,6 +55,8 @@ methods:
       - training.parallel.ParallelConfig.q-disc-1
     description: |
       Number of epochs: 10000  
+      
+      Rewards are limited by a lower and upper limit. This might cause problems.  
   - prefix: Q0-LR3
     title: Cross validation over learning rate 10k
     abstract: Try different learning rates 10k epochs
@@ -50,6 +65,8 @@ methods:
       - training.parallel.ParallelConfig.q-lr-1
     description: |
       Number of epochs: 10000  Q_LR_1
+      
+      Rewards are limited by a lower and upper limit. This might cause problems.  
   - prefix: Q0-EPS3
     title: Cross validation over epsilon 10k
     abstract: Try different epsilons 10k epochs
@@ -65,6 +82,8 @@ methods:
       - training.simrunner.RewardHandlerName.consider-all
     description: |
       number of epochs 1k
+      
+      Rewards are limited by a lower and upper limit. This might cause problems.  
   - prefix: T-CROSS2
     title: Cross validation on all Parameters 1k epochs
     abstract: Cross validation on all Parameters 1k epochs
@@ -73,6 +92,8 @@ methods:
       - training.parallel.ParallelConfig.q-cross-0
     description: |
       Number of epochs 1k
+      
+      Rewards are limited by a lower and upper limit. This might cause problems.  
   - prefix: Q-CV4
     title: Cross validation on all Parameters 20k epochs
     abstract: Cross validation on all Parameters 20k epochs
@@ -81,3 +102,18 @@ methods:
       - training.parallel.ParallelConfig.q-cross-0
     description: |
       number of epochs: 20k
+      
+      Rewards are limited by a lower and upper limit. This might cause problems.  
+  - prefix: Q-CV5
+    title: Cross validation on all Parameters 20k epochs
+    abstract: Cross validation on all Parameters 20k epochs
+    enumdescs:
+      - training.simrunner.RewardHandlerName.consider-all
+      - training.parallel.ParallelConfig.q-cross-1
+    description: |
+      number of epochs: 20k
+            
+      Rewards are no longer limited by a lower and upper limit.
+
+      The ranges for learning rate, epsilon and discount were choosen
+      from the results of Q-CV4  

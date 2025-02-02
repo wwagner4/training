@@ -10,15 +10,8 @@ _port = 4444
 
 
 class ParallelConfig(Enum):
-    Q_TRYOUT = "q-tryout"
-    Q_01 = "q-01"
-    Q_DISC_0 = "q-disc-0"
-    Q_LR_0 = "q-lr-0"
-    Q_EPS_0 = "q-eps-0"
-    Q_DISC_1 = "q-disc-1"
-    Q_LR_1 = "q-lr-1"
-    Q_EPS_1 = "q-eps-1"
     Q_CROSS_0 = "q-cross-0"
+    Q_CROSS_1 = "q-cross-1"
 
 
 @dataclass(frozen=True)
@@ -31,66 +24,18 @@ def create_train_configs1(
     parallel_config: ParallelConfig, max_parallel: int
 ) -> list[list[TrainConfig]]:
     match parallel_config:
-        case ParallelConfig.Q_TRYOUT:
-            values_dict = {
-                "L": [0.1, 0.01, 0.001],
-                "E": [0.1, 0.05, 0.01],
-                "D": [0.99, 0.95, 0.5],
-            }
-            return create_train_configs(values_dict, max_parallel)
-        case ParallelConfig.Q_01:
-            values_dict = {
-                "L": [0.07, 0.1, 0.2],
-                "E": [0.07, 0.1, 0.2],
-                "D": [0.4, 0.5, 0.6],
-            }
-        case ParallelConfig.Q_DISC_0:
-            values_dict = {
-                "L": [0.1],
-                "E": [0.1],
-                "D": [0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9],
-            }
-            return create_train_configs(values_dict, max_parallel)
-        case ParallelConfig.Q_LR_0:
-            values_dict = {
-                "L": [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.2, 0.3, 0.5],
-                "E": [0.1],
-                "D": [0.75],
-            }
-            return create_train_configs(values_dict, max_parallel)
-        case ParallelConfig.Q_EPS_0:
-            values_dict = {
-                "L": [0.5],
-                "E": [0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1, 0.3, 0.5, 0.6],
-                "D": [0.75],
-            }
-            return create_train_configs(values_dict, max_parallel)
-        case ParallelConfig.Q_DISC_1:
-            values_dict = {
-                "L": [0.5],
-                "E": [0.5],
-                "D": [0.4, 0.5, 0.6, 0.7],
-            }
-            return create_train_configs(values_dict, max_parallel)
-        case ParallelConfig.Q_LR_1:
-            values_dict = {
-                "L": [0.1, 0.3, 0.5, 0.7, 0.9],
-                "E": [0.5],
-                "D": [0.55],
-            }
-            return create_train_configs(values_dict, max_parallel)
-        case ParallelConfig.Q_EPS_1:
-            values_dict = {
-                "L": [0.5],
-                "E": [0.1, 0.3, 0.5, 0.7, 0.9],
-                "D": [0.55],
-            }
-            return create_train_configs(values_dict, max_parallel)
         case ParallelConfig.Q_CROSS_0:
             values_dict = {
                 "L": [0.5, 0.7, 0.1, 0.2],
                 "E": [0.5, 0.7, 0.1, 0.2],
                 "D": [0.2, 0.7, 0.8, 0.9, 0.99],
+            }
+            return create_train_configs(values_dict, max_parallel)
+        case ParallelConfig.Q_CROSS_1:
+            values_dict = {
+                "L": [0.7, 0.8, 0.9],
+                "E": [0.01, 0.05, 0.1],
+                "D": [0.95, 0.99, 0.995, 0.999],
             }
             return create_train_configs(values_dict, max_parallel)
         case _:
