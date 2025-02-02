@@ -34,20 +34,5 @@ doctus
     remove split into trait and impl. e.g. DoctusSwing and DoctusSwingImpl
     combine DoctusSwingUtil and DoctusSchedulerJvm in DoctusJvmUtil. Beware DoctusJvmUtil in sumosim
 
-
-------------------------------------------------------------------------------------------------
-call for Q-CV5
-
-│ *  --name              -n      TEXT                   Name of the run [default: None] [required]                                                                                                                │
-│ *  --parallel-config           [q-cross-0|q-cross-1]  Parallel configuration [default: None] [required]                                                                                                         │
-│ *  --max-parallel              INTEGER                Number of maximal executable training processes on the local machine [default: None] [required]                                                           │
-│    --parallel-indexes  -i      TEXT                   Comma separated list of indexes or 'all'. E.g. '1,2,3,4', 'all' [default: all]                                                                            │
-│    --epoch-count       -e      INTEGER                Number of epochs to be run [default: 100]                                                                                                                 │
-│    --db-host                   TEXT                   The host on which the simulation is listening [default: localhost]                                                                                        │
-│    --db-port                   INTEGER                The port on which the simulation is listening [default: 27017]                                                                                            │
-│    --keep-container                                   Keep container after processing. Useful for error analyse                                                                                                 │
-│    --record            -r                             Define if the simulation is recorded or not                                                                                                               │
-│    --out-dir           -o      TEXT                   Output directory. Must be absolute [default: /tmp]      
-
 sumot parallel -n Q-CV5 --parallel-config q-cross-1 --max-parallel 10 --epoch-count 20000 \
       --db-host ben.local --keep-container --record --out-dir $HOME/tmp/sumosim/results-2025-02-Q-CV5
