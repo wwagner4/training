@@ -105,8 +105,8 @@ methods:
       
       Rewards are limited by a lower and upper limit. This might cause problems.  
   - prefix: Q-CV5
-    title: Cross validation on all Parameters 20k epochs
-    abstract: Cross validation on all Parameters 20k epochs
+    title: Cross validation reward unlimited
+    abstract: Cross validation on all Parameters with unlimited reward
     enumdescs:
       - training.simrunner.RewardHandlerName.consider-all
       - training.parallel.ParallelConfig.q-cross-1
